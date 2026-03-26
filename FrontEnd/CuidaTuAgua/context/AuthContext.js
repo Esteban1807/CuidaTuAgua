@@ -7,6 +7,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [homes, setHomes] = useState([]);
   const [selectedHome, setSelectedHome] = useState(null);
+  const [token, setToken] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -20,6 +21,7 @@ export function AuthProvider({ children }) {
         setUser(response.user);
         setHomes(response.homes || []);
         setIsAuthenticated(true);
+        if (response.token) setToken(response.token);
 
         return {
           success: true,
@@ -74,6 +76,7 @@ export function AuthProvider({ children }) {
     setUser(null);
     setHomes([]);
     setSelectedHome(null);
+    setToken(null);
     setIsAuthenticated(false);
   };
 
@@ -84,6 +87,7 @@ export function AuthProvider({ children }) {
         homes,
         selectedHome,
         setSelectedHome,
+        token,
         isAuthenticated,
         loading,
         login,

@@ -1,78 +1,111 @@
-export const loginUser = async ({ identifier, password }) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+import apiConfig from '../config/apiConfig';
 
-  if (
-    (identifier === '123456' || identifier === 'correo@cuidatuagua.com') &&
-    password === '1234'
-  ) {
-    return {
-      success: true,
-      user: {
-        id: 1,
-        name: 'Diego Pedro Felix Messi',
-        email: 'correo@cuidatuagua.com',
-        document: '123456',
+const BASE_URL = apiConfig.API_BASE_URL;
+
+console.log('AUTH SERVICE - BASE_URL:', BASE_URL);
+
+export const loginUser = async ({ identifier, password }) => {
+  try {
+    console.log('🔐 Iniciando login con:', identifier);
+    
+    const requestBody = { identifier, password };
+    console.log('📤 Enviando request a:', `${BASE_URL}/api/auth/login`);
+    
+    const response = await fetch(`${BASE_URL}/api/auth/login`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
-      homes: [
-        {
-          id: 1,
-          name: 'Hogar 1',
-          address: 'Cra 3 Sur #29-137',
-          stratum: 3,
-          inhabitants: 4,
-        },
-      ],
+      body: JSON.stringify(requestBody),
+    });
+
+    console.log('📥 Response status:', response.status);
+
+    if (!response.ok) {
+      let errorPayload = null;
+      try {
+        errorPayload = await response.json();
+        console.log('❌ Error response:', errorPayload);
+      } catch (e) {
+        console.log('❌ Error response (no JSON):', response.statusText);
+      }
+      
+      return {
+        success: false,
+        message: (errorPayload && errorPayload.message) || `Error: ${response.status} ${response.statusText}`,
+      };
+    }
+
+    const data = await response.json();
+    console.log('✅ Login exitoso:', data);
+    
+    return {
+      success: data.success,
+      message: data.message,
+      user: data.user,
+      token: data.token,
+    };
+  } catch (error) {
+    console.error('🚨 Error en login:', error);
+    console.error('   Error message:', error.message);
+    console.error('   Error stack:', error.stack);
+    
+    return {
+      success: false,
+      message: `Error de conexión: ${error.message}`,
     };
   }
-
-  return {
-    success: false,
-    message: 'Credenciales inválidas',
-  };
 };
 
-export const registerUser = async ({
-  fullName,
-  document,
-  email,
-  password,
-  homeName,
-  address,
-  stratum,
-  inhabitants,
-}) => {
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+export const registerUser = async (formData) => {
+  try {
+    console.log('📝 Iniciando registro');
+    console.log('📤 Datos:', formData);
+    
+    const response = await fetch(`${BASE_URL}/api/auth/register`, {
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
 
-  if (!fullName || !document || !email || !password) {
+    console.log('📥 Response status:', response.status);
+
+    if (!response.ok) {
+      let errorPayload = null;
+      try {
+        errorPayload = await response.json();
+        console.log('❌ Error response:', errorPayload);
+      } catch (e) {
+        console.log('❌ Error response (no JSON):', response.statusText);
+      }
+      
+      return {
+        success: false,
+        message: (errorPayload && errorPayload.message) || `Error: ${response.status} ${response.statusText}`,
+      };
+    }
+
+    const data = await response.json();
+    console.log('✅ Registro exitoso:', data);
+    
+    return {
+      success: data.success,
+      message: data.message,
+      user: data.user,
+      home: data.home,
+    };
+  } catch (error) {
+    console.error('🚨 Error en registro:', error);
+    console.error('   Error message:', error.message);
+    console.error('   Error stack:', error.stack);
+    
     return {
       success: false,
-      message: 'Faltan datos obligatorios del usuario',
+      message: `Error de conexión: ${error.message}`,
     };
   }
-
-  if (!homeName || !address || !stratum || !inhabitants) {
-    return {
-      success: false,
-      message: 'Faltan datos del hogar',
-    };
-  }
-
-  return {
-    success: true,
-    message: 'Cuenta creada correctamente. Revisa tu correo para validarlo.',
-    user: {
-      id: Date.now(),
-      name: fullName,
-      email,
-      document,
-      emailVerified: false,
-    },
-    home: {
-      id: Date.now() + 1,
-      name: homeName,
-      address,
-      stratum,
-      inhabitants,
-    },
-  };
 };
