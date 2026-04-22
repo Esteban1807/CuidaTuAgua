@@ -16,8 +16,7 @@ export default function LoginHeader() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginTop: 40,
-    marginBottom: 40,
+
   },
   image: {
     width: 260,

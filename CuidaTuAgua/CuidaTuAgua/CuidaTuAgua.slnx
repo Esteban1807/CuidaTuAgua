@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Bussines/Bussines.csproj" Id="3949953e-04c3-47f8-8213-9edc3e6f81cd" />
+  <Project Path="CuidaTuAgua.API/CuidaTuAgua.API.csproj" Id="355e4d1c-0296-4a52-96cf-4ad70fbcf2df" />
+  <Project Path="Data/Data.csproj" Id="ce83eb9a-4086-4e16-9337-e4197cca1d04" />
+  <Project Path="Entity/Entity.csproj" Id="77c0bae4-a957-4243-88b3-e96ef9c03040" />
+</Solution>

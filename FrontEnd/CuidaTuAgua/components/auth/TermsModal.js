@@ -7,17 +7,20 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import { useResponsive } from '../../hooks/useResponsive';
 
 export default function TermsModal({ visible, onClose }) {
+  const { isWeb } = useResponsive();
   return (
     <Modal
       visible={visible}
       animationType="slide"
       transparent
       onRequestClose={onClose}
+      
     >
       <View style={styles.overlay}>
-        <View style={styles.modalContainer}>
+        <View style={[styles.modalContainer, isWeb && styles.modalContainerWeb ]}>
           <Text style={styles.title}>Términos y Condiciones</Text>
 
           <ScrollView
@@ -77,14 +80,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.45)',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 20,
+    height: '100%',
+    paddingHorizontal: 50,
   },
+
   modalContainer: {
     width: '100%',
     maxHeight: '80%',
     backgroundColor: '#FFFFFF',
     borderRadius: 14,
-    padding: 20,
+    maxWidth: 500,
+    padding: 20,  
+  },
+  modalContainerWeb: {
+    maxWidth: 700,
   },
   title: {
     fontSize: 20,

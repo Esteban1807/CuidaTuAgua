@@ -89,6 +89,7 @@ export function AuthProvider({ children }) {
         setSelectedHome,
         token,
         isAuthenticated,
+        setIsAuthenticated,
         loading,
         login,
         register,

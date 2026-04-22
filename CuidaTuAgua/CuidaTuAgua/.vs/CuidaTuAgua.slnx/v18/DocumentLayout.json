@@ -1,0 +1,339 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\security\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\security\\home.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\security\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\security\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\security\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\security\\permission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\security\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\security\\form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\security\\module.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\security\\module.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\genericmodel\\genericmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\genericmodel\\genericmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\security\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\security\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\security\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\security\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\security\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\security\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\basemodel\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\basemodel\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\entity\\entity.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{77C0BAE4-A957-4243-88B3-E96EF9C03040}|Entity\\Entity.csproj|solutionrelative:entity\\entity.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE83EB9A-4086-4E16-9337-E4197CCA1D04}|Data\\Data.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\data\\data.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{CE83EB9A-4086-4E16-9337-E4197CCA1D04}|Data\\Data.csproj|solutionrelative:data\\data.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3949953E-04C3-47F8-8213-9EDC3E6F81CD}|Bussines\\Bussines.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\bussines\\bussines.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3949953E-04C3-47F8-8213-9EDC3E6F81CD}|Bussines\\Bussines.csproj|solutionrelative:bussines\\bussines.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{355E4D1C-0296-4A52-96CF-4AD70FBCF2DF}|CuidaTuAgua.API\\CuidaTuAgua.API.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\cuidatuagua.api\\cuidatuagua.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{355E4D1C-0296-4A52-96CF-4AD70FBCF2DF}|CuidaTuAgua.API\\CuidaTuAgua.API.csproj|solutionrelative:cuidatuagua.api\\cuidatuagua.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3949953E-04C3-47F8-8213-9EDC3E6F81CD}|Bussines\\Bussines.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\bussines\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3949953E-04C3-47F8-8213-9EDC3E6F81CD}|Bussines\\Bussines.csproj|solutionrelative:bussines\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{355E4D1C-0296-4A52-96CF-4AD70FBCF2DF}|CuidaTuAgua.API\\CuidaTuAgua.API.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\cuidatuagua.api\\cuidatuagua.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{355E4D1C-0296-4A52-96CF-4AD70FBCF2DF}|CuidaTuAgua.API\\CuidaTuAgua.API.csproj|solutionrelative:cuidatuagua.api\\cuidatuagua.api.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CE83EB9A-4086-4E16-9337-E4197CCA1D04}|Data\\Data.csproj|c:\\users\\juani\\documents\\cuidatuagua\\cuidatuagua\\cuidatuagua\\data\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CE83EB9A-4086-4E16-9337-E4197CCA1D04}|Data\\Data.csproj|solutionrelative:data\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.Domain\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CuidaTuAgua.Domain\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.Application\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CuidaTuAgua.Application\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\UserRole.cs",
+              "RelativeDocumentMoniker": "Entity\\Security\\UserRole.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\UserRole.cs",
+              "RelativeToolTip": "Entity\\Security\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T19:59:38.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Permission.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Permission.cs",
+              "RelativeDocumentMoniker": "Entity\\Security\\Permission.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Permission.cs",
+              "RelativeToolTip": "Entity\\Security\\Permission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T19:57:27.979Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Form.cs",
+              "RelativeDocumentMoniker": "Entity\\Security\\Form.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Form.cs",
+              "RelativeToolTip": "Entity\\Security\\Form.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T19:57:06.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Module.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Module.cs",
+              "RelativeDocumentMoniker": "Entity\\Security\\Module.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Module.cs",
+              "RelativeToolTip": "Entity\\Security\\Module.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T19:54:53.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Role.cs",
+              "RelativeDocumentMoniker": "Entity\\Security\\Role.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Role.cs",
+              "RelativeToolTip": "Entity\\Security\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T19:18:05.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Person.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Person.cs",
+              "RelativeDocumentMoniker": "Entity\\Security\\Person.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Person.cs",
+              "RelativeToolTip": "Entity\\Security\\Person.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T18:08:36.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GenericModel.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\genericModel\\GenericModel.cs",
+              "RelativeDocumentMoniker": "Entity\\genericModel\\GenericModel.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\genericModel\\GenericModel.cs",
+              "RelativeToolTip": "Entity\\genericModel\\GenericModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T17:51:25.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Home.cs",
+              "RelativeDocumentMoniker": "Entity\\Security\\Home.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\Home.cs",
+              "RelativeToolTip": "Entity\\Security\\Home.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T17:45:31.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BaseModel.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\baseModel\\BaseModel.cs",
+              "RelativeDocumentMoniker": "Entity\\baseModel\\BaseModel.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\baseModel\\BaseModel.cs",
+              "RelativeToolTip": "Entity\\baseModel\\BaseModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T19:45:29.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Bussines",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Bussines\\Bussines.csproj",
+              "RelativeDocumentMoniker": "Bussines\\Bussines.csproj",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Bussines\\Bussines.csproj",
+              "RelativeToolTip": "Bussines\\Bussines.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-06T19:41:09.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Entity",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Entity.csproj",
+              "RelativeDocumentMoniker": "Entity\\Entity.csproj",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Entity.csproj",
+              "RelativeToolTip": "Entity\\Entity.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-06T19:40:25.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Data.csproj",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Data\\Data.csproj",
+              "RelativeDocumentMoniker": "Data\\Data.csproj",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Data\\Data.csproj",
+              "RelativeToolTip": "Data\\Data.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-06T19:34:21.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\User.cs",
+              "RelativeDocumentMoniker": "Entity\\Security\\User.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Entity\\Security\\User.cs",
+              "RelativeToolTip": "Entity\\Security\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T17:58:59.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Bussines\\Class1.cs",
+              "RelativeDocumentMoniker": "Bussines\\Class1.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Bussines\\Class1.cs",
+              "RelativeToolTip": "Bussines\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T19:40:51.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Data\\Class1.cs",
+              "RelativeDocumentMoniker": "Data\\Class1.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\Data\\Class1.cs",
+              "RelativeToolTip": "Data\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T19:31:29.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CuidaTuAgua.API.csproj",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.API\\CuidaTuAgua.API.csproj",
+              "RelativeDocumentMoniker": "CuidaTuAgua.API\\CuidaTuAgua.API.csproj",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.API\\CuidaTuAgua.API.csproj",
+              "RelativeToolTip": "CuidaTuAgua.API\\CuidaTuAgua.API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-06T19:19:59.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.Domain\\Class1.cs",
+              "RelativeDocumentMoniker": "CuidaTuAgua.Domain\\Class1.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.Domain\\Class1.cs",
+              "RelativeToolTip": "CuidaTuAgua.Domain\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T19:20:17.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CuidaTuAgua.API.http",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.API\\CuidaTuAgua.API.http",
+              "RelativeDocumentMoniker": "CuidaTuAgua.API\\CuidaTuAgua.API.http",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.API\\CuidaTuAgua.API.http",
+              "RelativeToolTip": "CuidaTuAgua.API\\CuidaTuAgua.API.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-04-06T19:35:37.771Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.Application\\Class1.cs",
+              "RelativeDocumentMoniker": "CuidaTuAgua.Application\\Class1.cs",
+              "ToolTip": "C:\\Users\\juani\\Documents\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua\\CuidaTuAgua.Application\\Class1.cs",
+              "RelativeToolTip": "CuidaTuAgua.Application\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-06T19:18:02.193Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

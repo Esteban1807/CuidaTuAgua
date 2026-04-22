@@ -10,6 +10,9 @@ export default function AppNavigator() {
   const { isAuthenticated, selectedHome } = useAuth();
   const [authView, setAuthView] = useState('login');
 
+  // Temporal para probar
+  // const isAuthenticated = true;
+
   if (!isAuthenticated) {
     if (authView === 'register') {
       return <RegisterScreen goToLogin={() => setAuthView('login')} />;
@@ -18,9 +21,10 @@ export default function AppNavigator() {
     return <LoginScreen goToRegister={() => setAuthView('register')} />;
   }
 
-  if (!selectedHome) {
-    return <HomesScreen />;
-  }
+  // if (!selectedHome) {
+  //   return <HomesScreen />;
+  // }
 
   return <DashboardScreen />;
+  
 }

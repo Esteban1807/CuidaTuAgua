@@ -6,10 +6,10 @@ console.log('AUTH SERVICE - BASE_URL:', BASE_URL);
 
 export const loginUser = async ({ identifier, password }) => {
   try {
-    console.log('🔐 Iniciando login con:', identifier);
+    console.log('Iniciando login con:', identifier);
     
     const requestBody = { identifier, password };
-    console.log('📤 Enviando request a:', `${BASE_URL}/api/auth/login`);
+    console.log('Enviando request a:', `${BASE_URL}/api/auth/login`);
     
     const response = await fetch(`${BASE_URL}/api/auth/login`, {
       method: 'POST',
@@ -20,15 +20,15 @@ export const loginUser = async ({ identifier, password }) => {
       body: JSON.stringify(requestBody),
     });
 
-    console.log('📥 Response status:', response.status);
+    console.log('Response status:', response.status);
 
     if (!response.ok) {
       let errorPayload = null;
       try {
         errorPayload = await response.json();
-        console.log('❌ Error response:', errorPayload);
+        console.log('Error response:', errorPayload);
       } catch (e) {
-        console.log('❌ Error response (no JSON):', response.statusText);
+        console.log('Error response (no JSON):', response.statusText);
       }
       
       return {
@@ -38,7 +38,7 @@ export const loginUser = async ({ identifier, password }) => {
     }
 
     const data = await response.json();
-    console.log('✅ Login exitoso:', data);
+    console.log('Login exitoso:', data);
     
     return {
       success: data.success,
@@ -47,7 +47,7 @@ export const loginUser = async ({ identifier, password }) => {
       token: data.token,
     };
   } catch (error) {
-    console.error('🚨 Error en login:', error);
+    console.error('Error en login:', error);
     console.error('   Error message:', error.message);
     console.error('   Error stack:', error.stack);
     
@@ -60,8 +60,8 @@ export const loginUser = async ({ identifier, password }) => {
 
 export const registerUser = async (formData) => {
   try {
-    console.log('📝 Iniciando registro');
-    console.log('📤 Datos:', formData);
+    console.log(' Iniciando registro');
+    console.log(' Datos:', formData);
     
     const response = await fetch(`${BASE_URL}/api/auth/register`, {
       method: 'POST',
@@ -72,15 +72,15 @@ export const registerUser = async (formData) => {
       body: JSON.stringify(formData),
     });
 
-    console.log('📥 Response status:', response.status);
+    console.log('Response status:', response.status);
 
     if (!response.ok) {
       let errorPayload = null;
       try {
         errorPayload = await response.json();
-        console.log('❌ Error response:', errorPayload);
+        console.log('Error response:', errorPayload);
       } catch (e) {
-        console.log('❌ Error response (no JSON):', response.statusText);
+        console.log(' Error response (no JSON):', response.statusText);
       }
       
       return {
@@ -90,7 +90,7 @@ export const registerUser = async (formData) => {
     }
 
     const data = await response.json();
-    console.log('✅ Registro exitoso:', data);
+    console.log('Registro exitoso:', data);
     
     return {
       success: data.success,
@@ -99,7 +99,7 @@ export const registerUser = async (formData) => {
       home: data.home,
     };
   } catch (error) {
-    console.error('🚨 Error en registro:', error);
+    console.error(' Error en registro:', error);
     console.error('   Error message:', error.message);
     console.error('   Error stack:', error.stack);
     
