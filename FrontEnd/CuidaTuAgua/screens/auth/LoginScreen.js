@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
   webForm: {
     paddingHorizontal: 20,
     flex: 0.65,
-    maxWidth: 560,
+    maxWidth: 600,
   },
 
   mobileForm: {
@@ -365,7 +365,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     overflow: 'hidden',
     height: '100%',
-    maxWidth: 542,
+    maxWidth: 600,
   },
   carouselRow: {
     flexDirection: 'row',
