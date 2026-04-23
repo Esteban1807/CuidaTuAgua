@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
+import { colors, spacing, typography } from '../../theme';
 
 export const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: colors.background,
   },
-  
-  webSafeArea: {
-    padding: 50,
+
+  webSafeArea: {  
+    padding: spacing.xxl,
   },
 
   container: {
@@ -17,39 +18,35 @@ export const styles = StyleSheet.create({
   webContainer: {
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 50,
+    padding: spacing.xxl,
     flexDirection: 'row',
     maxWidth: 1200,
-    maxHeight: '90vh',
     alignSelf: 'center',
     width: '100%',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.surface,
     borderRadius: 50,
     minHeight: 520,
+    maxHeight: '90%',
   },
 
   formSection: {
     flex: 1,
-    paddingHorizontal:20,
+    paddingHorizontal: spacing.lg,
     justifyContent: 'space-between',
   },
 
   webForm: {
-    paddingHorizontal: 20,
+    paddingHorizontal: spacing.lg,
     flex: 0.65,
     maxWidth: 600,
   },
 
   mobileForm: {
-    paddingTop: 50,
+    paddingTop: spacing.xxl,
   },
 
   mobileFormFields: {
-    marginTop: 30,
-  },
-  
-  webButton: {
-    bottom: 10,
+    marginTop: spacing.xl,
   },
 
   mobileButton: {
@@ -59,8 +56,8 @@ export const styles = StyleSheet.create({
   webAuthLink: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 16,
-    marginRight: 16,
+    marginBottom: spacing.md,
+    marginRight: spacing.md,
   },
 
   rightPanel: {
@@ -71,74 +68,66 @@ export const styles = StyleSheet.create({
     height: '100%',
     maxWidth: 600,
   },
+
   carouselRow: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
-    
+    marginBottom: spacing.lg,
   },
+
+  carouselItem: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   imageContainer: {
     width: '100%',
     alignItems: 'center',
   },
+
   leftArrow: {
     width: 40,
-    height: 40, 
-    alignItems: 'center',
-    backgroundColor: '#F2F2F2',
-    borderRadius: 20,
-  },
-  rightArrow: {
-    width: 40, 
     height: 40,
     alignItems: 'center',
-    backgroundColor: '#F2F2F2',
+    justifyContent: 'center',
+    backgroundColor: colors.grayLight,
     borderRadius: 20,
   },
+
+  rightArrow: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.grayLight,
+    borderRadius: 20,
+  },
+
   arrowText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#0A6D95',
-    paddingTop: 2,
-  },  
-
-  carouselContent: {
-    alignItems: 'center',
-    justifyContent: 'center',  
+    color: colors.primary,
   },
-  
+
   carouselImage: {
     width: '70%',
     height: 290,
     borderRadius: 20,
   },
+
   carouselTitle: {
-    marginTop: 16,
-    fontSize: 20,
-    fontWeight: '700',
-    color: '#0A6D95',
+    ...typography.subtitle,
+    marginTop: spacing.md,
+    color: colors.primary,
     textAlign: 'center',
   },
+
   carouselDescription: {
-    marginTop: 8,
-    fontSize: 14,
-    color: '#0B5FA5',
+    ...typography.body,
+    marginTop: spacing.sm,
+    color: colors.textSecondary,
     textAlign: 'center',
   },
-  carouselDots: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 18,
-  },
-  carouselDot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: '#F2F2F2',
-    marginHorizontal: 6,
-  },
-  carouselDotActive: {
-    backgroundColor: '#118FC3',
-  },
+
 });

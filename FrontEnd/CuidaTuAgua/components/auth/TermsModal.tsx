@@ -7,20 +7,27 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import { useResponsive } from '../../hooks/useResponsive';
 
-export default function TermsModal({ visible, onClose }) {
+import { useResponsive } from '../../hooks/useResponsive';
+import { colors, spacing, typography } from '../../theme';
+
+type Props = {
+  visible: boolean;
+  onClose: () => void;
+};
+
+export default function TermsModal({ visible, onClose }: Props) {
   const { isWeb } = useResponsive();
+
   return (
     <Modal
       visible={visible}
       animationType="slide"
       transparent
       onRequestClose={onClose}
-      
     >
       <View style={styles.overlay}>
-        <View style={[styles.modalContainer, isWeb && styles.modalContainerWeb ]}>
+        <View style={[styles.modalContainer, isWeb && styles.modalContainerWeb]}>
           <Text style={styles.title}>Términos y Condiciones</Text>
 
           <ScrollView
@@ -80,45 +87,49 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.45)',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
-    paddingHorizontal: 50,
+    paddingHorizontal: spacing.xxl,
   },
 
   modalContainer: {
     width: '100%',
     maxHeight: '80%',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: colors.surface,
     borderRadius: 14,
     maxWidth: 500,
-    padding: 20,  
+    padding: spacing.lg,
   },
+
   modalContainerWeb: {
     maxWidth: 700,
   },
+
   title: {
-    fontSize: 20,
-    fontWeight: '700',
-    color: '#0B5FA5',
-    marginBottom: 16,
+    ...typography.subtitle,
+    color: colors.textSecondary,
+    marginBottom: spacing.md,
     textAlign: 'center',
   },
+
   content: {
-    marginBottom: 20,
+    marginBottom: spacing.lg,
   },
+
   paragraph: {
-    fontSize: 14,
-    color: '#374151',
-    marginBottom: 14
+    ...typography.body,
+    color: colors.textPrimary,
+    marginBottom: spacing.sm,
   },
+
   button: {
-    backgroundColor: '#118FC3',
-    paddingVertical: 14,
+    backgroundColor: colors.secondary,
+    paddingVertical: spacing.md,
     borderRadius: 8,
     alignItems: 'center',
   },
+
   buttonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
+    ...typography.body,
+    color: colors.surface,
     fontWeight: '600',
   },
 });

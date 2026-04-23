@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   TouchableOpacity,
   Animated,
   ImageSourcePropType,
@@ -10,7 +9,6 @@ import {
 
 import { styles } from './LoginScreen.styles';
 
-import { useAuth } from '../../hooks/useAuth';
 import LoginHeader from '../../components/auth/LoginHeader';
 import InputField from '../../components/auth/InputField';
 import AuthLink from '../../components/auth/AuthLink';
@@ -21,6 +19,7 @@ import { useResponsive } from '../../hooks/useResponsive';
 
 type Props = {
   goToRegister: () => void;
+  onLoginSuccess: () => void;
 };
 
 type FeedbackType = 'info' | 'error' | 'success';
@@ -31,20 +30,23 @@ type CarouselItem = {
   description: string;
 };
 
-export default function LoginScreen({ goToRegister }: Props) {
-  const { login, loading, setIsAuthenticated } = useAuth();
+export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
   const { isWeb, isMobile, width } = useResponsive();
 
-  const [identifier, setIdentifier] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [acceptedTerms, setAcceptedTerms] = useState<boolean>(false);
-  const [termsVisible, setTermsVisible] = useState<boolean>(false);
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [feedbackVisible, setFeedbackVisible] = useState<boolean>(false);
-  const [activeSlide, setActiveSlide] = useState<number>(0);
+  const [termsVisible, setTermsVisible] = useState(false);
 
-  const slideAnim = useRef<Animated.Value>(new Animated.Value(0)).current;
-  const fadeAnim = useRef<Animated.Value>(new Animated.Value(1)).current;
+  const [feedbackVisible, setFeedbackVisible] = useState(false);
+  const [feedbackTitle, setFeedbackTitle] = useState('');
+  const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [feedbackType, setFeedbackType] = useState<FeedbackType>('info');
+
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const slideAnim = useRef(new Animated.Value(0)).current;
+  const fadeAnim = useRef(new Animated.Value(1)).current;
 
   const carouselItems: CarouselItem[] = [
     {
@@ -64,9 +66,9 @@ export default function LoginScreen({ goToRegister }: Props) {
     },
   ];
 
-  const carouselWidth: number = Math.min(500, width * 0.3);
+  const carouselWidth = Math.min(500, width * 0.3);
 
-  const animateSlide = (newIndex: number): void => {
+  const animateSlide = (newIndex: number) => {
     Animated.parallel([
       Animated.timing(slideAnim, {
         toValue: newIndex > activeSlide ? -50 : 50,
@@ -96,79 +98,78 @@ export default function LoginScreen({ goToRegister }: Props) {
     });
   };
 
-  const goToNextSlide = (): void => {
+  const goToNextSlide = () => {
     const nextIndex = (activeSlide + 1) % carouselItems.length;
     animateSlide(nextIndex);
   };
 
-  const goToPrevSlide = (): void => {
-    const prevIndex = activeSlide === 0 ? carouselItems.length - 1 : activeSlide - 1;
+  const goToPrevSlide = () => {
+    const prevIndex =
+      activeSlide === 0 ? carouselItems.length - 1 : activeSlide - 1;
     animateSlide(prevIndex);
   };
 
-  const useAutoplay = (): void => {
-    useEffect(() => {
-      const interval = setInterval(goToNextSlide, 5000);
-      return () => clearInterval(interval);
-    }, [activeSlide]);
-  };
-
-  useAutoplay();
-
-  const [feedbackTitle, setFeedbackTitle] = useState<string>('');
-  const [feedbackMessage, setFeedbackMessage] = useState<string>('');
-  const [feedbackType, setFeedbackType] = useState<FeedbackType>('info');
+  useEffect(() => {
+    const interval = setInterval(goToNextSlide, 5000);
+    return () => clearInterval(interval);
+  }, [activeSlide]);
 
   const showFeedback = (
     title: string,
     message: string,
     type: FeedbackType = 'info'
-  ): void => {
+  ) => {
     setFeedbackTitle(title);
     setFeedbackMessage(message);
     setFeedbackType(type);
     setFeedbackVisible(true);
   };
 
-  // const handleLogin = async () => {
-  //   if (!identifier.trim()) {
-  //     showFeedback('Error', 'Ingresa tu correo o número de documento', 'error');
-  //     return;
-  //   }
-  //   if (!password.trim()) {
-  //     showFeedback('Error', 'Ingresa tu contraseña', 'error');
-  //     return;
-  //   }
-  //   if (!acceptedTerms) {
-  //     showFeedback('Error', 'Debes aceptar los términos y condiciones', 'error');
-  //     return;
-  //   }
-  //   const result = await login({ identifier, password });
-  //   if (!result.success) {
-  //     showFeedback('Error', result.message, 'error');
-  //     return;
-  //   }
-  //   showFeedback('Éxito', 'Inicio de sesión correcto', 'success');
-  // };
-
-  const closeFeedback = (): void => {
+  const closeFeedback = () => {
     setFeedbackVisible(false);
   };
 
-  const handleLogin = (): void => {
-    setIsAuthenticated(true);
+  const handleLogin = () => {
+    if (!identifier.trim()) {
+      return showFeedback('Error', 'Ingresa tu usuario', 'error');
+    }
+
+    if (!password.trim()) {
+      return showFeedback('Error', 'Ingresa tu contraseña', 'error');
+    }
+
+    // 🔥 Simulación login
+    onLoginSuccess();
   };
 
   return (
     <View style={[styles.safeArea, isWeb && styles.webSafeArea]}>
       <View style={[styles.container, isWeb && styles.webContainer]}>
-        <View style={[styles.formSection, isWeb && styles.webForm, isMobile && styles.mobileForm]}>
-          <View style={styles.headerSection}>
+        
+        {/* FORM */}
+        <View
+          style={[
+            styles.formSection,
+            isWeb && styles.webForm,
+            isMobile && styles.mobileForm,
+          ]}
+        >
+          <View>
             <LoginHeader />
 
             <View style={isMobile && styles.mobileFormFields}>
-              <InputField value={identifier} onChangeText={setIdentifier} placeholder="Correo / Número de documento" />
-              <InputField value={password} onChangeText={setPassword} placeholder="Contraseña" secureTextEntry />
+              <InputField
+                value={identifier}
+                onChangeText={setIdentifier}
+                placeholder="Correo / Documento"
+              />
+
+              <InputField
+                value={password}
+                onChangeText={setPassword}
+                placeholder="Contraseña"
+                secureTextEntry
+              />
 
               <View style={[isWeb && styles.webAuthLink]}>
                 <AuthLink
@@ -176,30 +177,36 @@ export default function LoginScreen({ goToRegister }: Props) {
                   onPress={() =>
                     showFeedback(
                       'Recuperación',
-                      'Aquí irá el flujo de recuperación de contraseña.',
+                      'Funcionalidad no implementada',
                       'info'
                     )
                   }
                 />
 
-                <AuthLink text="¿No tienes cuenta? Regístrate" onPress={goToRegister} />
+                <AuthLink
+                  text="¿No tienes cuenta? Regístrate"
+                  onPress={goToRegister}
+                />
               </View>
             </View>
           </View>
 
-          <View style={[isMobile && styles.mobileButton, isWeb && styles.webButton]}>
+          <View style={[isMobile && styles.mobileButton]}>
             <PrimaryButton
-              title={loading ? 'Cargando...' : 'Acceder'}
+              title="Acceder"
               onPress={handleLogin}
-              disabled={loading}
             />
           </View>
         </View>
 
+        {/* CAROUSEL WEB */}
         {isWeb && (
           <View style={styles.rightPanel}>
             <View style={styles.carouselRow}>
-              <TouchableOpacity style={styles.leftArrow} onPress={goToPrevSlide}>
+              <TouchableOpacity
+                style={styles.leftArrow}
+                onPress={goToPrevSlide}
+              >
                 <Text style={styles.arrowText}>‹</Text>
               </TouchableOpacity>
 
@@ -208,18 +215,30 @@ export default function LoginScreen({ goToRegister }: Props) {
                   source={carouselItems[activeSlide].image}
                   style={[
                     styles.carouselImage,
-                    { transform: [{ translateX: slideAnim }], opacity: fadeAnim },
+                    {
+                      transform: [{ translateX: slideAnim }],
+                      opacity: fadeAnim,
+                    },
                   ]}
                 />
-                <Animated.Text style={[styles.carouselTitle, { opacity: fadeAnim }]}>
+
+                <Animated.Text
+                  style={[styles.carouselTitle, { opacity: fadeAnim }]}
+                >
                   {carouselItems[activeSlide].title}
                 </Animated.Text>
-                <Animated.Text style={[styles.carouselDescription, { opacity: fadeAnim }]}>
+
+                <Animated.Text
+                  style={[styles.carouselDescription, { opacity: fadeAnim }]}
+                >
                   {carouselItems[activeSlide].description}
                 </Animated.Text>
               </View>
 
-              <TouchableOpacity style={styles.rightArrow} onPress={goToNextSlide}>
+              <TouchableOpacity
+                style={styles.rightArrow}
+                onPress={goToNextSlide}
+              >
                 <Text style={styles.arrowText}>›</Text>
               </TouchableOpacity>
             </View>
@@ -227,7 +246,10 @@ export default function LoginScreen({ goToRegister }: Props) {
         )}
       </View>
 
-      <TermsModal visible={termsVisible} onClose={() => setTermsVisible(false)} />
+      <TermsModal
+        visible={termsVisible}
+        onClose={() => setTermsVisible(false)}
+      />
 
       <FeedbackModal
         visible={feedbackVisible}

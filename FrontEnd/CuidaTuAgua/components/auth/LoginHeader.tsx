@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, Image, StyleSheet, ImageStyle } from 'react-native';
+import { spacing } from '../../theme';
 
 export default function LoginHeader() {
   return (
@@ -16,10 +17,11 @@ export default function LoginHeader() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-
+    marginBottom: spacing.lg,
   },
+
   image: {
     width: 260,
     height: 260,
-  },
+  } as ImageStyle,
 });
