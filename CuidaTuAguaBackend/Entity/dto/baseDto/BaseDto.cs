@@ -8,6 +8,5 @@ namespace Entity.dto.baseDto
 {
     public class BaseDto
     {
-        public bool Status { get; set; }
     }
 }

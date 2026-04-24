@@ -1,5 +1,4 @@
 ﻿using Entity.dto.baseDto;
-using Entity.dto.baseDtoWithId;
 using System;
 using System.Collections.Generic;
 using System.Linq;

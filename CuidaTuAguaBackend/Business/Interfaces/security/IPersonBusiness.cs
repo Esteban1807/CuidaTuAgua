@@ -1,6 +1,6 @@
 ﻿using Business.Interfaces.baseBusiness;
 using Entity.dto.baseDto;
-using Entity.dto.security;
+using Entity.dto.security.Person;
 using Entity.Model.security;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.security
 {
-    public interface IPersonBusiness : IBaseBusiness<Person, PersonDto>
+    public interface IPersonBusiness : IBaseBusiness<Person, PersonCreateDto, PersonDto, PersonUpdateDto>
     {
     }
 }

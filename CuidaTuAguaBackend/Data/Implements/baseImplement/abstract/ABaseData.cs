@@ -25,5 +25,6 @@ namespace Data.Implements.baseImplement.@abstract
         public abstract Task<T> GetByIdAsync(Guid id);        
         public abstract Task<T> UpdateAsync(T entity);
         public abstract Task<T> DeleteAsync(T entity);
+        public abstract Task<bool> SoftDeleteAsync(T entity);
     }
 }

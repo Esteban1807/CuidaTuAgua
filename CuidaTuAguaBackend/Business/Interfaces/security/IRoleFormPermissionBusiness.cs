@@ -1,6 +1,6 @@
 ﻿using Business.Interfaces.baseBusiness;
 using Entity.dto.baseDto;
-using Entity.dto.security;
+using Entity.dto.security.RoleFormPermission;
 using Entity.Model.security;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.security
 {
-    public interface IRoleFormPermissionBusiness : IBaseBusiness<RoleFormPermission, RoleFormPermissionDto>
+    public interface IRoleFormPermissionBusiness : IBaseBusiness<RoleFormPermission, RoleFormPermissionCreateDto, RoleFormPermissionDto, RoleFormPermissionUpdateDto>
     {
     }
 }

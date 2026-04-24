@@ -9,9 +9,9 @@ namespace Entity.Model.baseModel
     public class BaseModel
     {
         public Guid Id { get; set; }
-        public bool Status { get; set; }    
+        public bool Status { get; set; } = true;
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-        public DateTime DeleteAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public DateTime? DeletedAt { get; set; }
     }
 }

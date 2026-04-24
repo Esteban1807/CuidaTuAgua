@@ -1,6 +1,6 @@
 ﻿using Business.Interfaces.baseBusiness;
 using Entity.dto.baseDto;
-using Entity.dto.security;
+using Entity.dto.security.Form;
 using Entity.Model.security;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.Interfaces.security
 {
-    public interface IFormBusiness : IBaseBusiness<Form, FormDto>
+    public interface IFormBusiness : IBaseBusiness<Form, FormCreateDto, FormDto, FormUpdateDto>
     {
     }
 }

@@ -10,10 +10,10 @@ namespace Entity.Model.security
     public class RoleFormPermission : BaseModel
     {
         public Role Role { get; set; }
-        public int IdRole { get; set; }
+        public Guid IdRole { get; set; }
         public Form Form { get; set; }
-        public int IdForm { get; set; }
+        public Guid IdForm { get; set; }
         public Permission Permission { get; set; }
-        public int IdPermission { get; set; }
+        public Guid IdPermission { get; set; }
     }
 }

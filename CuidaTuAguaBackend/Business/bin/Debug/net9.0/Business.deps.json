@@ -654,6 +654,7 @@
       },
       "Data/1.0.0": {
         "dependencies": {
+          "AutoMapper": "16.1.1",
           "Entity": "1.0.0"
         },
         "runtime": {

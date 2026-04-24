@@ -10,8 +10,8 @@ namespace Entity.Model.security
     public class FormModule : BaseModel
     {
         public Form Form { get; set; }
-        public int IdForm { get; set; }
+        public Guid IdForm { get; set; }
         public Module Module { get; set; }
-        public int IdModule { get; set; }
+        public Guid IdModule { get; set; }
     }
 }

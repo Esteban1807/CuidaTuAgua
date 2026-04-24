@@ -10,8 +10,8 @@ namespace Entity.Model.security
     public class UserRole : BaseModel
     {
         public User User { get; set; }
-        public int IdUser { get; set; }
+        public Guid IdUser { get; set; }
         public Role Role { get; set; }
-        public int IdRole { get; set; }
+        public Guid IdRole { get; set; }
     }
 }

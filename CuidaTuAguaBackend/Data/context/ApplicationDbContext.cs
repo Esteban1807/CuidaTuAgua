@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Data.context
 {
@@ -26,7 +27,7 @@ namespace Data.context
         public DbSet<Permission> Permissions { get; set; } 
         public DbSet<Form> Forms { get; set; }
         public DbSet<FormModule> FormModules { get; set; } 
-        public DbSet<Module> Modules { get; set; }
+        public DbSet<Entity.Model.security.Module> Modules { get; set; }
         public DbSet<RoleFormPermission> RoleFormPermissions { get; set; }
         public DbSet<UserRole> UserRols { get; set; } 
         public DbSet<DataPerson> DataPeople { get; set; } 
@@ -34,6 +35,52 @@ namespace Data.context
         // ── Configuración del modelo ────────────────────────────────
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<Person>()
+                .HasOne(p => p.User)
+                .WithOne(u => u.Person)
+                .HasForeignKey<User>(u => u.IdPerson);
+
+            modelBuilder.Entity<UserRole>()
+                .HasOne(ur => ur.User)
+                .WithMany(u => u.Roles)
+                .HasForeignKey(ur => ur.IdUser);
+            
+            modelBuilder.Entity<UserRole>()
+                .HasOne(ur => ur.Role)
+                .WithMany(r => r.Users)
+                .HasForeignKey(ur => ur.IdRole);    
+
+            modelBuilder.Entity<RoleFormPermission>()
+                .HasOne(rfp => rfp.Role)
+                .WithMany(r => r.FormPermissions)
+                .HasForeignKey(rfp => rfp.IdRole);
+
+            modelBuilder.Entity<RoleFormPermission>()
+                .HasOne(rfp => rfp.Form)
+                .WithMany(r => r.RolePermissions)
+                .HasForeignKey(rfp => rfp.IdRole);
+
+            modelBuilder.Entity<RoleFormPermission>()
+                .HasOne(rfp => rfp.Permission)
+                .WithMany(r => r.RoleForms)
+                .HasForeignKey(rfp => rfp.IdRole);
+
+            modelBuilder.Entity<FormModule>()
+                .HasOne(rfp => rfp.Form)
+                .WithMany(f => f.FormModules)
+                .HasForeignKey(rfp => rfp.IdForm);
+
+            modelBuilder.Entity<FormModule>()
+                .HasOne(rfp => rfp.Module)
+                .WithMany(m => m.FormModules)
+                .HasForeignKey(rfp => rfp.IdModule);    
+
+            modelBuilder.Entity<DataPerson>()
+                .HasOne(dp => dp.Person)
+                .WithOne(p => p.DataPerson)
+                .HasForeignKey<DataPerson>(dp => dp.IdPerson);
+
             foreach (var entityType in modelBuilder.Model.GetEntityTypes()
                 .Where(t => t.ClrType.IsSubclassOf(typeof(BaseModel))))
             {
@@ -44,12 +91,19 @@ namespace Data.context
                     .Property("UpdatedAt").IsRequired(false);
 
                 modelBuilder.Entity(entityType.ClrType)
-                    .Property("DeleteAt").IsRequired(false);
+                    .Property("DeletedAt").IsRequired(false);
 
                 modelBuilder.Entity(entityType.ClrType)
                     .Property("Status").HasDefaultValue(true);
             }
+
+            base.OnModelCreating(modelBuilder);
+
+            // Aplica configuraciones con IEntityTypeConfiguration<T>
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+
+        
 
         // ── Convenciones ────────────────────────────────────────────
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
@@ -160,7 +214,7 @@ namespace Data.context
 
                     case EntityState.Deleted:
                         entry.State = EntityState.Modified;
-                        entity.DeleteAt = now;
+                        entity.DeletedAt = now;
                         entity.Status = false;
                         break;
                 }

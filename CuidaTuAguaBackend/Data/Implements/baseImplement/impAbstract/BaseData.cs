@@ -37,5 +37,16 @@ namespace Data.Implements.baseImplement.impAbstract
             var entry = _dbSet.Remove(existingEntity);
             return entry.Entity;
         }
+
+        public override async Task<bool> SoftDeleteAsync(T entity)
+        {
+            var existingEntity = await GetByIdAsync(entity.Id);
+            if (existingEntity == null) return false;
+        
+            _dbSet.Update(existingEntity);
+
+            return true;
+        }
+
     }
 }

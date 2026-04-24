@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entity.dto.baseDtoWithId
 {
-    public class BaseDtoId : BaseDto
+    public class BaseDtoId 
     {
         public Guid Id { get; set; }
     }

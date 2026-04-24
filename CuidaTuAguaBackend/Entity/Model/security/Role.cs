@@ -10,6 +10,6 @@ namespace Entity.Model.security
     public class Role : GenericModel
     {
      public ICollection<UserRole> Users { get; set; }   
-     public ICollection<RoleFormPermission> FormPermission { get; set; }
+     public ICollection<RoleFormPermission> FormPermissions { get; set; }
     }
 }

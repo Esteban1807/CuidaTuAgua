@@ -15,21 +15,46 @@ Pseudocódigo / Plan (paso a paso):
 Nota: Es necesario instalar el paquete NuGet "Swashbuckle.AspNetCore" si no está instalado.
 */
 
+using AutoMapper;
+using Business.Implements.baseBusiness.abstractBusiness;
+using Business.Implements.baseBusiness.impAbstract;
+using Business.Implements.security;
+using Business.Interfaces.baseBusiness;
+using Business.Interfaces.security;
 using Data.context;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Swashbuckle.AspNetCore.Swagger;
+using Data.Implements.baseImplement.impAbstract;
+using Data.Implements.security;
+using Data.Interfaces.baseData;
+using Data.Interfaces.securityInterface;
+using Data.Mappers.security;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI; // Añade este using
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();
 
+// Definicion de mis paquetes profile para el funcionamiento correcto del AutoMapper
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(UserProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(RoleProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(UserRoleProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(RoleFormPermissionProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(PermissionProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(FormProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(FormModuleProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(ModuleProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(PersonProfile).Assembly));
+builder.Services.AddAutoMapper(cfg => cfg.AddMaps(typeof(DataPersonProfile).Assembly));
+
+
+// Add services to the container.
 // Swagger / OpenAPI
 // Reemplaza llamadas a métodos de extensión personalizados inexistentes por los estándar.
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -40,15 +65,49 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// DbContext
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-    options.EnableSensitiveDataLogging();
-});
 
 // Mapeo explícito para que DI resuelva IApplicationDbContext cuando se inyecte
 builder.Services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
+
+builder.Services.AddScoped(typeof(IBaseData<>), typeof(BaseData<>));
+builder.Services.AddScoped(typeof(IBaseBusiness<,,,>), typeof(BaseBusiness<,,,>));
+
+// data
+builder.Services.AddScoped<IUserData, UserData>();
+builder.Services.AddScoped<IRoleData, RoleData>();
+builder.Services.AddScoped<IUserRoleData, UserRoleData>();
+builder.Services.AddScoped<IRoleFormPermissionData, RoleFormPermissionData>();
+builder.Services.AddScoped<IPermissionData, PermissionData>();
+builder.Services.AddScoped<IFormData, FormData>();
+builder.Services.AddScoped<IFormModuleData, FormModuleData>();
+builder.Services.AddScoped<IModuleData, ModuleData>();
+builder.Services.AddScoped<IPersonData, PersonData>();
+builder.Services.AddScoped<IDataPersonData, DataPersonData>();
+
+// business
+builder.Services.AddScoped<IUserBusiness, UserBusiness>();
+builder.Services.AddScoped<IRoleBusiness, RoleBusiness>();
+builder.Services.AddScoped<IUserRoleBusiness, UserRoleBusiness>();
+builder.Services.AddScoped<IRoleFormPermissionBusiness, RoleFormPermissionBusiness>();  
+builder.Services.AddScoped<IPermissionBusiness, PermissionBusiness>();
+builder.Services.AddScoped<IFormBusiness, FormBusiness>();
+builder.Services.AddScoped<IFormModuleBusiness, FormModuleBusiness>();
+builder.Services.AddScoped<IModuleBusiness, ModuleBusiness>();
+builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
+builder.Services.AddScoped<IDataPersonBusiness, DataPersonBusiness>();
+
+
+
+
+// DbContext
+// En Program.cs
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        x => x.MigrationsAssembly("Data") // <-- AGREGA ESTO
+    ));
+
+
 
 // CORS
 var origenesPermitidos = builder.Configuration.GetValue<string>("origenesPermitidos")?.Split(";", StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();

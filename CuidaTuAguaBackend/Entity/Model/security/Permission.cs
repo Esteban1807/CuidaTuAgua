@@ -9,6 +9,6 @@ namespace Entity.Model.security
 {
     public class Permission : GenericModel
     {
-        public ICollection<RoleFormPermission> RoleForm { get; set; }
+        public ICollection<RoleFormPermission> RoleForms { get; set; }
     }
 }
