@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+  
   },
 
   webContainer: {
@@ -27,6 +28,7 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
     minHeight: 520,
     maxHeight: '90%',
+    top: '5%',
   },
 
   formSection: {

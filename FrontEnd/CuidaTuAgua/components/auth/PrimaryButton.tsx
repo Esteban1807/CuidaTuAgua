@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   disabled: {
     opacity: 0.6,
   },
-
+  
   text: {
     ...typography.body,
     color: colors.surface,

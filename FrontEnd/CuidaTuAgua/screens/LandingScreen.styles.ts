@@ -8,11 +8,12 @@ export const styles = StyleSheet.create({
     },
     nav: {
         height: 80,
-        
-      
+        flexDirection: 'row',
+        flex: 1,
+        padding: spacing.sm,
     },
     logo:{
-        flex: 1,
+        
         maxWidth: 500,
         flexDirection: 'row',
         alignItems: 'center',
@@ -26,16 +27,19 @@ export const styles = StyleSheet.create({
 
     logoTitle:{
         ...typography.title,
-        color: colors.textSecondary,
-        
-    },
-    title:{
-
+        color: colors.textSecondary,  
     },
     
-    acceder: {
-        flex: 1,
+    access: {
+        alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
+        left: '85%',
+        position: 'absolute',
+
+    },
+
+    accessButton: {
+        minWidth: 150,
     },
 });
