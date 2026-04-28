@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     paddingVertical: spacing.md,
     borderRadius: 12,
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
   disabled: {

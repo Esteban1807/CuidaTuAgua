@@ -11,6 +11,7 @@ export const typography = {
 
   body: {
     fontSize: 14,
+    
   },
 
   small: {
