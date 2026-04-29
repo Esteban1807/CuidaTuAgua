@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ViewStyle, StyleProp, ImageSourcePropType, Image } from 'react-native';
+import i18n from '../../i18n';
+
+
 
 interface Idioma {
   id: string;
@@ -20,9 +23,21 @@ const IDIOMAS: Idioma[] = [
 ];
 
 
+
 const LanguageSelector = ({ style }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState(IDIOMAS[0]);
+
+  const getCurrentLanguage = () => {
+    const current = i18n.language.split('-')[0]; // ej: es-CO → es
+    return IDIOMAS.find(i => i.code.toLowerCase() === current) || IDIOMAS[0];
+  };
+
+  const [selected, setSelected] = useState(getCurrentLanguage());
+
+  useEffect(() => {
+    const current = getCurrentLanguage();
+    setSelected(current);
+  }, [i18n.language]);
 
   return (
     <View style={[styles.container, style]}>
@@ -42,9 +57,10 @@ const LanguageSelector = ({ style }: Props) => {
             <TouchableOpacity 
               key={item.id} 
               style={styles.itemBtn}
-              onPress={() => {
+              onPress={async () => {
                 setSelected(item);
                 setIsOpen(false);
+                i18n.changeLanguage(item.code.toLowerCase());
               }}
             >
               <Image source={item.flag} style={styles.flagImage} />

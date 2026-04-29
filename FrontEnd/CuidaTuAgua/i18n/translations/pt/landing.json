@@ -1,0 +1,53 @@
+{
+  "navbar": {
+    "title": "CuideSuaAgua",
+    "features": "Características",
+    "howItWorks": "¿Como Funciona?",
+    "contact": "Contato",
+    "accessButton": "Acessar"
+  },
+
+  "carousel": {
+    "slide1": {
+      "title": "Monitore e Controle o Consumo de Água em Sua Casa",
+      "description": "Sistema inovador de registro e monitoramento do consumo de água em tempo real. Economize dinheiro, cuide do meio ambiente e tome o controle de seus recursos hídricos."
+    }
+  },
+
+  "feature-characteristics": {
+    "title": "Características Destacadas",
+    "description": "Tudo o que você precisa para ter controle total da água em sua casa.",
+    "items": [
+      {
+        "id": "1",
+        "title": "Análise em Tempo Real",
+        "description": "Visualize seu consumo de água instantaneamente e tome decisões informadas para economizar."
+      },
+      {
+        "id": "2",
+        "title": "Alertas Inteligentes",
+        "description": "Receba notificações sobre consumo anormal, possíveis vazamentos ou gastos elevados."
+      },
+      {
+        "id": "3",
+        "title": "Acesso Móvel",
+        "description": "Consulte seus dados de qualquer dispositivo, a qualquer hora e lugar."
+      },
+      {
+        "id": "4",
+        "title": "Redução de Custos",
+        "description": "Identifique oportunidades de economia e reduza sua conta mensal."
+      },
+      {
+        "id": "5",
+        "title": "Dados Seguros",
+        "description": "Suas informações protegidas com os mais altos padrões de segurança."
+      },
+      {
+        "id": "6",
+        "title": "Histórico Completo",
+        "description": "Acesse todo o seu histórico de consumo quando precisar."
+      }
+    ]
+  } 
+}

@@ -1,0 +1,53 @@
+{
+  "navbar": {
+    "title": "SaveYourWater",
+    "features": "Characteristics",
+    "howItWorks": "How It Works?",
+    "contact": "Contact",
+    "accessButton": "Access"
+  },
+
+  "carousel": {
+    "slide1": {
+      "title": "Monitor and Control Water Consumption in Your Home",
+      "description": "Innovative system for recording and monitoring water consumption in real time. Save money, care for the environment, and take control of your water resources."
+    }
+  },
+
+  "feature-characteristics": {
+    "title": "Featured Characteristics",
+    "description": "Everything you need to have total control of water in your home.",
+    "items": [
+      {
+        "id": "1",
+        "title": "Real-Time Analysis",
+        "description": "Visualize your water consumption instantly and make informed decisions to save."
+      },
+      {
+        "id": "2",
+        "title": "Smart Alerts",
+        "description": "Receive notifications about abnormal consumption, possible leaks, or high expenses."
+      },
+      {
+        "id": "3",
+        "title": "Mobile Access",
+        "description": "Check your data from any device, anytime and anywhere."
+      },
+      {
+        "id": "4",
+        "title": "Cost Reduction",
+        "description": "Identify saving opportunities and reduce your monthly bill."
+      },
+      {
+        "id": "5",
+        "title": "Secure Data",
+        "description": "Your information protected with the highest security standards."
+      },
+      {
+        "id": "6",
+        "title": "Complete History",
+        "description": "Access all your consumption history when you need it."
+      }
+    ]
+  }
+}
