@@ -146,6 +146,7 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
     <View style={[styles.safeArea, isWeb && styles.webSafeArea]}>
       <View style={[styles.container, isWeb && styles.webContainer]}>
         
+        
         {/* FORM */}
         <View
           style={[
