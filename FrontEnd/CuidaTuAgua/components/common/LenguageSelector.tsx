@@ -1,5 +1,6 @@
 import React, { useState, useEffect  } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ViewStyle, StyleProp, ImageSourcePropType, Image } from 'react-native';
+import { useTheme, spacing, typography } from '../../theme';
 import i18n from '../../i18n';
 
 
@@ -26,6 +27,7 @@ const IDIOMAS: Idioma[] = [
 
 const LanguageSelector = ({ style }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { colors } = useTheme();
 
   const getCurrentLanguage = () => {
     const current = i18n.language.split('-')[0]; // ej: es-CO → es
@@ -41,21 +43,19 @@ const LanguageSelector = ({ style }: Props) => {
 
   return (
     <View style={[styles.container, style]}>
-      {/* Botón Principal (El que siempre se ve) */}
-      <TouchableOpacity 
-        style={styles.selectorBtn} 
+      <TouchableOpacity
+        style={[styles.selectorBtn, { backgroundColor: colors.surface }]}
         onPress={() => setIsOpen(!isOpen)}
       >
-          <Image source={selected.flag} style={styles.flagImage} />
-        <Text style={styles.codeText}>{selected.code}</Text>
+        <Image source={selected.flag} style={styles.flagImage} />
+        <Text style={[styles.codeText, { color: colors.textPrimary }]}>{selected.code}</Text>
       </TouchableOpacity>
 
-      {/* Menú Desplegable */}
       {isOpen && (
-        <View style={styles.dropdown}>
+        <View style={[styles.dropdown, { backgroundColor: colors.surface, borderColor: colors.grayMedium }]}> 
           {IDIOMAS.map((item) => (
-            <TouchableOpacity 
-              key={item.id} 
+            <TouchableOpacity
+              key={item.id}
               style={styles.itemBtn}
               onPress={async () => {
                 setSelected(item);
@@ -64,7 +64,7 @@ const LanguageSelector = ({ style }: Props) => {
               }}
             >
               <Image source={item.flag} style={styles.flagImage} />
-              <Text style={styles.itemLabel}>{item.label}</Text>
+              <Text style={[styles.itemLabel, { color: colors.textPrimary }]}>{item.label}</Text>
             </TouchableOpacity>
           ))}
         </View>

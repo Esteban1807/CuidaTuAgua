@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '../../theme';
 
 interface FeatureCardProps {
   icon: string;
@@ -11,13 +12,15 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ icon, iconColor, iconBg, title, description }: FeatureCardProps) => {
+  const { colors } = useTheme();
+
   return (
-    <View style={styles.card}>
-      <View style={[styles.iconContainer, { backgroundColor: iconBg }]}>
+    <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.grayMedium }]}> 
+      <View style={[styles.iconContainer, { backgroundColor: iconBg }]}> 
         <Ionicons name={icon as any} size={24} color={iconColor} />
       </View>
-      <Text style={styles.cardTitle}>{title}</Text>
-      <Text style={styles.cardDescription}>{description}</Text>
+      <Text style={[styles.cardTitle, { color: colors.textPrimary }]}>{title}</Text>
+      <Text style={[styles.cardDescription, { color: colors.textSecondary }]}>{description}</Text>
     </View>
   );
 };

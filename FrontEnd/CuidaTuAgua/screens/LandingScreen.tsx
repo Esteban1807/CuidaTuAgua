@@ -6,10 +6,11 @@ import { VideoView, useVideoPlayer  } from 'expo-video';
 import { useTranslation } from 'react-i18next';
 
 import {useResponsive} from '../hooks/useResponsive';
-import { styles } from './LandingScreen.styles';
+import { useTheme } from '../theme';
+import { createStyles } from './LandingScreen.styles';
 import PrimaryButton from '../components/auth/PrimaryButton';
-import LanguageSelector from '../components/common/LenguageSelector';
-import FeatureCard from '../components/common/FeatureCard';  
+import LanguageSelector from '../components/common/LenguageSelector';import ThemeToggleButton from '../components/common/ThemeToggleButton';import FeatureCard from '../components/common/FeatureCard';  
+import StepCard from '../components/common/StepCard';
 
 type Props = {
   onAccess: () => void;
@@ -18,6 +19,8 @@ type Props = {
 
 const LandingScreen = ({ onAccess }: any) => {
     const {isWeb, isMobile} = useResponsive();
+    const { colors, mode } = useTheme();
+    const styles = createStyles(colors);
 
     const { t } = useTranslation('landing');
     //Navbar Options
@@ -42,41 +45,71 @@ const LandingScreen = ({ onAccess }: any) => {
     );
 
    
-    const FEATURE_UI  = [
-        { id: '1', icon: 'bar-chart', iconColor: '#3B82F6', iconBg: '#EFF6FF' },
-        { id: '2', icon: 'notifications', iconColor: '#EF4444', iconBg: '#FEF2F2' },
-        { id: '3', icon: 'phone-portrait', iconColor: '#10B981', iconBg: '#ECFDF5' },
-        { id: '4', icon: 'trending-down', iconColor: '#F97316', iconBg: '#FFF7ED' },
-        { id: '5', icon: 'shield-checkmark', iconColor: '#8B5CF6', iconBg: '#F5F3FF' },
-        { id: '6', icon: 'time', iconColor: '#06B6D4', iconBg: '#ECFEFF' },
-    ];
+        const FEATURE_UI  = [
+            { id: '1', icon: 'bar-chart', iconColor: '#3B82F6', iconBg: '#EFF6FF' },
+            { id: '2', icon: 'notifications', iconColor: '#EF4444', iconBg: '#FEF2F2' },
+            { id: '3', icon: 'phone-portrait', iconColor: '#10B981', iconBg: '#ECFDF5' },
+            { id: '4', icon: 'trending-down', iconColor: '#F97316', iconBg: '#FFF7ED' },
+            { id: '5', icon: 'shield-checkmark', iconColor: '#8B5CF6', iconBg: '#F5F3FF' },
+            { id: '6', icon: 'time', iconColor: '#06B6D4', iconBg: '#ECFEFF' },
+        ];
 
-    type FeatureText = {
-        id: string;
-        title: string;
-        description: string;
-    };
+        type FeatureText = {
+            id: string;
+            title: string;
+            description: string;
+        };
 
-    const translatedItems = t('feature-characteristics.items', {
-        returnObjects: true,
-    }) as FeatureText[];
+        const translatedItems = t('feature-characteristics.items', {
+            returnObjects: true,
+        }) as FeatureText[];
 
-    
+        
 
-    const features = FEATURE_UI.map(ui => {
-    const text = translatedItems.find((item: FeatureText) => item.id === ui.id);
+        const features = FEATURE_UI.map(ui => {
+            const text = translatedItems.find((item: FeatureText) => item.id === ui.id);
 
-    return {
-        ...ui,
-        title: text?.title || '',
-        description: text?.description || '',
-    };
-    });
+            return {
+                ...ui,
+                title: text?.title || '',
+                description: text?.description || '',
+            };
+        });
+
+        const SETP_UI =[
+            {id: '1', icon: 'person-add'},
+            {id: '2', icon: 'speedometer'},
+            {id: '3', icon: 'trending-up'},
+            {id: '4', icon: 'checkmark-circle'},
+        ]
+
+        type StepText = {
+            id: string;
+            step: string;
+            title: string;
+            description: string;
+        }
+
+        const translatedSteps = t('feature-function.items', {
+            returnObjects: true,
+        }) as StepText[];
+
+        const steps = SETP_UI.map(ui => {
+            const text = translatedSteps.find((item: StepText) => item.id === ui.id);
+
+            return {
+                ...ui,
+                step: text?.step ||'',
+                title: text?.title || '',
+                description: text?.description || '',
+            };
+        });
+
 
   return (
     <View style={styles.safeArea}>
         <View style={styles.navContainer}>
-            <BlurView intensity={70} tint="light" style={styles.blur}>
+            <BlurView intensity={70} tint={mode === 'dark' ? 'dark' : 'light'} style={styles.blur}>
                 <View style={styles.nav}>  
                     <TouchableOpacity style={styles.logo}>
                         <View style={styles.logo}>
@@ -101,6 +134,9 @@ const LandingScreen = ({ onAccess }: any) => {
                     </View>
                     <View style={styles.actions}>
                         <LanguageSelector style={styles.languageSelectorWrapper} />
+                        <View style={styles.themeToggleWrapper}>
+                            <ThemeToggleButton />
+                        </View>
                         <PrimaryButton
                             title={t('navbar.accessButton')}
                             onPress={onAccess}
@@ -131,15 +167,16 @@ const LandingScreen = ({ onAccess }: any) => {
 
             </View>
             <View style={styles.content}>
-                <Text style={styles.contentTitle}>{t('feature-characteristics.title')}</Text>
-                <Text style={styles.contentDescription}>{t('feature-characteristics.description')}</Text>
+                <Text style={styles.sectionHeading}>{t('feature-characteristics.title')}</Text>
+                <Text style={styles.sectionSubheading}>{t('feature-characteristics.description')}</Text>
                 
-                  <FlatList
+                <FlatList
+                    key={isWeb ? 'web-3col' : 'mobile-1col'}
                     data={features}
                     keyExtractor={(item) => item.id}
-                    numColumns={3}
+                    numColumns={isWeb?(3):(1)}
                     scrollEnabled={false}
-                    columnWrapperStyle={styles.row}
+                    {...(isWeb && { columnWrapperStyle: styles.row })}
                     renderItem={({ item }) => (
                     <FeatureCard
                         icon={item.icon}
@@ -151,6 +188,33 @@ const LandingScreen = ({ onAccess }: any) => {
                     )}  
                 />
                 
+            </View>
+            <View style={styles.sectionContainer}>
+                <Text style={styles.sectionHeading}>¿Cómo Funciona?</Text>
+                <Text style={styles.sectionSubheading}>
+                    Comenzar es simple y rápido. Sigue estos 4 pasos y empieza a ahorrar agua hoy mismo
+                </Text>
+
+                <FlatList
+                    key={isWeb ? 'web-4col' : 'mobile-1col'}
+                    data={steps}
+                    keyExtractor={(item) => item.id}
+                    numColumns={isWeb?(4):(1)}
+                    scrollEnabled={false}
+                    {...(isWeb && { columnWrapperStyle: styles.row })}
+                    renderItem={({ item }) => (
+                        
+                    <StepCard
+                        key={item.id}
+                        step={item.step}
+                        icon={item.icon}
+                        title={item.title}
+                        description={item.description}
+                    />
+                    )}
+                
+                />
+               
             </View>
         </ScrollView>
     </View>

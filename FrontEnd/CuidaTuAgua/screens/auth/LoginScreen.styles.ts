@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { colors, spacing, typography } from '../../theme';
+import { ThemeColors, spacing, typography } from '../../theme';
 
-export const styles = StyleSheet.create({
+export const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: colors.background,

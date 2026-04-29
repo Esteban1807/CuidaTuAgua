@@ -1,8 +1,8 @@
 {
   "navbar": {
-    "title": "CuideSuaAgua",
-    "features": "Características",
-    "howItWorks": "¿Como Funciona?",
+    "title": "CuidaTuAgua",
+    "features": "Funcionalidades",
+    "howItWorks": "Como Funciona?",
     "contact": "Contato",
     "accessButton": "Acessar"
   },
@@ -10,13 +10,13 @@
   "carousel": {
     "slide1": {
       "title": "Monitore e Controle o Consumo de Água em Sua Casa",
-      "description": "Sistema inovador de registro e monitoramento do consumo de água em tempo real. Economize dinheiro, cuide do meio ambiente e tome o controle de seus recursos hídricos."
+      "description": "Sistema inovador para registro e monitoramento do consumo de água em tempo real. Economize dinheiro, cuide do meio ambiente e tenha controle total dos seus recursos hídricos."
     }
   },
 
   "feature-characteristics": {
-    "title": "Características Destacadas",
-    "description": "Tudo o que você precisa para ter controle total da água em sua casa.",
+    "title": "Principais Funcionalidades",
+    "description": "Tudo o que você precisa para ter controle total do consumo de água em sua casa.",
     "items": [
       {
         "id": "1",
@@ -31,7 +31,7 @@
       {
         "id": "3",
         "title": "Acesso Móvel",
-        "description": "Consulte seus dados de qualquer dispositivo, a qualquer hora e lugar."
+        "description": "Acesse seus dados de qualquer dispositivo, a qualquer momento e em qualquer lugar."
       },
       {
         "id": "4",
@@ -49,5 +49,36 @@
         "description": "Acesse todo o seu histórico de consumo quando precisar."
       }
     ]
-  } 
+  },
+
+  "feature-function": {
+    "title": "Como Funciona?",
+    "description": "Começar é simples e rápido. Siga estes 4 passos e comece a economizar água hoje mesmo.",
+    "items": [
+      {
+        "id": "1",
+        "step": "01",
+        "title": "Cadastro",
+        "description": "Cadastre sua casa e informe os dados básicos do seu medidor de água."
+      },
+      {
+        "id": "2",
+        "step": "02",
+        "title": "Leitura do Medidor",
+        "description": "Insira as leituras do seu medidor periodicamente ou configure o registro automático."
+      },
+      {
+        "id": "3",
+        "step": "03",
+        "title": "Análise",
+        "description": "O sistema analisa seu consumo, identifica padrões e gera recomendações."
+      },
+      {
+        "id": "4",
+        "step": "04",
+        "title": "Economize",
+        "description": "Tome decisões informadas e reduza seu consumo e custos de água."
+      }
+    ]
+  }
 }

@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import { colors, spacing, typography } from '../../theme';
+import { useTheme, spacing, typography } from '../../theme';
 
 type Props = {
   checked: boolean;
@@ -20,15 +20,21 @@ export default function CheckboxField({
   label,
   onLabelPress,
 }: Props) {
+  const { colors } = useTheme();
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={[styles.checkbox, checked && styles.checked]}
+        style={[
+          styles.checkbox,
+          { borderColor: colors.grayMedium },
+          checked && { backgroundColor: colors.primary, borderColor: colors.primary },
+        ]}
         onPress={onPress}
       />
 
       <TouchableOpacity onPress={onLabelPress || onPress}>
-        <Text style={styles.label}>{label}</Text>
+        <Text style={[styles.label, { color: colors.textSecondary }]}>{label}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -45,18 +51,11 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     borderWidth: 1,
-    borderColor: colors.grayMedium,
     borderRadius: 4,
     marginRight: spacing.sm,
   },
 
-  checked: {
-    backgroundColor: colors.primary,
-    borderColor: colors.primary,
-  },
-
   label: {
     ...typography.body,
-    color: colors.textSecondary,
   },
 });

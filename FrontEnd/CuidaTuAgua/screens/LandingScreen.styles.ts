@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { colors, spacing, typography} from '../theme/index';
+import { ThemeColors, spacing, typography } from '../theme/index';
 
-export const styles = StyleSheet.create({
+export const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
     safeArea: {
         flex: 1,
         backgroundColor: colors.surface,
@@ -74,6 +75,10 @@ export const styles = StyleSheet.create({
         marginRight: spacing.sm,
     },
 
+    themeToggleWrapper: {
+        marginRight: spacing.sm,
+    },
+
     access: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -108,7 +113,7 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         width: '100%',
         height: '100%',
-       
+        // backgroundColor: 'rgba(255, 255, 255, 0.3)',
     },
 
     carouselTextContainer: {
@@ -121,7 +126,7 @@ export const styles = StyleSheet.create({
     },
 
     carouselTitle: {
-        fontSize: 80,
+        fontSize: 90,
         fontWeight: '700' as const,
     },
     
@@ -135,24 +140,29 @@ export const styles = StyleSheet.create({
         padding: 16,
     },
 
-    contentTitle:{
-    fontSize: 24,
-    fontWeight: '800',
-    color: '#0F172A',
-    textAlign: 'center',
-    marginBottom: 8,
-  },
+    row: {
+        gap: 16,
+        marginBottom: 16,
+    },
 
-  contentDescription:{
-    fontSize: 14,
-    color: '#64748B',
-    textAlign: 'center',
-    marginBottom: 24,
-    lineHeight: 20,
-  },
-
-  row: {
-    gap: 16,
-    marginBottom: 16,
-  },
+    sectionContainer: {
+        paddingHorizontal: 16,
+        paddingVertical: 32,
+        backgroundColor: colors.grayLight,
+    },
+    sectionHeading: {
+        fontSize: 28,
+        fontWeight: '800',
+        color: colors.textPrimary,
+        textAlign: 'center',
+        marginBottom: 12,
+    },
+    sectionSubheading: {
+        fontSize: 15,
+        color: colors.textSecondary,
+        textAlign: 'center',
+        lineHeight: 22,
+        marginBottom: 36,
+        paddingHorizontal: 8,
+    },
 });

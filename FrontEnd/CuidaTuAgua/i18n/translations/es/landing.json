@@ -49,6 +49,37 @@
         "description": "Accede a todo tu historial de consumo cuando lo necesites."
       }
     ]
+  },
+
+  "feature-function":{
+    "title": "¿Cómo Funciona?",
+    "description": "Comenzar es simple y rápido. Sigue estos 4 pasos y empieza a ahorrar agua hoy mismo.",
+    "items":[
+      {
+        "id": "1",
+        "step": "01",
+        "title": "Registro",
+        "description": "Registra tu hogar y proporciona los datos básicos de tu medidor de agua."
+      },
+      {
+        "id": "2",
+        "step": "02",
+        "title": "Toma de Lectura",
+        "description": "Ingresa las lecturas de tu medidor periódicamente o configura el registro automático."
+      },
+      {
+        "id": "3",
+        "step": "03",
+        "title": "Análisis",
+        "description": "El sistema analiza tu consumo, identifica patrones y genera recomendaciones."
+      },
+      {
+        "id": "4",
+        "step": "04",
+        "title": "Ahorra",
+        "description": "Toma decisiones informadas y reduce tu consumo y costos de agua."
+      }
+    ]
   }
 
 }

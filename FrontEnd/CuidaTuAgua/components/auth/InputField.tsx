@@ -6,22 +6,23 @@ import {
   Text,
   TextInputProps,
 } from 'react-native';
-import { colors, spacing, typography } from '../../theme';
+import { useTheme, spacing, typography } from '../../theme';
 
 type Props = TextInputProps & {
   label?: string;
 };
 
 export default function InputField({ label, ...props }: Props) {
+  const { colors } = useTheme();
+
   return (
     <View style={styles.container}>
-      {label && <Text style={styles.label}>{label}</Text>}
+      {label && <Text style={[styles.label, { color: colors.textPrimary }]}>{label}</Text>}
 
       <TextInput
         {...props}
-        style={styles.input}
+        style={[styles.input, { borderColor: colors.primary, color: colors.textPrimary, backgroundColor: colors.surface }]}
         placeholderTextColor={colors.grayMedium}
-      
       />
     </View>
   );
@@ -34,17 +35,14 @@ const styles = StyleSheet.create({
 
   label: {
     ...typography.body,
-    color: colors.textPrimary,
     marginBottom: spacing.lg,
   },
 
   input: {
     borderWidth: 1,
-    borderColor: colors.primary,
     borderRadius: 10,
     paddingHorizontal: spacing.md,
     paddingVertical: spacing.sm,
-    color: colors.textPrimary,
     height: 40,
   },
 });
