@@ -8,10 +8,10 @@ import {
   ImageStyle,
 } from 'react-native';
 
-import { styles } from './RegisterScreen.styles';
-
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useResponsive } from '../../hooks/useResponsive';
+import { useTheme } from '../../theme';
+import { createStyles } from './RegisterScreen.styles';
 
 import InputField from '../../components/auth/InputField';
 import CheckboxField from '../../components/auth/CheckboxField';
@@ -27,6 +27,8 @@ type FeedbackType = 'info' | 'error' | 'success';
 
 export default function RegisterScreen({ goToLogin }: Props) {
   const { isWeb, isMobile } = useResponsive();
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
   const insets = useSafeAreaInsets();
 
   const [fullName, setFullName] = useState('');

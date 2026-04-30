@@ -1,7 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { colors, spacing, typography } from '../../theme';
+import { ThemeColors, spacing, typography } from '../../theme';
 
-export const styles = StyleSheet.create({
+export const createStyles = (colors: ThemeColors) =>
+  StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: colors.background,
@@ -13,6 +14,7 @@ export const styles = StyleSheet.create({
 
   container: {
     flex: 1,
+  
   },
 
   webContainer: {
@@ -27,6 +29,7 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
     minHeight: 520,
     maxHeight: '90%',
+    top: '5%',
   },
 
   formSection: {

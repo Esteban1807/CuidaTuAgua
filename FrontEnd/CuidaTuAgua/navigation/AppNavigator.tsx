@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { Animated, Platform } from 'react-native';
+import { Animated, Platform, StyleSheet, View } from 'react-native';
 
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import DashboardScreen from '../screens/dashboard/DashboardScreen';
 import LandingScreen from '../screens/LandingScreen';
+import ThemeToggleButton from '../components/common/ThemeToggleButton';
+import { useTheme } from '../theme/ThemeContext';
 
 type Screen = 'landing' | 'login' | 'register' | 'dashboard';
 
@@ -13,8 +15,10 @@ export default function AppNavigator() {
     Platform.OS === 'web' ? 'landing' : 'login'
   );
 
+  const { colors } = useTheme();
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const translateAnim = useRef(new Animated.Value(0)).current;
+  const showGlobalToggle = screen !== 'landing';
 
   const navigate = (nextScreen: Screen) => {
     // animación de salida
@@ -86,13 +90,33 @@ export default function AppNavigator() {
 
   return (
     <Animated.View
-      style={{
-        flex: 1,
-        opacity: fadeAnim,
-        transform: [{ translateX: translateAnim }],
-      }}
+      style={[
+        styles.container,
+        {
+          opacity: fadeAnim,
+          transform: [{ translateX: translateAnim }],
+          backgroundColor: colors.background,
+        },
+      ]}
     >
       {renderScreen()}
+      {showGlobalToggle && (
+        <View style={styles.toggleWrapper}>
+          <ThemeToggleButton />
+        </View>
+      )}
     </Animated.View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  toggleWrapper: {
+    position: 'absolute',
+    top: 16,
+    right: 16,
+    zIndex: 20,
+  },
+});

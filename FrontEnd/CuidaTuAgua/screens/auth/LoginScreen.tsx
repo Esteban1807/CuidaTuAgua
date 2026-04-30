@@ -7,7 +7,8 @@ import {
   ImageSourcePropType,
 } from 'react-native';
 
-import { styles } from './LoginScreen.styles';
+import { createStyles } from './LoginScreen.styles';
+import { useTheme } from '../../theme';
 
 import LoginHeader from '../../components/auth/LoginHeader';
 import InputField from '../../components/auth/InputField';
@@ -32,6 +33,8 @@ type CarouselItem = {
 
 export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
   const { isWeb, isMobile, width } = useResponsive();
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
 
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
@@ -145,7 +148,6 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
   return (
     <View style={[styles.safeArea, isWeb && styles.webSafeArea]}>
       <View style={[styles.container, isWeb && styles.webContainer]}>
-        
         
         {/* FORM */}
         <View

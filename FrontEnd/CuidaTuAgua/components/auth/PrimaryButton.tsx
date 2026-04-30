@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
   ViewStyle,
 } from 'react-native';
-import { colors, spacing, typography } from '../../theme';
+import { useTheme, spacing, typography } from '../../theme';
 
 type Props = {
   title: string;
@@ -23,12 +23,14 @@ export default function PrimaryButton({
   loading = false,
   style,
 }: Props) {
+  const { colors } = useTheme();
   const isDisabled = disabled || loading;
 
   return (
     <TouchableOpacity
       style={[
         styles.button,
+        { backgroundColor: colors.primary, borderColor: colors.primary },
         isDisabled && styles.disabled,
         style,
       ]}
@@ -39,7 +41,7 @@ export default function PrimaryButton({
       {loading ? (
         <ActivityIndicator color={colors.surface} />
       ) : (
-        <Text style={styles.text}>{title}</Text>
+        <Text style={[styles.text, { color: colors.surface }]}>{title}</Text>
       )}
     </TouchableOpacity>
   );
@@ -47,19 +49,18 @@ export default function PrimaryButton({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: colors.primary,
     paddingVertical: spacing.md,
     borderRadius: 12,
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
   disabled: {
     opacity: 0.6,
   },
-
+  
   text: {
     ...typography.body,
-    color: colors.surface,
     fontWeight: '600',
   },
 });

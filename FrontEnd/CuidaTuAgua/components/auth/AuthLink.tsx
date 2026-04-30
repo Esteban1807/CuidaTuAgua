@@ -5,7 +5,8 @@ import {
   StyleSheet,
   GestureResponderEvent,
 } from 'react-native';
-import { colors, spacing, typography } from '../../theme';
+import { useTheme, spacing, typography } from '../../theme';
+
 
 type Props = {
   text: string;
@@ -18,9 +19,18 @@ export default function AuthLink({
   onPress,
   center = false,
 }: Props) {
+
+  const { colors } = useTheme();
+
   return (
     <TouchableOpacity onPress={onPress}>
-      <Text style={[styles.link, center && styles.center]}>
+      <Text
+        style={[
+          styles.link,
+          { color: colors.textSecondary },
+          center && styles.center,
+        ]}
+      >
         {text}
       </Text>
     </TouchableOpacity>
@@ -30,7 +40,6 @@ export default function AuthLink({
 const styles = StyleSheet.create({
   link: {
     ...typography.body,
-    color: colors.textSecondary,
     marginBottom: spacing.sm,
     marginLeft: spacing.xs,
   },

@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import { useTheme } from '../../theme/ThemeContext';
 
 export default function FeedbackModal({
   visible,
@@ -14,18 +15,20 @@ export default function FeedbackModal({
   type = 'info',
   onClose,
 }) {
+  const { colors } = useTheme();
+
   const typeStyles = {
     success: {
-      titleColor: '#0F9D58',
-      buttonColor: '#0F9D58',
+      titleColor: colors.success,
+      buttonColor: colors.success,
     },
     error: {
-      titleColor: '#D93025',
-      buttonColor: '#D93025',
+      titleColor: colors.error,
+      buttonColor: colors.error,
     },
     info: {
-      titleColor: '#118FC3',
-      buttonColor: '#118FC3',
+      titleColor: colors.primary,
+      buttonColor: colors.primary,
     },
   };
 
@@ -39,12 +42,12 @@ export default function FeedbackModal({
       onRequestClose={onClose}
     >
       <View style={styles.overlay}>
-        <View style={styles.modalContainer}>
-          <Text style={[styles.title, { color: currentStyle.titleColor }]}>
+        <View style={[styles.modalContainer, { backgroundColor: colors.surface }]}> 
+          <Text style={[styles.title, { color: currentStyle.titleColor }]}> 
             {title}
           </Text>
 
-          <Text style={styles.message}>
+          <Text style={[styles.message, { color: colors.textPrimary }]}> 
             {message}
           </Text>
 
