@@ -1,15 +1,12 @@
 import React from 'react';
-import { View, Image, StyleSheet, ImageStyle } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { spacing } from '../../theme';
+import Logo from '../common/Logo';
 
 export default function LoginHeader() {
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../assets/images/logo.png')}
-        style={styles.image}
-        resizeMode="contain"
-      />
+      <Logo width={260} height={260} />
     </View>
   );
 }
@@ -19,9 +16,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: spacing.lg,
   },
-
-  image: {
-    width: 260,
-    height: 260,
-  } as ImageStyle,
 });

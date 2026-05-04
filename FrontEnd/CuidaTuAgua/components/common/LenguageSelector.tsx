@@ -44,7 +44,7 @@ const LanguageSelector = ({ style }: Props) => {
   return (
     <View style={[styles.container, style]}>
       <TouchableOpacity
-        style={[styles.selectorBtn, { backgroundColor: colors.surface }]}
+        style={styles.selectorBtn}
         onPress={() => setIsOpen(!isOpen)}
       >
         <Image source={selected.flag} style={styles.flagImage} />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { View, Image, ImageStyle, TouchableOpacity, Text, ScrollView, FlatList, Dimensions,} from 'react-native';
+import { View, TouchableOpacity, Text, ScrollView, FlatList, Dimensions } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { VideoView, useVideoPlayer  } from 'expo-video';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,11 @@ import {useResponsive} from '../hooks/useResponsive';
 import { useTheme } from '../theme';
 import { createStyles } from './LandingScreen.styles';
 import PrimaryButton from '../components/auth/PrimaryButton';
-import LanguageSelector from '../components/common/LenguageSelector';import ThemeToggleButton from '../components/common/ThemeToggleButton';import FeatureCard from '../components/common/FeatureCard';  
+import LanguageSelector from '../components/common/LenguageSelector';
+import ThemeToggleButton from '../components/common/ThemeToggleButton';
+import ThemeSelector from '../components/common/ThemeSelector';
+import Logo from '../components/common/Logo';
+import FeatureCard from '../components/common/FeatureCard';  
 import StepCard from '../components/common/StepCard';
 
 type Props = {
@@ -113,7 +117,7 @@ const LandingScreen = ({ onAccess }: any) => {
                 <View style={styles.nav}>  
                     <TouchableOpacity style={styles.logo}>
                         <View style={styles.logo}>
-                            <Image source={require('../assets/images/logo.png')} style={styles.logoImage as ImageStyle}/>
+                            <Logo style={styles.logoImage} />
                             {isWeb && (
                                 <Text style={styles.logoTitle}>{t('navbar.title')}</Text>)}
                         </View>
@@ -135,6 +139,8 @@ const LandingScreen = ({ onAccess }: any) => {
                     <View style={styles.actions}>
                         <LanguageSelector style={styles.languageSelectorWrapper} />
                         <View style={styles.themeToggleWrapper}>
+                            {/* PROVISIONAL THEME SELECTOR - EASY TO REMOVE */}
+                            <ThemeSelector style={{ marginRight: 8 }} />
                             <ThemeToggleButton />
                         </View>
                         <PrimaryButton
