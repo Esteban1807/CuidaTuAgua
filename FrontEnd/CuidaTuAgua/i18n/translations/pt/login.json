@@ -1,0 +1,24 @@
+{
+  "form":{
+    "mail": "Email / Documento",
+    "password": "Senha",
+    "forgot": "Esqueceu sua senha?",
+    "register": "Não tem conta? Registre-se",
+    "access": "Acessar"
+  },
+
+  "carousel":[
+    {
+      "title": "Bem-vindo",
+      "description": "Controle seu consumo de água com dados e alertas em tempo real."
+    },
+    {
+      "title": "Economize água",
+      "description": "Conheça seus hábitos e reduza o consumo com recomendações simples."
+    },
+    {
+      "title": "Monitore",
+      "description":"Receba relatórios claros sobre seu uso e mantenha seu lar mais sustentável."
+    }
+  ]
+}

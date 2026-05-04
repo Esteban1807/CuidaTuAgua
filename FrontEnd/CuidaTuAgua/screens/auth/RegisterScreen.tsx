@@ -18,6 +18,7 @@ import CheckboxField from '../../components/auth/CheckboxField';
 import PrimaryButton from '../../components/auth/PrimaryButton';
 import TermsModal from '../../components/auth/TermsModal';
 import FeedbackModal from '../../components/common/FeedbackModal';
+import BackArrowButton from '../../components/common/BackArrowButton';
 
 type Props = {
   goToLogin: () => void;
@@ -95,6 +96,11 @@ export default function RegisterScreen({ goToLogin }: Props) {
         { paddingTop: insets.top },
       ]}
     >
+      <View style={[styles.header, isWeb && styles.headerWeb]}>
+        <BackArrowButton onPress={goToLogin} style={styles.backButton} />
+        <Text style={styles.title}>Registro</Text>
+      </View>
+      
       <View style={[styles.page, isWeb && styles.pageWeb]}>
         <View style={[styles.container, isWeb && styles.card]}>
 
@@ -102,24 +108,57 @@ export default function RegisterScreen({ goToLogin }: Props) {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{
               paddingBottom: 140 + insets.bottom,
+              
             }}
           >
-            <View style={styles.header}>
-              <TouchableOpacity onPress={goToLogin} style={styles.backButton}>
-                <Image
-                  source={require('../../assets/images/flecha-izquierda.png')}
-                  style={styles.backIcon as ImageStyle}
-                />
-              </TouchableOpacity>
-
-              <Text style={styles.title}>Registro</Text>
-            </View>
+            
 
             <Text style={styles.section}>Datos del usuario</Text>
             <InputField value={fullName} onChangeText={setFullName} placeholder="Nombre completo" />
             <InputField value={document} onChangeText={setDocument} placeholder="Documento" />
             <InputField value={email} onChangeText={setEmail} placeholder="Correo" />
             <InputField value={password} onChangeText={setPassword} placeholder="Contraseña" secureTextEntry />
+
+            <CheckboxField
+              checked={acceptedTerms}
+              onPress={() => setAcceptedTerms(!acceptedTerms)}
+              label="Términos y Condiciones"
+              onLabelPress={() => setTermsVisible(true)}
+            />
+          </ScrollView>
+
+          <View
+            style={[
+              styles.footer,
+              { paddingBottom: insets.bottom + 16 },
+            ]}
+          >
+            <PrimaryButton
+              title="Registrarse"
+              onPress={handleRegister}
+            />
+          </View>
+
+          <TermsModal visible={termsVisible} onClose={() => setTermsVisible(false)} />
+
+          <FeedbackModal
+            visible={feedbackVisible}
+            title={feedbackTitle}
+            message={feedbackMessage}
+            type={feedbackType}
+            onClose={closeFeedback}
+          />
+
+        </View>
+        <View style={[styles.container, isWeb && styles.card]}>
+
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+              paddingBottom: 140 + insets.bottom,
+              
+            }}
+          >
 
             <Text style={styles.section}>Información del hogar</Text>
             <InputField value={homeName} onChangeText={setHomeName} placeholder="Nombre hogar" />

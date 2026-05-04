@@ -9,6 +9,7 @@ import {
 
 import { createStyles } from './LoginScreen.styles';
 import { useTheme } from '../../theme';
+import { useTranslation } from 'react-i18next';
 
 import LoginHeader from '../../components/auth/LoginHeader';
 import InputField from '../../components/auth/InputField';
@@ -17,6 +18,7 @@ import PrimaryButton from '../../components/auth/PrimaryButton';
 import TermsModal from '../../components/auth/TermsModal';
 import FeedbackModal from '../../components/common/FeedbackModal';
 import { useResponsive } from '../../hooks/useResponsive';
+import LanguageSelector from '../../components/common/LenguageSelector';
 
 type Props = {
   goToRegister: () => void;
@@ -36,6 +38,8 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
+  const { t } = useTranslation('login');
+
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
 
@@ -54,18 +58,18 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
   const carouselItems: CarouselItem[] = [
     {
       image: require('../../assets/images/Imagen1.jpg'),
-      title: 'Bienvenido',
-      description: 'Controla tu consumo de agua con datos y alertas en tiempo real.',
+      title: t('carousel.0.title'),
+      description: t('carousel.0.description'),
     },
     {
       image: require('../../assets/images/Imagen2.jpg'),
-      title: 'Ahorra agua',
-      description: 'Conoce tus hábitos y reduce el consumo con recomendaciones sencillas.',
+      title: t('carousel.1.title'),
+      description: t('carousel.1.description'),
     },
     {
       image: require('../../assets/images/Imagen3.jpg'),
-      title: 'Monitorea',
-      description: 'Recibe reportes claros sobre tu uso y mantén tu hogar más sostenible.',
+      title: t('carousel.2.title'),
+      description: t('carousel.2.description'),
     },
   ];
 
@@ -151,6 +155,7 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
         
         {/* FORM */}
         <View
+        
           style={[
             styles.formSection,
             isWeb && styles.webForm,
@@ -159,24 +164,24 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
         >
           <View>
             <LoginHeader />
-
+            <LanguageSelector />
             <View style={isMobile && styles.mobileFormFields}>
               <InputField
                 value={identifier}
                 onChangeText={setIdentifier}
-                placeholder="Correo / Documento"
+                placeholder={t('form.mail')}
               />
 
               <InputField
                 value={password}
                 onChangeText={setPassword}
-                placeholder="Contraseña"
+                placeholder={t('form.password')}
                 secureTextEntry
               />
 
               <View style={[isWeb && styles.webAuthLink]}>
                 <AuthLink
-                  text="¿Olvidaste tu contraseña?"
+                  text={t('form.forgot')}
                   onPress={() =>
                     showFeedback(
                       'Recuperación',
@@ -187,7 +192,7 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
                 />
 
                 <AuthLink
-                  text="¿No tienes cuenta? Regístrate"
+                  text={t('form.register')}
                   onPress={goToRegister}
                 />
               </View>
@@ -196,7 +201,7 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
 
           <View style={[isMobile && styles.mobileButton]}>
             <PrimaryButton
-              title="Acceder"
+              title={t('form.access')}
               onPress={handleLogin}
             />
           </View>

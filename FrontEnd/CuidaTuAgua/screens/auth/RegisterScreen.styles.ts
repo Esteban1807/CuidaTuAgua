@@ -17,6 +17,7 @@ export const createStyles = (colors: ThemeColors) =>
   },
 
   pageWeb: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     padding: spacing.xl,
@@ -29,6 +30,7 @@ export const createStyles = (colors: ThemeColors) =>
   },
 
   card: {
+    margin: 20,
     width: '100%',
     maxWidth: 760,
     backgroundColor: colors.surface,
@@ -37,19 +39,24 @@ export const createStyles = (colors: ThemeColors) =>
   },
 
   header: {
+    backgroundColor: colors.background,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.lg,
+    
   },
 
+  headerWeb:{
+    padding: spacing.md,
+  },
+  
   backButton: {
     padding: spacing.sm,
     marginRight: spacing.md,
   },
 
   backIcon: {
-    width: 30,
-    height: 30,
+    width: 24,
+    height: 24,
   },
 
   title: {
