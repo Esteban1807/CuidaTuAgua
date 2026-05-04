@@ -1,0 +1,24 @@
+{
+  "form":{
+    "mail": "Email / Document",
+    "password": "Password",
+    "forgot": "Forgot your password?",
+    "register": "Don’t have an account? Register",
+    "access": "Access"
+  },
+
+  "carousel":[
+    {
+      "title": "Welcome",
+      "description": "Control your water consumption with data and real-time alerts."
+    },
+    {
+      "title": "Save water",
+      "description": "Learn your habits and reduce consumption with simple recommendations."
+    },
+    {
+      "title": "Monitor",
+      "description":"Receive clear reports about your usage and keep your home more sustainable."
+    }
+  ]
+}

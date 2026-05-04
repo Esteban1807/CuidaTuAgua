@@ -2,6 +2,7 @@
 import i18n from 'i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import 'intl-pluralrules';
 import { initReactI18next } from 'react-i18next';
 
 import enLanding from './translations/en/landing.json';
@@ -9,30 +10,38 @@ import esLanding from './translations/es/landing.json';
 import frLanding from './translations/fr/landing.json';
 import ptLanding from './translations/pt/landing.json';
 
+import enLogin from './translations/en/login.json';
+import esLogin from './translations/es/login.json';
+import frLogin from './translations/fr/login.json';
+import ptLogin from './translations/pt/login.json';
+
 const LANGUAGE_KEY = 'appLang';
 
 i18n
   .use(initReactI18next)
   .init({
     resources: {
-      en: { 
-        landing: enLanding 
-      },
-
       es: { 
-        landing: esLanding 
+        landing: esLanding,
+        login: esLogin
       },
       fr: { 
-        landing: frLanding 
+        landing: frLanding,
+        login: frLogin
       },
       
       pt: { 
-        landing: ptLanding
+        landing: ptLanding,
+        login: ptLogin
+      },
+      en: {
+        landing: enLanding,
+        login: enLogin
       }
     },
     lng: 'es',
     fallbackLng: 'en',
-    ns: ['landing', 'home'], 
+    ns: ['landing', 'login'], 
     defaultNS: 'landing',
     interpolation: {
       escapeValue: false

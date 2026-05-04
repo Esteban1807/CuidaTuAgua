@@ -6,6 +6,7 @@ import RegisterScreen from '../screens/auth/RegisterScreen';
 import DashboardScreen from '../screens/dashboard/DashboardScreen';
 import LandingScreen from '../screens/LandingScreen';
 import ThemeToggleButton from '../components/common/ThemeToggleButton';
+import ThemeSelector from '../components/common/ThemeSelector';
 import { useTheme } from '../theme/ThemeContext';
 
 type Screen = 'landing' | 'login' | 'register' | 'dashboard';
@@ -102,6 +103,8 @@ export default function AppNavigator() {
       {renderScreen()}
       {showGlobalToggle && (
         <View style={styles.toggleWrapper}>
+          {/* PROVISIONAL THEME SELECTOR - EASY TO REMOVE */}
+          <ThemeSelector style={{ marginRight: 8 }} />
           <ThemeToggleButton />
         </View>
       )}
