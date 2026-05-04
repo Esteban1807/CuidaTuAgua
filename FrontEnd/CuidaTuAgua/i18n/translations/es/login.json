@@ -1,0 +1,24 @@
+{
+    "form":{
+        "mail": "Correo / Documento",
+        "password": "Contraseña",
+        "forgot": "¿Olvidaste tu contraseña?",
+        "register": "¿No tienes cuenta? Regístrate",
+        "access": "Acceder"
+    },
+
+    "carousel":[
+        {
+            "title": "Bienvenido",
+            "description": "Controla tu consumo de agua con datos y alertas en tiempo real."
+        },
+        {
+            "title": "Ahorra agua",
+            "description": "Conoce tus hábitos y reduce el consumo con recomendaciones sencillas."
+        },
+        {
+            "title": "Monitorea",
+            "description":"Recibe reportes claros sobre tu uso y mantén tu hogar más sostenible."
+        }
+    ]
+}
