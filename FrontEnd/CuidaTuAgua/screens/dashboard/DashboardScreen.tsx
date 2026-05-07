@@ -1,124 +1,260 @@
-import React from 'react';
-import { Text, View, TouchableOpacity, SafeAreaView, Image, Dimensions } from 'react-native';
-import { styles } from './DashboardScreen.styles';
-// Asegúrate de importar esto en tu App.tsx o aquí
-import { NavigationContainer } from '@react-navigation/native';
-import { 
-  createDrawerNavigator, 
-  DrawerContentScrollView, 
-  DrawerContentComponentProps 
-} from '@react-navigation/drawer';
+import React, { useState } from "react";
 
-// --- Tipos ---
-interface CustomDrawerProps extends DrawerContentComponentProps {
-  onLogout?: () => void;
-}
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+  Image,
+  Dimensions,
+} from "react-native";
+
+import { useTranslation } from "react-i18next";
+
+import { styles } from "./DashboardScreen.styles";
 
 type Props = {
-  onLogout?: () => void;
+  onLogout: () => void;
+  onSettingsPress?: () => void;
+  onProfilePress?: () => void;
+  onResultsPress?: () => void;
 };
 
-const logo = require('../../assets/images/logo.png');
-const Drawer = createDrawerNavigator();
+const logo = require("../../assets/images/logo.png");
 
-// --- 1. Contenido del Panel Lateral ---
-const CustomDrawerContent = (props: CustomDrawerProps) => {
+export default function DashboardScreen({
+  onLogout,
+  onSettingsPress,
+  onProfilePress,
+  onResultsPress,
+}: Props) {
+
+  const { t, i18n } = useTranslation("dashboard");
+
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const isMobile =
+    Dimensions.get("window").width < 768;
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
+
   return (
-    <View style={{ flex: 1, backgroundColor: '#181818' }}>
-      <DrawerContentScrollView {...props}>
-        <View style={styles.expandedHeader}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>D</Text>
-          </View>
-          <Text style={styles.userNameExpanded}>Diego Pérez</Text>
-        </View>
 
-        <View style={styles.separator} />
-
-        <TouchableOpacity style={styles.option} onPress={() => props.navigation.closeDrawer()}>
-          <Text style={styles.optionText}>Mi Perfil</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.option} onPress={() => props.navigation.closeDrawer()}>
-          <Text style={styles.optionText}>Ajustes</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={styles.option} 
-          onPress={() => {
-            props.navigation.closeDrawer();
-            if (props.onLogout) props.onLogout();
-          }}
-        >
-          <Text style={styles.optionText}>Cerrar Sesión</Text>
-        </TouchableOpacity>
-      </DrawerContentScrollView>
-    </View>
-  );
-};
-
-// --- 2. Contenido Principal del Dashboard ---
-const MainDashboardContent = ({ navigation, onLogout }: any) => {
-  return (
     <SafeAreaView style={styles.mainContainer}>
-      {/* Barra superior con el botón de perfil */}
+
+      {/* =========================
+          TOPBAR
+      ========================== */}
+
       <View style={styles.topBar}>
+
         <View style={{ flex: 1 }} />
-        <TouchableOpacity 
-          style={styles.profileTrigger} 
-          onPress={() => navigation.openDrawer()}
+
+        <TouchableOpacity
+          style={styles.profileTrigger}
+          onPress={() => setDrawerOpen(!drawerOpen)}
         >
-          <Text style={styles.userNameOriginal}>Diego Pérez</Text>
+
+          <Text style={styles.userNameOriginal}>
+            Diego Pérez
+          </Text>
+
           <View style={styles.avatar}>
-            <Text style={styles.avatarText}>D</Text>
+
+            <Text style={styles.avatarText}>
+              D
+            </Text>
+
           </View>
+
         </TouchableOpacity>
+
       </View>
 
-      {/* Tu contenido de CuidaTuAgua */}
+      {/* =========================
+          BODY
+      ========================== */}
+
       <View style={styles.bodyContent}>
+
+        {/* LOGO */}
+
         <View style={styles.logoSection}>
-          <Image source={logo} style={styles.appLogo} />
-          <Text style={styles.textLogo}>Cuida Tu Agua</Text>
-          <Text style={styles.descriptionLogo}>
-            Bienvenido, aquí verás el resumen de tu consumo
+
+          <Image
+            source={logo}
+            style={styles.appLogo}
+          />
+
+          <Text style={styles.textLogo}>
+            Cuida Tu Agua
           </Text>
+
+          <Text style={styles.descriptionLogo}>
+            {t("main.welcome")}
+          </Text>
+
         </View>
+
+        {/* CARD */}
 
         <View style={styles.cardsContainer}>
-           <View style={styles.card}>
-              <Text style={styles.cardTitle}>Consumo mensual</Text>
-              <Text style={styles.cardValue}>120 Litros</Text>
-           </View>
+
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => {
+              onResultsPress?.();
+            }}
+          >
+
+            <Text style={styles.cardTitle}>
+              {t("main.monthlyConsumption")}
+            </Text>
+
+            <Text style={styles.cardValue}>
+              120 {t("main.liters")}
+            </Text>
+
+          </TouchableOpacity>
+
         </View>
 
-        <TouchableOpacity onPress={onLogout} style={styles.logoutButton}>
-          <Text style={styles.logoutButtonText}>Cerrar sesión</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
-  );
-};
+        {/* LOGOUT */}
 
-// --- 3. Exportación Principal ---
-export default function DashboardScreen({ onLogout }: Props) {
-  return (
-    <NavigationContainer> 
-      <Drawer.Navigator
-        drawerContent={(props) => <CustomDrawerContent {...props} onLogout={onLogout} />}
-        screenOptions={{
-          drawerPosition: 'right',
-          headerShown: false,
-          drawerStyle: {
-            backgroundColor: '#181818',
-            width: Dimensions.get('window').width * 0.3,
-          },
-        }}
-      >
-        <Drawer.Screen name="MainDashboard">
-          {(props) => <MainDashboardContent {...props} onLogout={onLogout} />}
-        </Drawer.Screen>
-      </Drawer.Navigator>
-    </NavigationContainer>
+        <TouchableOpacity
+          onPress={onLogout}
+          style={styles.logoutButton}
+        >
+
+          <Text style={styles.logoutButtonText}>
+            {t("main.logout")}
+          </Text>
+
+        </TouchableOpacity>
+
+      </View>
+
+      {/* =========================
+          SIDEBAR
+      ========================== */}
+
+      {drawerOpen && (
+
+        <View
+          style={[
+            styles.customDrawer,
+
+            {
+              width: isMobile ? "75%" : 320,
+            },
+          ]}
+        >
+
+          {/* USER */}
+
+          <View style={styles.expandedHeader}>
+
+            <View style={styles.avatar}>
+
+              <Text style={styles.avatarText}>
+                D
+              </Text>
+
+            </View>
+
+            <Text style={styles.userNameExpanded}>
+              Diego Pérez
+            </Text>
+
+          </View>
+
+          <View style={styles.separator} />
+
+          {/* PROFILE */}
+
+          <TouchableOpacity
+            style={styles.option}
+            onPress={() => {
+
+              setDrawerOpen(false);
+
+              onProfilePress?.();
+
+            }}
+          >
+
+            <Text style={styles.optionText}>
+              {t("drawer.profile")}
+            </Text>
+
+          </TouchableOpacity>
+
+          {/* SETTINGS */}
+
+          <TouchableOpacity
+            style={styles.option}
+            onPress={() => {
+
+              setDrawerOpen(false);
+
+              onSettingsPress?.();
+
+            }}
+          >
+
+            <Text style={styles.optionText}>
+              {t("drawer.settings")}
+            </Text>
+
+          </TouchableOpacity>
+
+          {/* SPANISH */}
+
+          <TouchableOpacity
+            style={styles.option}
+            onPress={() => changeLanguage("es")}
+          >
+
+            <Text style={styles.optionText}>
+              Español
+            </Text>
+
+          </TouchableOpacity>
+
+          {/* ENGLISH */}
+
+          <TouchableOpacity
+            style={styles.option}
+            onPress={() => changeLanguage("en")}
+          >
+
+            <Text style={styles.optionText}>
+              English
+            </Text>
+
+          </TouchableOpacity>
+
+          {/* LOGOUT */}
+
+          <TouchableOpacity
+            style={styles.option}
+            onPress={onLogout}
+          >
+
+            <Text style={styles.optionText}>
+              {t("drawer.logout")}
+            </Text>
+
+          </TouchableOpacity>
+
+        </View>
+
+      )}
+
+    </SafeAreaView>
+
   );
+
 }

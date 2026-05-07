@@ -1,0 +1,38 @@
+{
+  "title": "Paramètres",
+  "back": "Retour au Tableau de Bord",
+  "theme": {
+    "title": "Thème",
+    "light": "Clair",
+    "dark": "Sombre",
+    "standard": "Standard",
+    "eco": "Éco"
+  },
+  "density": {
+    "title": "Densité",
+    "compact": "Compact",
+    "standard": "Standard",
+    "comfortable": "Confortable"
+  },
+  "language": {
+    "title": "Langue",
+    "english": "Anglais",
+    "spanish": "Espagnol",
+    "french": "Français",
+    "portuguese": "Portugais"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "enabled": "Activées",
+    "disabled": "Désactivées"
+  },
+  "privacy": {
+    "title": "Confidentialité",
+    "dataSharing": "Partage de Données"
+  },
+  "about": {
+    "title": "À propos",
+    "version": "Version",
+    "help": "Aide et Support"
+  }
+}

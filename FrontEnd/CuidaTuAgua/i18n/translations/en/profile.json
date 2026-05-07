@@ -1,0 +1,23 @@
+{
+  "title": "My Profile",
+  "personalInfo": {
+    "title": "Personal Information",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "notifications": "Notifications",
+    "language": "Language",
+    "units": "Units"
+  },
+  "security": {
+    "title": "Security",
+    "changePassword": "Change Password",
+    "twoFactor": "Two-Factor Authentication"
+  },
+  "save": "Save Changes",
+  "cancel": "Cancel"
+}

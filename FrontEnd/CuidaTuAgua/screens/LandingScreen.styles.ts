@@ -1,168 +1,276 @@
 import { StyleSheet } from 'react-native';
-import { ThemeColors, spacing, typography } from '../theme/index';
 
-export const createStyles = (colors: ThemeColors) =>
+export const createStyles = (colors: any) =>
   StyleSheet.create({
-  safeArea: {
-        flex: 1,
-        backgroundColor: colors.surface,
-        
-    },
-    navContainer: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 10,
+
+    /* =========================
+       ROOT
+    ========================== */
+
+    safeArea: {
+      flex: 1,
+      backgroundColor: '#F5F5F5',
     },
 
-    blur: {
-        width: '100%',
-        backgroundColor: 'rgba(255,255,255,0.35)',
+    /* =========================
+       TOPBAR
+    ========================== */
+
+    topBar: {
+      height: 60,
+      borderBottomWidth: 1,
+      borderColor: '#D1D5DB',
+      backgroundColor: '#FFFFFF',
+
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+
+      paddingHorizontal: 20,
     },
 
-    nav: {
-        height: 65,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: spacing.sm,
-        width: '100%',
+    topLeft: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 12,
     },
 
-    logo:{
-        maxWidth: 500,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-    },
-    logoImage: {
-        width: 70,
-        height: 60,
-        resizeMode: 'contain',        
+    brand: {
+      fontSize: 18,
+      fontWeight: '700',
+      color: '#111827',
     },
 
-    logoTitle:{
-        ...typography.title,
-        color: colors.textPrimary,  
+    menuButton: {
+      width: 40,
+      height: 40,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
 
-    navContent: {
-        flex:1,
-        flexDirection: 'row',
-        left: spacing.lg,
-    },  
-
-    navContentText: {
-        fontSize: 15,
-        fontWeight: '600' as const,
-        paddingHorizontal: spacing.lg,
-        color: colors.textPrimary,
-         
-    },
-    navButton: {},
-
-    menuIconMobile:{},
-    
-    actions: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        right: spacing.lg,
+    menuButtonText: {
+      fontSize: 28,
+      fontWeight: '700',
+      color: '#111827',
     },
 
-    languageSelectorWrapper: {
-        marginRight: spacing.sm,
+    searchBar: {
+      flex: 1,
+      maxWidth: 700,
+
+      height: 38,
+
+      marginLeft: 20,
+
+      borderWidth: 1,
+      borderColor: '#9CA3AF',
+      borderRadius: 20,
+
+      justifyContent: 'center',
+
+      paddingHorizontal: 16,
+
+      backgroundColor: '#FFFFFF',
     },
 
-    themeToggleWrapper: {
-        marginRight: spacing.sm,
+    searchText: {
+      fontSize: 13,
+      color: '#4B5563',
     },
 
-    access: {
-        justifyContent: 'center',
-        alignItems: 'center',
+    /* =========================
+       MAIN
+    ========================== */
+
+    mainContainer: {
+      flex: 1,
+      flexDirection: 'row',
     },
 
-    accessButton: {
-        minWidth: 100,
-        maxHeight: 40,
+    contentArea: {
+      flexGrow: 1,
+      padding: 20,
+      paddingBottom: 100,
     },
 
-    scrollContent: {
-        paddingTop: 65,
-        height: '100%'
+    userText: {
+      fontSize: 14,
+      color: '#111827',
+      marginBottom: 20,
     },
 
-    carouselContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        minHeight: 400,
-        position: 'relative',
-        overflow: 'hidden',
+    /* =========================
+       HOUSE CARD
+    ========================== */
+
+    houseCard: {
+      width: '100%',
+      maxWidth: 520,
+
+      minHeight: 180,
+
+      borderWidth: 1,
+      borderColor: '#D1D5DB',
+
+      backgroundColor: '#FFFFFF',
+
+      flexDirection: 'row',
+
+      padding: 20,
+
+      marginBottom: 30,
     },
 
-    video: {
-       
-        width: '100%',
-        height: 700,
+    houseCardMobile: {
+      flexDirection: 'column',
     },
 
-    overlay: {
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    houseImage: {
+      width: '45%',
+      minWidth: 120,
+
+      height: 140,
+
+      borderWidth: 1,
+      borderColor: '#9CA3AF',
+
+      backgroundColor: '#E5E7EB',
+
+      justifyContent: 'center',
+      alignItems: 'center',
+
+      marginRight: 20,
     },
 
-    carouselTextContainer: {
-        position:'absolute',
-        width: '60%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 20,
+    houseImageMobile: {
+      width: '100%',
+      marginRight: 0,
+      marginBottom: 20,
     },
 
-    carouselTitle: {
-        fontSize: 90,
-        fontWeight: '700' as const,
-    },
-    
-    mobileCarouselTitle: {
-        fontSize: 50,
+    imagePlaceholder: {
+      fontSize: 42,
     },
 
-    carouselDescription: {},
-
-    content:{
-        padding: 16,
+    houseInfo: {
+      flex: 1,
+      justifyContent: 'center',
+      gap: 10,
     },
 
-    row: {
-        gap: 16,
-        marginBottom: 16,
+    houseTitle: {
+      fontSize: 24,
+      fontWeight: '700',
+      color: '#111827',
     },
 
-    sectionContainer: {
-        paddingHorizontal: 16,
-        paddingVertical: 32,
-        backgroundColor: colors.grayLight,
+    houseText: {
+      fontSize: 14,
+      color: '#374151',
     },
-    sectionHeading: {
-        fontSize: 28,
-        fontWeight: '800',
-        color: colors.textPrimary,
-        textAlign: 'center',
-        marginBottom: 12,
+
+    /* =========================
+       ADD CARD
+    ========================== */
+
+    addCard: {
+      width: '100%',
+      maxWidth: 520,
+
+      height: 180,
+
+      borderWidth: 1,
+      borderColor: '#D1D5DB',
+
+      backgroundColor: '#FFFFFF',
+
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    sectionSubheading: {
-        fontSize: 15,
-        color: colors.textSecondary,
-        textAlign: 'center',
-        lineHeight: 22,
-        marginBottom: 36,
-        paddingHorizontal: 8,
+
+    plus: {
+      fontSize: 72,
+      color: '#6B7280',
+      fontWeight: '200',
     },
-});
+
+    /* =========================
+       SIDEBAR
+    ========================== */
+
+    sidebar: {
+      width: 180,
+
+      borderLeftWidth: 1,
+      borderColor: '#D1D5DB',
+
+      backgroundColor: '#FFFFFF',
+
+      justifyContent: 'space-between',
+      alignItems: 'center',
+
+      paddingVertical: 30,
+    },
+
+    sidebarMobile: {
+      position: 'absolute',
+
+      top: 0,
+      right: 0,
+      bottom: 0,
+
+      width: 220,
+
+      zIndex: 999,
+
+      shadowColor: '#000',
+      shadowOffset: {
+        width: -2,
+        height: 0,
+      },
+      shadowOpacity: 0.15,
+      shadowRadius: 8,
+
+      elevation: 10,
+    },
+
+    sidebarTop: {
+      alignItems: 'center',
+      gap: 20,
+    },
+
+    sidebarButton: {
+      width: 120,
+      height: 40,
+
+      borderWidth: 1,
+      borderColor: '#9CA3AF',
+      borderRadius: 8,
+
+      justifyContent: 'center',
+      alignItems: 'center',
+
+      backgroundColor: '#FFFFFF',
+    },
+
+    logoutButton: {
+      width: 120,
+      height: 40,
+
+      borderWidth: 1,
+      borderColor: '#9CA3AF',
+      borderRadius: 8,
+
+      justifyContent: 'center',
+      alignItems: 'center',
+
+      backgroundColor: '#FFFFFF',
+    },
+
+    sidebarButtonText: {
+      fontSize: 13,
+      fontWeight: '500',
+      color: '#111827',
+    },
+
+  });

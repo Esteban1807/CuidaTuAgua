@@ -1,0 +1,38 @@
+{
+  "title": "Configurações",
+  "back": "Voltar ao Dashboard",
+  "theme": {
+    "title": "Tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "standard": "Padrão",
+    "eco": "Eco"
+  },
+  "density": {
+    "title": "Densidade",
+    "compact": "Compacto",
+    "standard": "Padrão",
+    "comfortable": "Confortável"
+  },
+  "language": {
+    "title": "Idioma",
+    "english": "Inglês",
+    "spanish": "Espanhol",
+    "french": "Francês",
+    "portuguese": "Português"
+  },
+  "notifications": {
+    "title": "Notificações",
+    "enabled": "Ativadas",
+    "disabled": "Desativadas"
+  },
+  "privacy": {
+    "title": "Privacidade",
+    "dataSharing": "Compartilhamento de Dados"
+  },
+  "about": {
+    "title": "Sobre",
+    "version": "Versão",
+    "help": "Ajuda e Suporte"
+  }
+}

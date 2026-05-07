@@ -1,125 +1,226 @@
-import React, { useState, useRef } from 'react';
-import { Animated, Platform, StyleSheet, View } from 'react-native';
+import React, { useState, useRef } from "react";
+import {
+  Animated,
+  Platform,
+  StyleSheet,
+  View,
+} from "react-native";
 
-import LoginScreen from '../screens/auth/LoginScreen';
-import RegisterScreen from '../screens/auth/RegisterScreen';
-import DashboardScreen from '../screens/dashboard/DashboardScreen';
-import LandingScreen from '../screens/LandingScreen';
-import ThemeToggleButton from '../components/common/ThemeToggleButton';
-import ThemeSelector from '../components/common/ThemeSelector';
-import { useTheme } from '../theme/ThemeContext';
+import LoginScreen from "../screens/auth/LoginScreen";
+import RegisterScreen from "../screens/auth/RegisterScreen";
 
-type Screen = 'landing' | 'login' | 'register' | 'dashboard';
+import DashboardScreen from "../screens/dashboard/DashboardScreen";
+
+import LandingScreen from "../screens/LandingScreen";
+
+import ProfileScreen from "../screens/dashboard/profile/ProfileScreen";
+import SettingsScreen from "../screens/settings/SettingsScreen";
+import ResultsScreen from "../screens/dashboard/results/ResultsScreen";
+
+import ThemeToggleButton from "../components/common/ThemeToggleButton";
+import ThemeSelector from "../components/common/ThemeSelector";
+
+import { useTheme } from "../theme/ThemeContext";
+
+type Screen =
+  | "landing"
+  | "login"
+  | "register"
+  | "dashboard"
+  | "profile"
+  | "settings"
+  | "results";
 
 export default function AppNavigator() {
+
   const [screen, setScreen] = useState<Screen>(
-    Platform.OS === 'web' ? 'landing' : 'login'
+    Platform.OS === "web"
+      ? "landing"
+      : "login",
   );
 
   const { colors } = useTheme();
-  const fadeAnim = useRef(new Animated.Value(1)).current;
-  const translateAnim = useRef(new Animated.Value(0)).current;
-  const showGlobalToggle = screen !== 'landing';
 
-  const navigate = (nextScreen: Screen) => {
-    // animación de salida
+  const fadeAnim =
+    useRef(new Animated.Value(1)).current;
+
+  const translateAnim =
+    useRef(new Animated.Value(0)).current;
+
+  const navigate = (next: Screen) => {
+
     Animated.parallel([
+
       Animated.timing(fadeAnim, {
         toValue: 0,
-        duration: 150,
+        duration: 120,
         useNativeDriver: true,
       }),
+
       Animated.timing(translateAnim, {
-        toValue: -40,
-        duration: 150,
+        toValue: -20,
+        duration: 120,
         useNativeDriver: true,
       }),
+
     ]).start(() => {
-      // cambiar pantalla
-      setScreen(nextScreen);
 
-      // reset antes de entrar
-      translateAnim.setValue(40);
+      setScreen(next);
 
-      // animación de entrada
+      translateAnim.setValue(20);
+
       Animated.parallel([
+
         Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 250,
+          duration: 180,
           useNativeDriver: true,
         }),
+
         Animated.timing(translateAnim, {
           toValue: 0,
-          duration: 250,
+          duration: 180,
           useNativeDriver: true,
         }),
+
       ]).start();
+
     });
+
   };
 
-  const renderScreen = () => {
-    switch (screen) {
-      case 'landing':
-        return (
-          <LandingScreen
-            onAccess={() => navigate('login')}
-          />
-        )
-      case 'register':
-        return (
-          <RegisterScreen
-            goToLogin={() => navigate('login')}
-          />
-        );
-
-      case 'dashboard':
-        return (
-          <DashboardScreen
-            onLogout={() => navigate('login')}
-          />
-        );
-
-      default:
-        return (
-          <LoginScreen
-            goToRegister={() => navigate('register')}
-            onLoginSuccess={() => navigate('dashboard')}
-          />
-        );
-    }
-  };
+  const showGlobalToggle =
+    screen !== "landing";
 
   return (
+
     <Animated.View
       style={[
         styles.container,
         {
           opacity: fadeAnim,
-          transform: [{ translateX: translateAnim }],
+          transform: [
+            { translateX: translateAnim },
+          ],
           backgroundColor: colors.background,
         },
       ]}
     >
-      {renderScreen()}
-      {showGlobalToggle && (
-        <View style={styles.toggleWrapper}>
-          {/* PROVISIONAL THEME SELECTOR - EASY TO REMOVE */}
-          <ThemeSelector style={{ marginRight: 8 }} />
-          <ThemeToggleButton />
-        </View>
+
+      {/* LANDING */}
+
+      {screen === "landing" && (
+
+        <LandingScreen
+          onAccess={() => navigate("login")}
+        />
+
       )}
+
+      {/* LOGIN */}
+
+      {screen === "login" && (
+
+        <LoginScreen
+          goToRegister={() => navigate("register")}
+          onLoginSuccess={() => navigate("dashboard")}
+        />
+
+      )}
+
+      {/* REGISTER */}
+
+      {screen === "register" && (
+
+        <RegisterScreen
+          goToLogin={() => navigate("login")}
+        />
+
+      )}
+
+      {/* DASHBOARD */}
+
+      {screen === "dashboard" && (
+
+        <DashboardScreen
+
+          onLogout={() => navigate("login")}
+
+          onProfilePress={() => navigate("profile")}
+
+          onSettingsPress={() => navigate("settings")}
+
+          onResultsPress={() => navigate("results")}
+
+        />
+
+      )}
+
+      {/* PROFILE */}
+
+      {screen === "profile" && (
+
+        <ProfileScreen
+          onBack={() => navigate("dashboard")}
+        />
+
+      )}
+
+      {/* SETTINGS */}
+
+      {screen === "settings" && (
+
+        <SettingsScreen
+          onBack={() => navigate("dashboard")}
+        />
+
+      )}
+
+      {/* RESULTS */}
+
+      {screen === "results" && (
+
+        <ResultsScreen
+          onBack={() => navigate("dashboard")}
+        />
+
+      )}
+
+      {/* THEME */}
+
+      {showGlobalToggle && (
+
+        <View style={styles.toggleWrapper}>
+
+          <ThemeSelector
+            style={{ marginRight: 8 }}
+          />
+
+          <ThemeToggleButton />
+
+        </View>
+
+      )}
+
     </Animated.View>
+
   );
+
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
   },
+
   toggleWrapper: {
-    position: 'absolute',
+    position: "absolute",
+
     top: 16,
     right: 16,
-    zIndex: 20,
+
+    zIndex: 999,
   },
+
 });

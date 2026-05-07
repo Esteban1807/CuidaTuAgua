@@ -1,0 +1,13 @@
+{
+  "drawer": {
+    "profile": "Mi Perfil",
+    "settings": "Ajustes",
+    "logout": "Cerrar Sesión"
+  },
+  "main": {
+    "welcome": "Bienvenido, aquí verás el resumen de tu consumo",
+    "monthlyConsumption": "Consumo mensual",
+    "liters": "Litros",
+    "logout": "Cerrar sesión"
+  }
+}

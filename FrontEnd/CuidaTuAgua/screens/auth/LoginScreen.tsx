@@ -169,13 +169,13 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
               <InputField
                 value={identifier}
                 onChangeText={setIdentifier}
-                placeholder={t('form.mail')}
+                placeholder={t('form.mail') || ''}
               />
 
               <InputField
                 value={password}
                 onChangeText={setPassword}
-                placeholder={t('form.password')}
+                placeholder={t('form.password') || ''}
                 secureTextEntry
               />
 
