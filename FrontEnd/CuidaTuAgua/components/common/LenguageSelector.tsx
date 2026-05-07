@@ -91,11 +91,11 @@ const styles = StyleSheet.create({
     height: 25,
     marginRight: 10,
     borderRadius: 3,
-    resizeMode: 'cover',
+    resizeMode: 'contain',
   },
   dropdown: {
     position: 'absolute',
-    top: 45,
+    top: 55,
     right: 0,
     backgroundColor: '#fff',
     borderRadius: 12,

@@ -1,0 +1,23 @@
+{
+  "title": "Mi Perfil",
+  "personalInfo": {
+    "title": "Información Personal",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "address": "Dirección"
+  },
+  "preferences": {
+    "title": "Preferencias",
+    "notifications": "Notificaciones",
+    "language": "Idioma",
+    "units": "Unidades"
+  },
+  "security": {
+    "title": "Seguridad",
+    "changePassword": "Cambiar Contraseña",
+    "twoFactor": "Autenticación de Dos Factores"
+  },
+  "save": "Guardar Cambios",
+  "cancel": "Cancelar"
+}

@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, Image, Dimensions, FlatList } from 'react-native';
-import { styles } from './DashboardScreen.styles';
+import { createStyles } from './DashboardScreen.styles';
 import { NavigationContainer } from '@react-navigation/native';
-import { 
-  createDrawerNavigator, 
-  DrawerContentScrollView, 
-  DrawerContentComponentProps 
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerContentComponentProps
 } from '@react-navigation/drawer';
+import { useTranslation } from "react-i18next";
+import { useTheme } from '../../theme/ThemeContext';
 
 // --- Tipos ---
 interface CustomDrawerProps extends DrawerContentComponentProps {
   onLogout?: () => void;
+  onProfilePress?: () => void;
+  onSettingsPress?: () => void;
+}
+
+interface MainDashBoardProps {
+  navigation : any;
+  onResultsPress?: () => void;
 }
 
 type Props = {
   onLogout?: () => void;
+  onProfilePress?: () => void;
+  onSettingsPress?: () => void;
+  onResultsPress? : () => void;
 };
 
 const logo = require('../../assets/images/logo.png');
@@ -31,8 +43,13 @@ const dataHome = function home(){
 }
 
 
+
+
+
 // --- 1. Contenido del Panel Lateral ---
 const CustomDrawerContent = (props: CustomDrawerProps) => {
+      const { colors, mode } = useTheme();
+    const styles = createStyles(colors);
   return (
     <View style={{ flex: 1, backgroundColor: '#000000' }}>
       <DrawerContentScrollView {...props}>
@@ -45,11 +62,15 @@ const CustomDrawerContent = (props: CustomDrawerProps) => {
 
         <View style={styles.separator} />
 
-        <TouchableOpacity style={styles.option} onPress={() => props.navigation.closeDrawer()}>
+        <TouchableOpacity style={styles.option} onPress={() => {props.navigation.closeDrawer();
+          if (props.onProfilePress) props.onProfilePress();
+        }}>
           <Text style={styles.optionText}>Mi Perfil</Text>
         </TouchableOpacity>
         
-        <TouchableOpacity style={styles.option} onPress={() => props.navigation.closeDrawer()}>
+        <TouchableOpacity style={styles.option} onPress={() => {props.navigation.closeDrawer();
+          if (props.onSettingsPress) props.onSettingsPress();
+        }}>
           <Text style={styles.optionText}>Ajustes</Text>
         </TouchableOpacity>
 
@@ -68,9 +89,11 @@ const CustomDrawerContent = (props: CustomDrawerProps) => {
 };
 
 
-const MainDashboardContent = ({ navigation, onLogout }: any) => {
+const MainDashboardContent = (props : MainDashBoardProps) => {
+      const { colors, mode } = useTheme();
+    const styles = createStyles(colors);
   return (
-    <view style={styles.mainContainer}>
+    <View style={styles.mainContainer}>
       {/* Barra superior con el botón de perfil */}
       <View style={styles.topBar}>
         <View style={styles.logoSection}>
@@ -83,7 +106,7 @@ const MainDashboardContent = ({ navigation, onLogout }: any) => {
         <View style={{ flex: 1 }} />
         <TouchableOpacity 
           style={styles.profileTrigger} 
-          onPress={() => navigation.openDrawer()}
+          onPress={() => props.navigation.openDrawer()}
         >
           <Text style={styles.userNameOriginal}>Diego Pérez</Text>
           <View style={styles.avatar}>
@@ -95,25 +118,27 @@ const MainDashboardContent = ({ navigation, onLogout }: any) => {
       {/* Tu contenido de CuidaTuAgua */}
       <View style={styles.bodyContent}>
         <View style={styles.cardsContainer}>
-           <View style={styles.card}>
+          <TouchableOpacity style={styles.card} onPress={props.onResultsPress} >
               <Text style={styles.cardTitle}>{dataHome().nameHome}</Text>
               <Text style={styles.cardValue}>{dataHome().descriptionHome}</Text>
-           </View>
-           <View style={styles.card}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.card} onPress={props.onResultsPress} >
               <Text style={styles.cardTitle}>{dataHome().nameHome}</Text>
               <Text style={styles.cardValue}>{dataHome().descriptionHome}</Text>
-           </View>
+           </TouchableOpacity>
         </View>
       </View>
-    </view>
+    </View>
   );
 };
 // --- 3. Exportación Principal ---
-export default function DashboardScreen({ onLogout }: Props) {
+export default function DashboardScreen({ onLogout, onProfilePress, onSettingsPress, onResultsPress }: Props) {
+  const { colors } = useTheme();
+  const styles = createStyles(colors);
   return (
     <NavigationContainer> 
       <Drawer.Navigator
-        drawerContent={(props) => <CustomDrawerContent {...props} onLogout={onLogout} />}
+        drawerContent={(props) => <CustomDrawerContent {...props} onLogout={onLogout} onProfilePress={onProfilePress} onSettingsPress={onSettingsPress}/>}
         screenOptions={{
           drawerPosition: 'right',
           headerShown: false,
@@ -123,9 +148,14 @@ export default function DashboardScreen({ onLogout }: Props) {
           },
         }}
       >
-        <Drawer.Screen name="MainDashboard">
-          {(props) => <MainDashboardContent {...props} onLogout={onLogout} />}
-        </Drawer.Screen>
+       <Drawer.Screen name="MainDashboard">
+        {(props) => (
+      <MainDashboardContent
+        {...props}
+      onResultsPress={onResultsPress}
+        />
+      )}
+</Drawer.Screen>
       </Drawer.Navigator>
     </NavigationContainer>
   );

@@ -1,0 +1,13 @@
+{
+  "drawer": {
+    "profile": "Meu Perfil",
+    "settings": "Configurações",
+    "logout": "Sair"
+  },
+  "main": {
+    "welcome": "Bem-vindo, aqui você verá o resumo do seu consumo",
+    "monthlyConsumption": "Consumo mensal",
+    "liters": "Litros",
+    "logout": "Sair"
+  }
+}

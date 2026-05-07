@@ -1,0 +1,23 @@
+{
+  "title": "Resultados de Consumo",
+  "summary": {
+    "title": "Resumen de Consumo",
+    "today": "Hoy",
+    "thisWeek": "Esta Semana",
+    "thisMonth": "Este Mes",
+    "thisYear": "Este Año"
+  },
+  "charts": {
+    "daily": "Consumo Diario",
+    "weekly": "Consumo Semanal",
+    "monthly": "Consumo Mensual"
+  },
+  "insights": {
+    "title": "Información",
+    "savings": "Ahorros Potenciales",
+    "efficiency": "Puntuación de Eficiencia",
+    "comparison": "Comparado con el mes anterior"
+  },
+  "export": "Exportar Datos",
+  "filter": "Filtrar por Fecha"
+}

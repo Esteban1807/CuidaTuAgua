@@ -227,4 +227,3 @@ const LandingScreen = ({ onAccess }: any) => {
 };
 
 export default LandingScreen;
-

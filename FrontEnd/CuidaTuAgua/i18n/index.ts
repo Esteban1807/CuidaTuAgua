@@ -15,6 +15,26 @@ import esLogin from './translations/es/login.json';
 import frLogin from './translations/fr/login.json';
 import ptLogin from './translations/pt/login.json';
 
+import enDashboard from './translations/en/dashboard.json';
+import esDashboard from './translations/es/dashboard.json';
+import frDashboard from './translations/fr/dashboard.json';
+import ptDashboard from './translations/pt/dashboard.json';
+
+import enSettings from './translations/en/settings.json';
+import esSettings from './translations/es/settings.json';
+import frSettings from './translations/fr/settings.json';
+import ptSettings from './translations/pt/settings.json';
+
+import enProfile from './translations/en/profile.json';
+import esProfile from './translations/es/profile.json';
+import frProfile from './translations/fr/profile.json';
+import ptProfile from './translations/pt/profile.json';
+
+import enResults from './translations/en/results.json';
+import esResults from './translations/es/results.json';
+import frResults from './translations/fr/results.json';
+import ptResults from './translations/pt/results.json';
+
 const LANGUAGE_KEY = 'appLang';
 
 i18n
@@ -23,25 +43,41 @@ i18n
     resources: {
       es: { 
         landing: esLanding,
-        login: esLogin
+        login: esLogin,
+        dashboard: esDashboard,
+        settings: esSettings,
+        profile: esProfile,
+        results: esResults
       },
       fr: { 
         landing: frLanding,
-        login: frLogin
+        login: frLogin,
+        dashboard: frDashboard,
+        settings: frSettings,
+        profile: frProfile,
+        results: frResults
       },
       
       pt: { 
         landing: ptLanding,
-        login: ptLogin
+        login: ptLogin,
+        dashboard: ptDashboard,
+        settings: ptSettings,
+        profile: ptProfile,
+        results: ptResults
       },
       en: {
         landing: enLanding,
-        login: enLogin
+        login: enLogin,
+        dashboard: enDashboard,
+        settings: enSettings,
+        profile: enProfile,
+        results: enResults
       }
     },
     lng: 'es',
     fallbackLng: 'en',
-    ns: ['landing', 'login'], 
+    ns: ['landing', 'login', 'dashboard', 'settings', 'profile', 'results'], 
     defaultNS: 'landing',
     interpolation: {
       escapeValue: false

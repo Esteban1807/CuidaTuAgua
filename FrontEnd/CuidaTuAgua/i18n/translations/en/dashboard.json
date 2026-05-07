@@ -1,0 +1,13 @@
+{
+  "drawer": {
+    "profile": "My Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "main": {
+    "welcome": "Welcome, here you'll see your consumption summary",
+    "monthlyConsumption": "Monthly consumption",
+    "liters": "Liters",
+    "logout": "Logout"
+  }
+}
