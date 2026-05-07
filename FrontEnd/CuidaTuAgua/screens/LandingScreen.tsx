@@ -111,6 +111,7 @@ const LandingScreen = ({ onAccess }: any) => {
         });
 
   return (
+    
     <View style={styles.safeArea}>
         <View style={styles.navContainer}>
             <BlurView intensity={70} tint={mode === 'dark' ? 'dark' : 'light'} style={styles.blur}>

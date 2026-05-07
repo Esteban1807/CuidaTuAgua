@@ -28,16 +28,13 @@ export const styles = StyleSheet.create({
 
   // Estilos del cuerpo
   bodyContent: { flex: 1, padding: 20 },
-  logoSection: { alignItems: 'center', marginVertical: 20 },
-  appLogo: { width: 80, height: 80, marginBottom: 10 },
-  textLogo: { fontSize: 24, fontWeight: 'bold', color: '#118FC3' },
-  descriptionLogo: { textAlign: 'center', color: '#6B7280' },
-  cardsContainer: { flex: 1, marginTop: 20 },
-  card: { padding: 16, backgroundColor: '#F3F4F6', borderRadius: 10 },
+  logoSection: {flexDirection : 'row'},
+  appLogo: { width: 60, height: 60, marginBottom: -3 },
+  textLogo: { top: 4,fontSize: 22, fontWeight: 'bold', color: '#118FC3' },
+  descriptionLogo: {end: 150, top: 30 , color: '#6B7280', fontSize: 13 },
+  cardsContainer: { flex: 1, marginTop: 20, justifyContent: 'center', flexWrap: 'wrap', flexDirection: 'row' },
+  card: { minWidth: 300 , minHeight: 100 , padding: 16, backgroundColor: '#F3F4F6', borderRadius: 10, margin: 30, alignItems: 'center', justifyContent: 'center'},
   cardTitle: { fontSize: 16, fontWeight: '600' },
   cardValue: { fontSize: 14, color: '#6B7280', marginTop: 4 },
-  logoutButton: {
-    backgroundColor: '#118FC3', padding: 16, borderRadius: 10, alignItems: 'center'
-  },
   logoutButtonText: { color: '#FFFFFF', fontWeight: '600' }
 })

@@ -20,6 +20,7 @@ import FeedbackModal from '../../components/common/FeedbackModal';
 import { useResponsive } from '../../hooks/useResponsive';
 import LanguageSelector from '../../components/common/LenguageSelector';
 
+
 type Props = {
   goToRegister: () => void;
   onLoginSuccess: () => void;
@@ -152,10 +153,8 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
   return (
     <View style={[styles.safeArea, isWeb && styles.webSafeArea]}>
       <View style={[styles.container, isWeb && styles.webContainer]}>
-        
         {/* FORM */}
         <View
-        
           style={[
             styles.formSection,
             isWeb && styles.webForm,
@@ -206,7 +205,6 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
             />
           </View>
         </View>
-
         {/* CAROUSEL WEB */}
         {isWeb && (
           <View style={styles.rightPanel}>

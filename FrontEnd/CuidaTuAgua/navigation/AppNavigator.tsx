@@ -19,7 +19,6 @@ export default function AppNavigator() {
   const { colors } = useTheme();
   const fadeAnim = useRef(new Animated.Value(1)).current;
   const translateAnim = useRef(new Animated.Value(0)).current;
-  const showGlobalToggle = screen !== 'landing';
 
   const navigate = (nextScreen: Screen) => {
     // animación de salida
@@ -101,13 +100,6 @@ export default function AppNavigator() {
       ]}
     >
       {renderScreen()}
-      {showGlobalToggle && (
-        <View style={styles.toggleWrapper}>
-          {/* PROVISIONAL THEME SELECTOR - EASY TO REMOVE */}
-          <ThemeSelector style={{ marginRight: 8 }} />
-          <ThemeToggleButton />
-        </View>
-      )}
     </Animated.View>
   );
 }
