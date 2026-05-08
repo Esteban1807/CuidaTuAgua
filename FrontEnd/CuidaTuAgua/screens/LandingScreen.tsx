@@ -4,14 +4,15 @@ import { View, TouchableOpacity, Text, ScrollView, FlatList, Dimensions } from '
 import { BlurView } from 'expo-blur';
 import { VideoView, useVideoPlayer  } from 'expo-video';
 import { useTranslation } from 'react-i18next';
+import { createStyles } from './LandingScreen.styles';
 
 import {useResponsive} from '../hooks/useResponsive';
-import { lightTheme, useTheme} from '../theme';
-import { createStyles } from './LandingScreen.styles';
+import {useTheme} from '../theme';
+
 import PrimaryButton from '../components/auth/PrimaryButton';
 import LanguageSelector from '../components/common/LenguageSelector';
 import ThemeToggleButton from '../components/common/ThemeToggleButton';
-import ThemeSelector from '../components/common/ThemeSelector';
+import Footer from '../components/common/Footer';
 import Logo from '../components/common/Logo';
 import FeatureCard from '../components/common/FeatureCard';  
 import StepCard from '../components/common/StepCard';
@@ -27,13 +28,6 @@ const LandingScreen = ({ onAccess }: any) => {
     const styles = createStyles(colors);
     const dark = mode === 'dark';
     const { t } = useTranslation('landing');
-    
-    //Navbar Options
-    const SECCIONES = [
-        { id: '1', key: 'navbar.features' },
-        { id: '2', key: 'navbar.howItWorks' },
-        { id: '3', key: 'navbar.contact' },
-    ];
     
     const player = useVideoPlayer(
         require('../assets/videos/water-fluid.mp4'),
@@ -123,25 +117,9 @@ const LandingScreen = ({ onAccess }: any) => {
                                 <Text style={styles.logoTitle}>{t('navbar.title')}</Text>)}
                         </View>
                     </TouchableOpacity>
-                     <View style={styles.navContent}>
-                        {isWeb ? (
-                            SECCIONES.map(sec => (
-                            <TouchableOpacity key={sec.id} style={styles.navButton}>
-                                <Text style={styles.navContentText}>{t(sec.key)}</Text>
-                            </TouchableOpacity>)
-                            )
-                        ):(
-                            //Menu mobile beta
-                            <TouchableOpacity style={styles.menuIconMobile}>
-                                <Text>☰</Text> {/* Aquí podrías poner un icono de menú hamburguesa */}
-                            </TouchableOpacity>
-                            )}
-                    </View>
                     <View style={styles.actions}>
-                        <LanguageSelector style={styles.languageSelectorWrapper} />
+                        <LanguageSelector />
                         <View style={styles.themeToggleWrapper}>
-                            {/* PROVISIONAL THEME SELECTOR - EASY TO REMOVE */}
-                            <ThemeSelector style={{ marginRight: 8 }} />
                             <ThemeToggleButton />
                         </View>
                         <PrimaryButton
@@ -154,7 +132,7 @@ const LandingScreen = ({ onAccess }: any) => {
             </BlurView>
         </View>
 
-        <ScrollView contentContainerStyle={styles.scrollContent}>
+        <ScrollView style={{flex:1}} contentContainerStyle={styles.scrollContent}  showsVerticalScrollIndicator={false}>
            <View style={styles.carouselContainer}>
             
                 <VideoView
@@ -169,7 +147,10 @@ const LandingScreen = ({ onAccess }: any) => {
 
                 <View style={styles.carouselTextContainer}>
                     <Text style={[styles.carouselTitle, isMobile && styles.mobileCarouselTitle]}>{t('carousel.slide1.title')}</Text>
-                    <Text style={styles.carouselDescription}>{t('carousel.slide1.description')}</Text>
+                    <BlurView intensity={70} tint={mode === 'dark' ? 'dark' : 'light'} style={styles.blurText}>
+                        <Text style={styles.carouselDescription}>{t('carousel.slide1.description')}</Text>
+                    </BlurView>
+                    
                 </View>
 
             </View>
@@ -221,6 +202,7 @@ const LandingScreen = ({ onAccess }: any) => {
                 />
                
             </View>
+            <Footer/>
         </ScrollView>
     </View>
   );

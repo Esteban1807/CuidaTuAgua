@@ -1,162 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, Image, Dimensions, FlatList } from 'react-native';
-import { createStyles } from './DashboardScreen.styles';
-import { NavigationContainer } from '@react-navigation/native';
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerContentComponentProps
-} from '@react-navigation/drawer';
+import React from "react";
+import { useResponsive } from "../../hooks/useResponsive";
+
+import SidebarLayout from "../../components/navigation/SidebarLayout";
+import BottomTabsLayout from "../../components/navigation/BottomTabsLayout";
+import { View, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import { createStyles } from "./DashboardScreen.styles";
+import { useTheme, colors } from "../../theme";
 import { useTranslation } from "react-i18next";
-import { useTheme } from '../../theme/ThemeContext';
 
-// --- Tipos ---
-interface CustomDrawerProps extends DrawerContentComponentProps {
-  onLogout?: () => void;
-  onProfilePress?: () => void;
-  onSettingsPress?: () => void;
+interface DashboardScreenProps {
+  onSignOut: () => void;
 }
 
-interface MainDashBoardProps {
-  navigation : any;
-  onResultsPress?: () => void;
-}
+export default function DashboardScreen({ onSignOut }: DashboardScreenProps) {
+  const { isMobile } = useResponsive();
+  const { colors } = useTheme();
+  const { t } = useTranslation("dashboard");
+  const styles = createStyles(colors);
 
-type Props = {
-  onLogout?: () => void;
-  onProfilePress?: () => void;
-  onSettingsPress?: () => void;
-  onResultsPress? : () => void;
-};
-
-const logo = require('../../assets/images/logo.png');
-const Drawer = createDrawerNavigator();
-
-// --- Simulación de datos de la API ---
-// Cuando conectes tu API en el otro archivo, te devolverá un arreglo similar a este.
-const dataHome = function home(){
-  var nameHome = "Hogar 1";
-  var descriptionHome = "120 Litros";
-
-  return {nameHome, descriptionHome}
-
-}
-
-
-
-
-
-// --- 1. Contenido del Panel Lateral ---
-const CustomDrawerContent = (props: CustomDrawerProps) => {
-      const { colors, mode } = useTheme();
-    const styles = createStyles(colors);
   return (
-    <View style={{ flex: 1, backgroundColor: '#000000' }}>
-      <DrawerContentScrollView {...props}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.surface }} edges={["top"]}>
+      <View style={{backgroundColor: colors.surface }}>
         <View style={styles.expandedHeader}>
           <View style={styles.avatar}>
-            <Text style={styles.avatarText}>D</Text>
+            <Text style={styles.avatarText}>DP</Text>
           </View>
           <Text style={styles.userNameExpanded}>Diego Pérez</Text>
         </View>
-
-        <View style={styles.separator} />
-
-        <TouchableOpacity style={styles.option} onPress={() => {props.navigation.closeDrawer();
-          if (props.onProfilePress) props.onProfilePress();
-        }}>
-          <Text style={styles.optionText}>Mi Perfil</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.option} onPress={() => {props.navigation.closeDrawer();
-          if (props.onSettingsPress) props.onSettingsPress();
-        }}>
-          <Text style={styles.optionText}>Ajustes</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={styles.option} 
-          onPress={() => {
-            props.navigation.closeDrawer();
-            if (props.onLogout) props.onLogout();
-          }}
-        >
-          <Text style={styles.optionText}>Cerrar Sesión</Text>
-        </TouchableOpacity>
-      </DrawerContentScrollView>
-    </View>
-  );
-};
-
-
-const MainDashboardContent = (props : MainDashBoardProps) => {
-      const { colors, mode } = useTheme();
-    const styles = createStyles(colors);
-  return (
-    <View style={styles.mainContainer}>
-      {/* Barra superior con el botón de perfil */}
-      <View style={styles.topBar}>
-        <View style={styles.logoSection}>
-          <Image source={logo} style={styles.appLogo} />
-          <Text style={styles.textLogo}>Cuida Tu Agua</Text>
-          <Text style={styles.descriptionLogo}>
-            Bienvenido, aquí verás el resumen de tu consumo
-          </Text>
-        </View>
-        <View style={{ flex: 1 }} />
-        <TouchableOpacity 
-          style={styles.profileTrigger} 
-          onPress={() => props.navigation.openDrawer()}
-        >
-          <Text style={styles.userNameOriginal}>Diego Pérez</Text>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>D</Text>
-          </View>
-        </TouchableOpacity>
       </View>
-
-      {/* Tu contenido de CuidaTuAgua */}
-      <View style={styles.bodyContent}>
-        <View style={styles.cardsContainer}>
-          <TouchableOpacity style={styles.card} onPress={props.onResultsPress} >
-              <Text style={styles.cardTitle}>{dataHome().nameHome}</Text>
-              <Text style={styles.cardValue}>{dataHome().descriptionHome}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.card} onPress={props.onResultsPress} >
-              <Text style={styles.cardTitle}>{dataHome().nameHome}</Text>
-              <Text style={styles.cardValue}>{dataHome().descriptionHome}</Text>
-           </TouchableOpacity>
-        </View>
-      </View>
-    </View>
-  );
-};
-// --- 3. Exportación Principal ---
-export default function DashboardScreen({ onLogout, onProfilePress, onSettingsPress, onResultsPress }: Props) {
-  const { colors } = useTheme();
-  const styles = createStyles(colors);
-  return (
-    <NavigationContainer> 
-      <Drawer.Navigator
-        drawerContent={(props) => <CustomDrawerContent {...props} onLogout={onLogout} onProfilePress={onProfilePress} onSettingsPress={onSettingsPress}/>}
-        screenOptions={{
-          drawerPosition: 'right',
-          headerShown: false,
-          drawerStyle: {
-            backgroundColor: '#181818',
-            width: Dimensions.get('window').width * 0.3,
-          },
-        }}
-      >
-       <Drawer.Screen name="MainDashboard">
-        {(props) => (
-      <MainDashboardContent
-        {...props}
-      onResultsPress={onResultsPress}
-        />
-      )}
-</Drawer.Screen>
-      </Drawer.Navigator>
-    </NavigationContainer>
+      {isMobile ? <BottomTabsLayout /> : <SidebarLayout onSignOut={onSignOut} />}
+    </SafeAreaView>
   );
 }

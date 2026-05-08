@@ -17,13 +17,14 @@ import AuthLink from '../../components/auth/AuthLink';
 import PrimaryButton from '../../components/auth/PrimaryButton';
 import TermsModal from '../../components/auth/TermsModal';
 import FeedbackModal from '../../components/common/FeedbackModal';
+import BackArrowButton from '../../components/common/BackArrowButton';
 import { useResponsive } from '../../hooks/useResponsive';
-import LanguageSelector from '../../components/common/LenguageSelector';
 
 
 type Props = {
   goToRegister: () => void;
   onLoginSuccess: () => void;
+  goBack: () => void;
 };
 
 type FeedbackType = 'info' | 'error' | 'success';
@@ -34,7 +35,7 @@ type CarouselItem = {
   description: string;
 };
 
-export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
+export default function LoginScreen({ goToRegister, onLoginSuccess, goBack }: Props) {
   const { isWeb, isMobile, width } = useResponsive();
   const { colors } = useTheme();
   const styles = createStyles(colors);
@@ -139,19 +140,21 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
 
   const handleLogin = () => {
     if (!identifier.trim()) {
-      return showFeedback('Error', 'Ingresa tu usuario', 'error');
+      return showFeedback(t('feedback.errorTitle'), t('feedback.emptyIdentifier'), 'error');
     }
 
     if (!password.trim()) {
-      return showFeedback('Error', 'Ingresa tu contraseña', 'error');
+      return showFeedback(t('feedback.errorTitle'), t('feedback.emptyPassword'), 'error');
     }
 
-    // 🔥 Simulación login
+    // Simulación login
     onLoginSuccess();
   };
 
   return (
     <View style={[styles.safeArea, isWeb && styles.webSafeArea]}>
+      {isWeb && <BackArrowButton onPress={goBack} />}
+     
       <View style={[styles.container, isWeb && styles.webContainer]}>
         {/* FORM */}
         <View
@@ -163,7 +166,6 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
         >
           <View>
             <LoginHeader />
-            <LanguageSelector />
             <View style={isMobile && styles.mobileFormFields}>
               <InputField
                 value={identifier}
@@ -183,8 +185,8 @@ export default function LoginScreen({ goToRegister, onLoginSuccess }: Props) {
                   text={t('form.forgot')}
                   onPress={() =>
                     showFeedback(
-                      'Recuperación',
-                      'Funcionalidad no implementada',
+                      t('feedback.recoveryTitle'),
+                      t('feedback.recoveryMessage'),
                       'info'
                     )
                   }

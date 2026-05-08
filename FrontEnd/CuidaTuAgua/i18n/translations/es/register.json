@@ -1,0 +1,45 @@
+{
+    "title": "Registro",
+
+    "section1": {
+        "title":"Datos del usuario",
+        "input1": "Nombre completo",
+        "input2": "Dcumento de identidad",
+        "input3": "Correo electrónico",
+        "input4": "Contraseña"
+    },
+
+    "section2": {
+        "title":"Datos del hogar",
+        "input1": "Nombre del hogar",
+        "input2": "Dirección",
+        "input3": "Estrato",
+        "input4": "Número de habitantes",
+        "checkbox":"Términos y Condiciones"
+    },
+
+    "paragraph1": "Bienvenido a CuidaTuAgua. Al registrarte y utilizar esta aplicación, aceptas hacer un uso adecuado de la plataforma y de la información suministrada.",
+    "paragraph2": "El usuario se compromete a proporcionar información veraz durante el proceso de registro, incluyendo sus datos personales, correo electrónico y la información del hogar asociado.",
+    "paragraph3": "CuidaTuAgua podrá mostrar información relacionada con el monitoreo, consumo y estado del agua del hogar registrado, con fines de consulta, seguimiento y gestión por parte del usuario.",
+    "paragraph4":"La aplicación protegerá la información personal del usuario según las políticas de tratamiento de datos aplicables. Sin embargo, el usuario es responsable de custodiar sus credenciales de acceso.",
+    "paragraph5": "El uso indebido de la plataforma, la falsedad en la información registrada o cualquier intento de afectar el funcionamiento del sistema podrá generar restricciones de acceso.",
+    "paragraph6": "Al aceptar estos términos y condiciones, el usuario autoriza el tratamiento de sus datos para el correcto funcionamiento de la aplicación y reconoce haber leído y comprendido la presente información.",
+
+    "close":"Cerrar",
+  "success": {
+    "title": "Registro exitoso",
+    "message": "Tu cuenta ha sido creada correctamente. Ahora puedes iniciar sesión."
+  },
+  "feedback": {
+    "errorTitle": "Error",
+    "emptyFullName": "Ingresa tu nombre completo",
+    "emptyDocument": "Ingresa tu documento",
+    "emptyEmail": "Ingresa tu correo electrónico",
+    "emptyPassword": "Ingresa tu contraseña",
+    "emptyHomeName": "Ingresa el nombre del hogar",
+    "emptyAddress": "Ingresa la dirección",
+    "emptyStratum": "Ingresa el estrato",
+    "emptyInhabitants": "Ingresa habitantes",
+    "termsNotAccepted": "Debes aceptar los términos"
+  }
+}

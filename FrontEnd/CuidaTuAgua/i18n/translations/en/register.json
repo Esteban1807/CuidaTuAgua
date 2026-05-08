@@ -1,0 +1,43 @@
+{
+    "title": "Register",
+    "section1": {
+        "title": "User Information",
+        "input1": "Full Name",
+        "input2": "ID Number",
+        "input3": "Email",
+        "input4": "Password"
+    },
+    "section2": {
+        "title": "Home Information",
+        "input1": "Home Name",
+        "input2": "Address",
+        "input3": "Stratum",
+        "input4": "Number of Residents",
+        "checkbox": "Terms and Conditions"
+    },
+
+    "paragraph1": "Welcome to CuidaTuAgua. By registering and using this application, you agree to the appropriate use of the platform and the information provided.",
+    "paragraph2": "The user agrees to provide truthful information during the registration process, including their personal data, email, and information about the associated home.",
+    "paragraph3": "CuidaTuAgua may display information related to tracking, consumption, and the water status of the registered home for consultation, monitoring, and management purposes by the user.",
+    "paragraph4": "The application will protect the user's personal information in accordance with applicable data processing policies. However, the user is responsible for keeping their access credentials.",
+    "paragraph5": "Improper use of the platform, falsity in the registered information, or any attempt to affect the system's operation may result in access restrictions.",
+    "paragraph6": "By accepting these terms and conditions, the user authorizes the processing of their data for the proper functioning of the application and acknowledges having read and understood this information.",
+
+    "close": "Close",
+  "success": {
+    "title": "Registration successful",
+    "message": "Your account has been created successfully. You can now log in."
+  },
+  "feedback": {
+    "errorTitle": "Error",
+    "emptyFullName": "Enter your full name",
+    "emptyDocument": "Enter your ID",
+    "emptyEmail": "Enter your email",
+    "emptyPassword": "Enter your password",
+    "emptyHomeName": "Enter the home name",
+    "emptyAddress": "Enter the address",
+    "emptyStratum": "Enter the stratum",
+    "emptyInhabitants": "Enter number of inhabitants",
+    "termsNotAccepted": "You must accept the terms"
+  }
+}

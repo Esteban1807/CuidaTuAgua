@@ -1,0 +1,43 @@
+{
+    "title": "S'inscrire",
+    "section1": {
+        "title": "Informations sur l'utilisateur",
+        "input1": "Nom complet",
+        "input2": "Numéro d'identification",
+        "input3": "Email",
+        "input4": "Mot de passe"
+    },
+    "section2": {
+        "title": "Informations sur le domicile",
+        "input1": "Nom du domicile",
+        "input2": "Adresse",
+        "input3": "Stratum",
+        "input4": "Nombre de résidents",
+        "checkbox": "Conditions générales"
+    },
+
+    "paragraph1": "Bienvenue sur CuidaTuAgua. En vous inscrivant et en utilisant cette application, vous acceptez l'utilisation appropriée de la plateforme et des informations fournies.",
+    "paragraph2": "L'utilisateur s'engage à fournir des informations vraies pendant le processus d'inscription, y compris ses données personnelles, email et informations sur le domicile associé.",
+    "paragraph3": "CuidaTuAgua peut afficher des informations liées au suivi, à la consommation et à l'état de l'eau du domicile enregistré, à des fins de consultation, de suivi et de gestion par l'utilisateur.",
+    "paragraph4": "L'application protégera les informations personnelles de l'utilisateur conformément aux politiques de traitement des données applicables. Toutefois, l'utilisateur est responsable de conserver ses identifiants d'accès.",
+    "paragraph5": "L'utilisation incorrecte de la plateforme, la falsité dans les informations enregistrées ou toute tentative d'affecter le fonctionnement du système peut entraîner des restrictions d'accès.",
+    "paragraph6": "En acceptant ces termes et conditions, l'utilisateur autorise le traitement de ses données pour le bon fonctionnement de l'application et reconnaît avoir lu et compris ces informations.",
+
+    "close": "Fermer",
+  "success": {
+    "title": "Inscription réussie",
+    "message": "Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter."
+  },
+  "feedback": {
+    "errorTitle": "Erreur",
+    "emptyFullName": "Entrez votre nom complet",
+    "emptyDocument": "Entrez votre document",
+    "emptyEmail": "Entrez votre email",
+    "emptyPassword": "Entrez votre mot de passe",
+    "emptyHomeName": "Entrez le nom du domicile",
+    "emptyAddress": "Entrez l'adresse",
+    "emptyStratum": "Entrez le stratum",
+    "emptyInhabitants": "Entrez le nombre d'habitants",
+    "termsNotAccepted": "Vous devez accepter les termes"
+  }
+}

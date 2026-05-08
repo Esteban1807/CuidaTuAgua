@@ -20,5 +20,15 @@
       "title": "Monitor",
       "description":"Receive clear reports about your usage and keep your home more sustainable."
     }
-  ]
+  ],
+  "feedback": {
+    "successTitle": "Login successful",
+    "successMessage": "You have logged in successfully.",
+    "errorTitle": "Login error",
+    "errorMessage": "Incorrect credentials. Try again.",
+    "emptyIdentifier": "Enter your username",
+    "emptyPassword": "Enter your password",
+    "recoveryTitle": "Recovery",
+    "recoveryMessage": "Functionality not implemented"
+  }
 }

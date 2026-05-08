@@ -15,6 +15,11 @@ import esLogin from './translations/es/login.json';
 import frLogin from './translations/fr/login.json';
 import ptLogin from './translations/pt/login.json';
 
+import esRegister from './translations/es/register.json';
+import enRegister from './translations/en/register.json';
+import frRegister from './translations/fr/register.json';
+import ptRegister from './translations/pt/register.json';
+
 import enDashboard from './translations/en/dashboard.json';
 import esDashboard from './translations/es/dashboard.json';
 import frDashboard from './translations/fr/dashboard.json';
@@ -30,10 +35,10 @@ import esProfile from './translations/es/profile.json';
 import frProfile from './translations/fr/profile.json';
 import ptProfile from './translations/pt/profile.json';
 
-import enResults from './translations/en/results.json';
-import esResults from './translations/es/results.json';
-import frResults from './translations/fr/results.json';
-import ptResults from './translations/pt/results.json';
+import esFooter from './translations/es/footer.json';
+import enFooter from './translations/en/footer.json';
+import frFooter from './translations/fr/footer.json';
+import ptFooter from './translations/pt/footer.json';
 
 const LANGUAGE_KEY = 'appLang';
 
@@ -44,40 +49,44 @@ i18n
       es: { 
         landing: esLanding,
         login: esLogin,
+        register: esRegister,
         dashboard: esDashboard,
         settings: esSettings,
         profile: esProfile,
-        results: esResults
+        footer: esFooter
       },
       fr: { 
         landing: frLanding,
         login: frLogin,
+        register: frRegister,
         dashboard: frDashboard,
         settings: frSettings,
         profile: frProfile,
-        results: frResults
+        footer: frFooter
       },
       
       pt: { 
         landing: ptLanding,
         login: ptLogin,
+        register: ptRegister,
         dashboard: ptDashboard,
         settings: ptSettings,
         profile: ptProfile,
-        results: ptResults
+        footer: ptFooter
       },
       en: {
         landing: enLanding,
         login: enLogin,
+        register: enRegister,
         dashboard: enDashboard,
         settings: enSettings,
         profile: enProfile,
-        results: enResults
+        footer: enFooter
       }
     },
     lng: 'es',
     fallbackLng: 'en',
-    ns: ['landing', 'login', 'dashboard', 'settings', 'profile', 'results'], 
+    ns: ['landing', 'login', 'dashboard', 'settings', 'profile', 'footer', 'register'], 
     defaultNS: 'landing',
     interpolation: {
       escapeValue: false

@@ -1,15 +1,20 @@
-import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import AppNavigator from './navigation/AppNavigator';
-import { ThemeProvider } from './theme/ThemeContext';
-import './i18n'; 
+import "react-native-gesture-handler";
+
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
+import AppNavigator from "./navigation/AppNavigator";
+import { ThemeProvider } from "./theme/ThemeContext";
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <SafeAreaProvider>
-        <AppNavigator />
-      </SafeAreaProvider>
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }

@@ -14,7 +14,7 @@ export const createStyles = (colors: ThemeColors) =>
 
   container: {
     flex: 1,
-  
+    justifyContent: 'center',
   },
 
   webContainer: {
@@ -29,7 +29,7 @@ export const createStyles = (colors: ThemeColors) =>
     borderRadius: 50,
     minHeight: 520,
     maxHeight: '90%',
-    top: '5%',
+
   },
 
   formSection: {

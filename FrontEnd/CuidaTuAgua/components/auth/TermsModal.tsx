@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import { useTranslation } from 'react-i18next';
 import { useResponsive } from '../../hooks/useResponsive';
 import { useTheme, spacing, typography } from '../../theme';
 
@@ -18,7 +19,8 @@ type Props = {
 
 export default function TermsModal({ visible, onClose }: Props) {
   const { isWeb } = useResponsive();
-  const { colors } = useTheme();
+  const { colors } = useTheme()
+  const t = useTranslation('register').t;
 
   return (
     <Modal
@@ -35,27 +37,27 @@ export default function TermsModal({ visible, onClose }: Props) {
             isWeb && styles.modalContainerWeb,
           ]}
         >
-          <Text style={[styles.title, { color: colors.textSecondary }]}>Términos y Condiciones</Text>
+          <Text style={[styles.title, { color: colors.textSecondary }]}>{t('section2.checkbox')}</Text>
 
           <ScrollView
             style={styles.content}
             showsVerticalScrollIndicator={false}
           >
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>Bienvenido a CuidaTuAgua. Al registrarte y utilizar esta aplicación, aceptas hacer un uso adecuado de la plataforma y de la información suministrada.</Text>
+            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph1')}</Text>
 
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>El usuario se compromete a proporcionar información veraz durante el proceso de registro, incluyendo sus datos personales, correo electrónico y la información del hogar asociado.</Text>
+            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph2')}</Text>
 
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>CuidaTuAgua podrá mostrar información relacionada con el monitoreo, consumo y estado del agua del hogar registrado, con fines de consulta, seguimiento y gestión por parte del usuario.</Text>
+            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph3')}</Text>
 
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>La aplicación protegerá la información personal del usuario según las políticas de tratamiento de datos aplicables. Sin embargo, el usuario es responsable de custodiar sus credenciales de acceso.</Text>
+            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph4')}</Text>
 
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>El uso indebido de la plataforma, la falsedad en la información registrada o cualquier intento de afectar el funcionamiento del sistema podrá generar restricciones de acceso.</Text>
+            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph5')}</Text>
 
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>Al aceptar estos términos y condiciones, el usuario autoriza el tratamiento de sus datos para el correcto funcionamiento de la aplicación y reconoce haber leído y comprendido la presente información.</Text>
+            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph6')}</Text>
           </ScrollView>
 
           <TouchableOpacity style={[styles.button, { backgroundColor: colors.secondary }]} onPress={onClose}>
-            <Text style={[styles.buttonText, { color: colors.surface }]}>Cerrar</Text>
+            <Text style={[styles.buttonText, { color: colors.surface }]}>{t('close')}</Text>
           </TouchableOpacity>
         </View>
       </View>

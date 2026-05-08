@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ViewStyle, StyleProp } from 'react-native';
 import { useTheme, spacing, typography } from '../../theme';
+import { useTranslation } from 'react-i18next';
 
 interface ThemeOption {
   id: string;
@@ -12,14 +13,15 @@ interface Props {
   style?: StyleProp<ViewStyle>;
 }
 
-const THEME_OPTIONS: ThemeOption[] = [
-  { id: '1', label: 'Standard', type: 'standard' },
-  { id: '2', label: 'Eco', type: 'eco' },
-];
-
 const ThemeSelector = ({ style }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const { colors, themeType, setThemeType } = useTheme();
+  const { t } = useTranslation('settings');
+
+  const THEME_OPTIONS: ThemeOption[] = [
+    { id: '1', label: t('theme.standard'), type: 'standard' },
+    { id: '2', label: t('theme.eco'), type: 'eco' },
+  ];
 
   const getCurrentTheme = () => {
     return THEME_OPTIONS.find(t => t.type === themeType) || THEME_OPTIONS[0];

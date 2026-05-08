@@ -20,5 +20,15 @@
       "title": "Surveillez",
       "description":"Recevez des rapports clairs sur votre usage et gardez votre maison plus durable."
     }
-  ]
+  ],
+  "feedback": {
+    "successTitle": "Connexion réussie",
+    "successMessage": "Vous vous êtes connecté avec succès.",
+    "errorTitle": "Erreur de connexion",
+    "errorMessage": "Identifiants incorrects. Réessayez.",
+    "emptyIdentifier": "Entrez votre nom d'utilisateur",
+    "emptyPassword": "Entrez votre mot de passe",
+    "recoveryTitle": "Récupération",
+    "recoveryMessage": "Fonctionnalité non implémentée"
+  }
 }

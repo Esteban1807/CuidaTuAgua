@@ -20,5 +20,15 @@
       "title": "Monitore",
       "description":"Receba relatórios claros sobre seu uso e mantenha seu lar mais sustentável."
     }
-  ]
+  ],
+  "feedback": {
+    "successTitle": "Login bem-sucedido",
+    "successMessage": "Você fez login com sucesso.",
+    "errorTitle": "Erro de login",
+    "errorMessage": "Credenciais incorretas. Tente novamente.",
+    "emptyIdentifier": "Digite seu usuário",
+    "emptyPassword": "Digite sua senha",
+    "recoveryTitle": "Recuperação",
+    "recoveryMessage": "Funcionalidade não implementada"
+  }
 }

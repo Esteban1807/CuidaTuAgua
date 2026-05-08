@@ -1,12 +1,16 @@
 {
   "title": "Settings",
+  "subtitle": "Customize language and appearance",
   "back": "Back to Dashboard",
   "theme": {
     "title": "Theme",
+    "description": "Change the visual appearance of the app",
     "light": "Light",
     "dark": "Dark",
     "standard": "Standard",
-    "eco": "Eco"
+    "eco": "Eco",
+    "ecoLight": "Eco Light",
+    "ecoDark": "Eco Dark"
   },
   "density": {
     "title": "Density",
@@ -16,6 +20,7 @@
   },
   "language": {
     "title": "Language",
+    "description": "Select the application language",
     "english": "English",
     "spanish": "Spanish",
     "french": "French",
@@ -34,5 +39,11 @@
     "title": "About",
     "version": "Version",
     "help": "Help & Support"
+  },
+  "logout": {
+    "title": "Logout",
+    "confirm": "Do you want to log out?",
+    "cancel": "Cancel",
+    "confirmButton": "Logout"
   }
 }

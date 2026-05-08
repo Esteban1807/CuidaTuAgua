@@ -3,9 +3,9 @@
   "personalInfo": {
     "title": "Personal Information",
     "name": "Name",
+    "document": "Document",
     "email": "Email",
-    "phone": "Phone",
-    "address": "Address"
+    "password": "Password"
   },
   "preferences": {
     "title": "Preferences",
@@ -19,5 +19,9 @@
     "twoFactor": "Two-Factor Authentication"
   },
   "save": "Save Changes",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "editProfile": "Edit Profile",
+  "saveChanges": "Save Changes",
+  "profileUpdated": "Profile Updated",
+  "changesSaved": "Changes saved successfully"
 }

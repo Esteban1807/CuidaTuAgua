@@ -47,11 +47,6 @@ export const createStyles = (colors: ThemeColors) =>
         color: colors.textPrimary,  
     },
 
-    navContent: {
-        flex:1,
-        flexDirection: 'row',
-        left: spacing.lg,
-    },  
 
     navContentText: {
         fontSize: 15,
@@ -91,7 +86,6 @@ export const createStyles = (colors: ThemeColors) =>
 
     scrollContent: {
         paddingTop: 65,
-        height: '100%'
     },
 
     carouselContainer: {
@@ -118,7 +112,7 @@ export const createStyles = (colors: ThemeColors) =>
 
     carouselTextContainer: {
         position:'absolute',
-        width: '60%',
+        width: '80%',
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
@@ -128,13 +122,27 @@ export const createStyles = (colors: ThemeColors) =>
     carouselTitle: {
         fontSize: 90,
         fontWeight: '700' as const,
+        textAlign: 'center',
     },
     
     mobileCarouselTitle: {
         fontSize: 50,
     },
 
-    carouselDescription: {},
+    carouselDescription: {
+        fontSize: 15,
+        color: colors.textPrimary,
+        textAlign: 'center',
+    },
+
+    blurText: {
+        marginTop: 40,
+        padding: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(255,255,255,0.35)',
+        borderRadius: 8,
+    },
 
     content:{
         padding: 16,

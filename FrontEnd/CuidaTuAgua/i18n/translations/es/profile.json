@@ -3,9 +3,9 @@
   "personalInfo": {
     "title": "Información Personal",
     "name": "Nombre",
-    "email": "Correo electrónico",
-    "phone": "Teléfono",
-    "address": "Dirección"
+    "document": "Documento",
+    "email": "Correo",
+    "password": "Contraseña"
   },
   "preferences": {
     "title": "Preferencias",
@@ -19,5 +19,9 @@
     "twoFactor": "Autenticación de Dos Factores"
   },
   "save": "Guardar Cambios",
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "editProfile": "Editar perfil",
+  "saveChanges": "Guardar cambios",
+  "profileUpdated": "Perfil actualizado",
+  "changesSaved": "Los cambios se guardaron correctamente"
 }

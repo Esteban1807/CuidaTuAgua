@@ -20,5 +20,15 @@
             "title": "Monitorea",
             "description":"Recibe reportes claros sobre tu uso y mantén tu hogar más sostenible."
         }
-    ]
+    ],
+  "feedback": {
+    "successTitle": "Inicio de sesión exitoso",
+    "successMessage": "Has iniciado sesión correctamente.",
+    "errorTitle": "Error de inicio de sesión",
+    "errorMessage": "Credenciales incorrectas. Inténtalo de nuevo.",
+    "emptyIdentifier": "Ingresa tu usuario",
+    "emptyPassword": "Ingresa tu contraseña",
+    "recoveryTitle": "Recuperación",
+    "recoveryMessage": "Funcionalidad no implementada"
+  }
 }
