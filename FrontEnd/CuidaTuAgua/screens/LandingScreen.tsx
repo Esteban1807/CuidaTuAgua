@@ -29,7 +29,21 @@ const LandingScreen = ({ onAccess }: any) => {
     const dark = mode === 'dark';
     const { t } = useTranslation('landing');
     
-    const player = useVideoPlayer(
+    const player1 = useVideoPlayer(
+        require('../assets/videos/Water-Drops-Live-Wallpaper.mp4'),
+        (player) => {
+            player.loop = true;
+            player.muted = true;
+            player.play();
+        }
+    );  
+
+    useEffect(() => {
+        player1.play();
+        }, []
+    );
+
+    const player2 = useVideoPlayer(
         require('../assets/videos/water-fluid.mp4'),
         (player) => {
             player.loop = true;
@@ -39,10 +53,15 @@ const LandingScreen = ({ onAccess }: any) => {
     );  
 
     useEffect(() => {
-        player.play();
+        player2.play();
         }, []
     );
 
+    const activePlayer = dark ? player2 : player1;
+
+    useEffect(() => {
+        activePlayer.play();
+    }, [activePlayer]);
    
         const FEATURE_UI  = [
             { id: '1', icon: 'bar-chart', iconColor: '#3B82F6', iconBg: '#EFF6FF' },
@@ -134,16 +153,21 @@ const LandingScreen = ({ onAccess }: any) => {
 
         <ScrollView style={{flex:1}} contentContainerStyle={styles.scrollContent}  showsVerticalScrollIndicator={false}>
            <View style={styles.carouselContainer}>
-            
+                
                 <VideoView
                     style={styles.video}
-                    player={player}
+                    player={activePlayer}
                     contentFit="cover"
                     allowsPictureInPicture={false}
                     nativeControls={false}
                 />
+                
+                <BlurView 
+                intensity={0}
+                tint='dark'
+                style={styles.blurOverlay}/>
 
-                {dark && (<View style={styles.overlay}/>)}
+                <View style={styles.overlay}/>
 
                 <View style={styles.carouselTextContainer}>
                     <Text style={[styles.carouselTitle, isMobile && styles.mobileCarouselTitle]}>{t('carousel.slide1.title')}</Text>

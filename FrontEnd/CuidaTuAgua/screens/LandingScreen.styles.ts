@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { ThemeColors, spacing, typography } from '../theme/';
 
 export const createStyles = (colors: ThemeColors) =>
@@ -18,7 +18,7 @@ export const createStyles = (colors: ThemeColors) =>
 
     blur: {
         width: '100%',
-        backgroundColor: 'rgba(255,255,255,0.35)',
+        backgroundColor: 'rgba(0, 0, 0, 0.35)',
     },
 
     nav: {
@@ -98,16 +98,21 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     video: {
-       
-        width: '100%',
+        width: Dimensions.get('window').width,
         height: 700,
     },
+
+    blurOverlay: {
+    position: 'absolute',
+    width: Dimensions.get('window').width,
+    height: 700, 
+  },
 
     overlay: {
         position: 'absolute',
         width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        height: '100%',   
+        paddingHorizontal: 20,
     },
 
     carouselTextContainer: {
@@ -123,6 +128,10 @@ export const createStyles = (colors: ThemeColors) =>
         fontSize: 90,
         fontWeight: '700' as const,
         textAlign: 'center',
+        color: colors.textPrimary,
+        textShadowColor: colors.textOnPrimary,
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 2,
     },
     
     mobileCarouselTitle: {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Linking, Alert } from "react-native";
 import { useTheme, spacing, typography } from "../../theme";
 import { useTranslation } from "react-i18next";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,16 +10,30 @@ const Footer = () => {
   const { colors } = useTheme();
   const { t } = useTranslation("footer");
 
+  const openSocialLink = async (url?: string) => {
+    if (!url) {
+      return;
+    }
+
+    const supported = await Linking.canOpenURL(url);
+    if (supported) {
+      await Linking.openURL(url);
+    } else {
+      Alert.alert("Error", "No se pudo abrir la URL.");
+    }
+  };
+
   const section1Items = ["info1", "info2", "info3", "info4"];
   const section2Items = ["mail", "phone", "address"];
   const section2Info = ["email", "number", "location"];
 
   const socialIcons = [
-    { name: "logo-facebook", key: "fb" },
-    { name: "logo-instagram", key: "ig" },
+    { name: "logo-facebook", key: "fb" , URL: 'https://web.facebook.com/diegoalejandro.alvarado.3133/?locale=es_LA'},
+    { name: "logo-instagram", key: "ig", URL: 'https://www.instagram.com/daac_21x/'},
     { name: "logo-x", key: "x" },
     { name: "logo-linkedin", key: "li" },
   ];
+
 
   return (
     <View style={{ backgroundColor: colors.surfaceAlt, paddingVertical: spacing.lg, alignItems: "center" }}>
@@ -52,6 +66,7 @@ const Footer = () => {
                 ]}
               >
                 <Ionicons
+                  onPress={() => openSocialLink(icon.URL)}
                   name={icon.name as any}
                   size={28}
                   color={colors.primary}
