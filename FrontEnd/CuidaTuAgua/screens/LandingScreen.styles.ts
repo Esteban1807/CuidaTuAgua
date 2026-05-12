@@ -121,7 +121,7 @@ export const createStyles = (colors: ThemeColors) =>
         height: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
     },
 
     carouselTitle: {
@@ -139,6 +139,7 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     carouselDescription: {
+        fontWeight: 600,
         fontSize: 15,
         color: colors.textPrimary,
         textAlign: 'center',

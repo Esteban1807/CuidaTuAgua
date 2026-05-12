@@ -34,7 +34,6 @@ const Footer = () => {
     { name: "logo-linkedin", key: "li" },
   ];
 
-
   return (
     <View style={{ backgroundColor: colors.surfaceAlt, paddingVertical: spacing.lg, alignItems: "center" }}>
       <View style={[styles.safeArea, ]}>
