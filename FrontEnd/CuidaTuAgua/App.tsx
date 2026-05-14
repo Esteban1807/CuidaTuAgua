@@ -1,20 +1,3 @@
-import "react-native-gesture-handler";
+import App from './src/App';
 
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-
-import AppNavigator from "./navigation/AppNavigator";
-import { ThemeProvider } from "./theme/ThemeContext";
-
-export default function App() {
-  return (
-    <SafeAreaProvider>
-      <ThemeProvider>
-        <NavigationContainer>
-          <AppNavigator />
-        </NavigationContainer>
-      </ThemeProvider>
-    </SafeAreaProvider>
-  );
-}
+export default App;
