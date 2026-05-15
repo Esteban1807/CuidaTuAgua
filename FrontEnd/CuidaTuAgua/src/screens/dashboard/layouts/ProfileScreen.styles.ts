@@ -7,6 +7,7 @@ export const createStyles = (colors: ThemeColors) =>
       flex: 1,
       backgroundColor: colors.surface,
       paddingTop: 20,
+      marginHorizontal: 30,
     },
 
     /* HEADER */

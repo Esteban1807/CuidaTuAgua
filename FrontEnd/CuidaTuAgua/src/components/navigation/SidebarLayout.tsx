@@ -1,28 +1,117 @@
 import React, { useState } from "react";
-import { View, Text} from "react-native";
+import { View, TouchableOpacity, Text} from "react-native";
 import Sidebar from "./Sidebar";
 import HomeScreen from "@screens/dashboard/layouts/HomeScreen";
 import ProfileScreen from "@screens/dashboard/layouts/ProfileScreen";
 import SettingsScreen from "@screens/dashboard/layouts/SettingsScreen";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "@theme/index";
 
 interface SidebarLayoutProps {
   onSignOut?: () => void;
+  userName?: string;
 }
 
-export default function SidebarLayout({ onSignOut }: SidebarLayoutProps) {
+export default function SidebarLayout({ onSignOut, userName = "User" }: SidebarLayoutProps) {
   const safeOnSignOut = onSignOut ?? (() => {});
   const navigation = useNavigation<any>();
   const [tab, setTab] = useState("home");
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const { colors } = useTheme();
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   return (
     <View style={{ flex: 1, flexDirection: "row" }}>
-      <Sidebar tab={tab} onTabChange={setTab} onSignOut={safeOnSignOut} />
+      {sidebarOpen && (
+        <Sidebar 
+          tab={tab} 
+          onTabChange={setTab} 
+          onSignOut={safeOnSignOut}
+        />
+      )}
 
-      <View style={{ flex: 1 }}>
-        {tab === "home" && <HomeScreen />}
-        {tab === "profile" && <ProfileScreen />}
-        {tab === "settings" && <SettingsScreen />}
+      <View style={{ flex: 1, flexDirection: "column" }}>
+        <View
+          style={{
+            height: 60,
+            flexDirection: "row",
+            alignItems: "center",
+            paddingHorizontal: 16,
+            backgroundColor: colors.surface,
+            borderBottomWidth: 1,
+            borderBottomColor: colors.background,
+            justifyContent: "space-between",
+          }}
+        >
+          <TouchableOpacity
+            onPress={toggleSidebar}
+            style={{
+              width: 40,
+              height: 40,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 24,
+                color: colors.textPrimary,
+                fontWeight: "bold",
+              }}
+            >
+              {sidebarOpen ? "✕" : "☰"}
+            </Text>
+          </TouchableOpacity>
+
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
+            <View style={{ alignItems: "flex-end" }}>
+              <Text
+                style={{
+                  color: colors.textPrimary,
+                  fontSize: 14,
+                  fontWeight: "600",
+                }}
+              >
+                {userName}
+              </Text>
+            </View>
+            <View
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 20,
+                backgroundColor: colors.primary,
+                justifyContent: "center",
+                alignItems: "center",
+                borderWidth: 2,
+                borderColor: colors.success,
+              }}
+            >
+              <Text
+                style={{
+                  color: colors.textOnPrimary,
+                  fontSize: 14,
+                  fontWeight: "bold",
+                }}
+              >
+                {userName
+                  .split(" ")
+                  .map((name) => name[0])
+                  .join("")
+                  .toUpperCase()}
+              </Text>
+            </View>
+          </View>
+        </View>
+
+        <View style={{ flex: 1 }}>
+          {tab === "home" && <HomeScreen />}
+          {tab === "profile" && <ProfileScreen />}
+          {tab === "settings" && <SettingsScreen />}
+        </View>
       </View>
       
     </View>

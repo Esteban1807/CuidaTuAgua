@@ -16,6 +16,8 @@ type Props = {
   message: string;
   type?: FeedbackType;
   onClose: () => void;
+  secondaryButtonText?: string;
+  onSecondaryPress?: () => void;
 };
 
 export default function FeedbackModal({
@@ -24,6 +26,8 @@ export default function FeedbackModal({
   message,
   type = 'info',  
   onClose,
+  secondaryButtonText,
+  onSecondaryPress,
 }: Props) {
   const { colors } = useTheme();
 
@@ -64,12 +68,31 @@ export default function FeedbackModal({
             {message}
           </Text>
 
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: currentStyle.buttonColor }]}
-            onPress={onClose}
-          >
-            <Text style={styles.buttonText}>Aceptar</Text>
-          </TouchableOpacity>
+          {secondaryButtonText ? (
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={[styles.button, styles.secondaryButton, { borderColor: colors.border }]}
+                onPress={onClose}
+              >
+                <Text style={[styles.buttonText, { color: colors.textPrimary }]}>
+                  {secondaryButtonText}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: currentStyle.buttonColor }]}
+                onPress={onSecondaryPress}
+              >
+                <Text style={styles.buttonText}>Confirmar</Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <TouchableOpacity
+              style={[styles.button, { backgroundColor: currentStyle.buttonColor }]}
+              onPress={onClose}
+            >
+              <Text style={styles.buttonText}>Aceptar</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </Modal>
@@ -109,6 +132,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     borderRadius: 8,
     alignItems: 'center',
+  },
+  secondaryButton: {
+    borderWidth: 1,
+    backgroundColor: 'transparent',
+  },
+  buttonContainer: {
+    width: '100%',
+    gap: 12,
+    flexDirection: 'column',
   },
   buttonText: {
     color: '#FFFFFF',

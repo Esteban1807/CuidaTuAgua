@@ -19,18 +19,25 @@ export default function DashboardScreen({ onSignOut }: DashboardScreenProps) {
   const { colors } = useTheme();
   const { t } = useTranslation("dashboard");
   const styles = createStyles(colors);
+  const userName = "Diego Pérez";
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.surface }} edges={["top"]}>
-      <View style={{backgroundColor: colors.surface }}>
-        <View style={styles.expandedHeader}>
-          <View style={styles.avatar}>
-            <Text style={styles.avatarText}>DP</Text>
+      {isMobile ? (
+        <>
+          <View style={{backgroundColor: colors.surface }}>
+            <View style={styles.expandedHeader}>
+              <View style={styles.avatar}>
+                <Text style={styles.avatarText}>DP</Text>
+              </View>
+              <Text style={styles.userNameExpanded}>{userName}</Text>
+            </View>
           </View>
-          <Text style={styles.userNameExpanded}>Diego Pérez</Text>
-        </View>
-      </View>
-      {isMobile ? <BottomTabsLayout /> : <SidebarLayout onSignOut={onSignOut} />}
+          <BottomTabsLayout />
+        </>
+      ) : (
+        <SidebarLayout onSignOut={onSignOut} userName={userName} />
+      )}
     </SafeAreaView>
   );
 }

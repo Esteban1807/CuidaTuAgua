@@ -6,7 +6,7 @@ export const createStyles = (colors: ThemeColors) =>
     container: {
       paddingTop: 20,
       backgroundColor: colors.background,
-      
+      flex: 1,
     },
 
     title: {
@@ -25,6 +25,7 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     card: {
+      marginHorizontal: 30,
       backgroundColor: colors.surface,
       borderRadius: 14,
       padding: 16,
@@ -50,19 +51,23 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     languageFloating: {
-      zIndex: 9999,
-      marginTop: -20,
+      zIndex: 1,
+      marginTop: -30,
       marginBottom: 20,
-      alignSelf: "flex-start",
       backgroundColor: colors.surface,
-      width: '100%',
       paddingLeft: 16,
+      paddingBottom: 10,
+      marginHorizontal: 30,
+      borderEndEndRadius: 14, 
+      borderEndStartRadius: 14, 
     },
+
     themeGrid: {
       flexDirection: "row",
       flexWrap: "wrap",
       gap: 10,
       marginTop: 8,
+      
     },
 
     themeButton: {
@@ -72,6 +77,7 @@ export const createStyles = (colors: ThemeColors) =>
       borderWidth: 1,
       borderColor: colors.border,
       backgroundColor: colors.surfaceAlt,
+      
     },
 
     themeButtonActive: {
@@ -86,6 +92,23 @@ export const createStyles = (colors: ThemeColors) =>
 
     themeTextActive: {
       color: colors.textOnPrimary,
+      fontWeight: "600",
+    },
+
+    logoutButton: {
+      paddingVertical: 12,
+      paddingHorizontal: 16,
+      borderRadius: 8,
+      backgroundColor: colors.error,
+      alignItems: "center",
+      marginHorizontal: 30,
+      marginTop: 16,
+      marginBottom: 20,
+    },
+
+    logoutButtonText: {
+      color: colors.textOnPrimary,
+      fontSize: 16,
       fontWeight: "600",
     },
   });

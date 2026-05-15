@@ -28,7 +28,7 @@ export default function BottomTabsLayout() {
         style={{
           height: 60,
           flexDirection: "row",
-          backgroundColor: colors.background,
+          backgroundColor: colors.surfaceAlt,
         }}
       >
         <TabButton label={t("drawer.home")} active={tab === "home"} onPress={() => setTab("home")} />

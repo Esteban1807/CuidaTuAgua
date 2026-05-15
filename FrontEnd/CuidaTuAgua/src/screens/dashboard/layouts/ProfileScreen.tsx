@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useTheme } from "@theme/index";
 import { useTranslation } from "react-i18next";
@@ -45,7 +46,7 @@ export default function ProfileScreen() {
     .toUpperCase();
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
 
       {/* Header perfil */}
       <View style={styles.headerCard}>
@@ -131,6 +132,6 @@ export default function ProfileScreen() {
         type="success"
         onClose={() => setModalVisible(false)}
       />
-    </View>
+    </SafeAreaView>
   );
 }

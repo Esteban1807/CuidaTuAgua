@@ -23,51 +23,46 @@ export default function Sidebar({ tab, onTabChange, onSignOut }: SidebarProps) {
     <View
       style={{
         width: 280,
-        backgroundColor: colors.surface,
+        backgroundColor: colors.surfaceAlt,
         padding: 16,
+        height: "100%",
+        justifyContent: "space-between",
       }}
     >
-      <View style={{ alignItems: "center", marginBottom: 32 }}>
-        <Logo />
-        <Text
-          style={{
-            color: colors.textPrimary,
-            fontSize: 18,
-            fontWeight: "bold",
-            marginBottom: 24,
-          }}
-        >
-          {t("drawer.appName")}
-        </Text>
-      </View>
+      <View>
+        {/* LOGO */}
+        <View style={{ alignItems: "center", marginBottom: 32 }}>
+          <Logo />
+        </View>
 
-      <View style={{ gap: 12, flex: 1 }}>
-        {navItems.map((item) => (
-          <TouchableOpacity
-            key={item.value}
-            onPress={() => onTabChange(item.value)}
-            style={{
-              paddingVertical: 12,
-              paddingHorizontal: 16,
-              borderRadius: 8,
-              backgroundColor: tab === item.value ? colors.primary: "transparent",
-            }}
-          >
-            <Text
+        {/* NAV ITEMS */}
+        <View style={{ gap: 12 }}>
+          {navItems.map((item) => (
+            <TouchableOpacity
+              key={item.value}
+              onPress={() => onTabChange(item.value)}
               style={{
-                color: tab === item.value ? colors.textOnPrimary : colors.textPrimary,
-                fontSize: 16,
-                fontWeight: tab === item.value ? "600" : "400",
+                paddingVertical: 12,
+                paddingHorizontal: 16,
+                borderRadius: 8,
+                backgroundColor: tab === item.value ? colors.primary : "transparent",
               }}
             >
-              {item.label}
-            </Text>
-            
-          </TouchableOpacity>
-          
-        ))}
-        
+              <Text
+                style={{
+                  color: tab === item.value ? colors.textOnPrimary : colors.textPrimary,
+                  fontSize: 16,
+                  fontWeight: tab === item.value ? "600" : "400",
+                }}
+              >
+                {item.label}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
+
+      {/* LOGOUT BUTTON */}
       <TouchableOpacity
         onPress={onSignOut}
         style={{

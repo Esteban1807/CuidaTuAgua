@@ -4,7 +4,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Alert,
   Platform,
 } from "react-native";
 
@@ -19,6 +18,7 @@ import { createStyles } from "./SettingsScreen.styles";
 import { useResponsive } from "@hooks/useResponsive";
 
 import LanguageSelector from "@components/common/LenguageSelector";
+import FeedbackModal from "@components/common/FeedbackModal";
 import { useTranslation } from "react-i18next";
 
 type ThemeOption =
@@ -47,6 +47,8 @@ export default function SettingsScreen() {
   const [selectedTheme, setSelectedTheme] = useState<ThemeOption>(
     `${themeType}${mode === "dark" ? "Dark" : "Light"}` as ThemeOption,
   );
+
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
   // THEME
   const handleThemeChange = (
@@ -78,36 +80,26 @@ export default function SettingsScreen() {
 
   // LOGOUT
   const handleLogout = () => {
+    setLogoutModalVisible(true);
+  };
 
+  const handleConfirmLogout = () => {
     const targetRoute =
       Platform.OS === "web"
         ? "landing"
         : "login";
 
-    Alert.alert(
-      t("logout.title") ?? "",
-      t("logout.confirm") ?? "",
-      [
-        {
-          text: t("logout.cancel") ?? "",
-          style: "cancel",
-        },
-
-        {
-          text: t("logout.confirmButton") ?? "",
-          style: "destructive",
-
-          onPress: () => {
-            navigation.reset({
-              index: 0,
-              routes: [
-                { name: targetRoute },
-              ],
-            });
-          },
-        },
+    setLogoutModalVisible(false);
+    navigation.reset({
+      index: 0,
+      routes: [
+        { name: targetRoute },
       ],
-    );
+    });
+  };
+
+  const handleCancelLogout = () => {
+    setLogoutModalVisible(false);
   };
 
   return (
@@ -194,25 +186,23 @@ export default function SettingsScreen() {
       {isMobile && (
         <TouchableOpacity
           onPress={handleLogout}
-          style={{
-            paddingVertical: 12,
-            paddingHorizontal: 16,
-            borderRadius: 8,
-            backgroundColor: colors.error,
-            alignItems: "center",
-          }}
+          style={styles.logoutButton}
         >
-          <Text
-            style={{
-              color: colors.textOnPrimary,
-              fontSize: 16,
-              fontWeight: "600",
-            }}
-          >
+          <Text style={styles.logoutButtonText}>
             {t("logout.title")}
           </Text>
         </TouchableOpacity>
       )}
+
+      <FeedbackModal
+        visible={logoutModalVisible}
+        title={t("logout.title") ?? ""}
+        message={t("logout.confirm") ?? ""}
+        type="error"
+        secondaryButtonText={t("logout.cancel") ?? ""}
+        onClose={handleCancelLogout}
+        onSecondaryPress={handleConfirmLogout}
+      />
 
     </View>
   );

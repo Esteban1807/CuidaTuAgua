@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { createStyles } from "./HomeScreen.styles";
 import { useTheme } from "@theme/index";
@@ -70,7 +71,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
       <Text style={styles.descriptionLogo}>
         {t("main.welcome")}
       </Text>
@@ -93,6 +94,6 @@ export default function HomeScreen() {
         type="success"
         onClose={() => setModalVisible(false)}
       />
-    </View>
+    </SafeAreaView>
   );
 }
