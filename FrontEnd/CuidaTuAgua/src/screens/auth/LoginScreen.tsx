@@ -1,25 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   Animated,
   ImageSourcePropType,
-} from 'react-native';
+} from "react-native";
 
-import { createStyles } from './LoginScreen.styles';
-import { useTheme } from '@theme/index';
-import { useTranslation } from 'react-i18next';
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import LoginHeader from '@components/auth/LoginHeader';
-import InputField from '@components/auth/InputField';
-import AuthLink from '@components/auth/AuthLink';
-import PrimaryButton from '@components/auth/PrimaryButton';
-import TermsModal from '@components/auth/TermsModal';
-import FeedbackModal from '@components/common/FeedbackModal';
-import BackArrowButton from '@components/common/BackArrowButton';
-import { useResponsive } from '@hooks/useResponsive';
+import { createStyles } from "./LoginScreen.styles";
+import { useTheme } from "@theme/index";
+import { useTranslation } from "react-i18next";
 
+import InputField from "@components/auth/InputField";
+import AuthLink from "@components/auth/AuthLink";
+import PrimaryButton from "@components/auth/PrimaryButton";
+import TermsModal from "@components/auth/TermsModal";
+import FeedbackModal from "@components/common/FeedbackModal";
+import BackArrowButton from "@components/common/BackArrowButton";
+import Logo from "@components/common/Logo";
+import { useResponsive } from "@hooks/useResponsive";
 
 type Props = {
   goToRegister: () => void;
@@ -27,7 +28,7 @@ type Props = {
   goBack: () => void;
 };
 
-type FeedbackType = 'info' | 'error' | 'success';
+type FeedbackType = "info" | "error" | "success";
 
 type CarouselItem = {
   image: ImageSourcePropType;
@@ -35,22 +36,26 @@ type CarouselItem = {
   description: string;
 };
 
-export default function LoginScreen({ goToRegister, onLoginSuccess, goBack }: Props) {
+export default function LoginScreen({
+  goToRegister,
+  onLoginSuccess,
+  goBack,
+}: Props) {
   const { isWeb, isMobile, width } = useResponsive();
   const { colors } = useTheme();
   const styles = createStyles(colors);
 
-  const { t } = useTranslation('login');
+  const { t } = useTranslation("login");
 
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
+  const [identifier, setIdentifier] = useState("");
+  const [password, setPassword] = useState("");
 
   const [termsVisible, setTermsVisible] = useState(false);
 
   const [feedbackVisible, setFeedbackVisible] = useState(false);
-  const [feedbackTitle, setFeedbackTitle] = useState('');
-  const [feedbackMessage, setFeedbackMessage] = useState('');
-  const [feedbackType, setFeedbackType] = useState<FeedbackType>('info');
+  const [feedbackTitle, setFeedbackTitle] = useState("");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
 
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -59,19 +64,19 @@ export default function LoginScreen({ goToRegister, onLoginSuccess, goBack }: Pr
 
   const carouselItems: CarouselItem[] = [
     {
-      image: require('@assets/images/Imagen1.jpg'),
-      title: t('carousel.0.title'),
-      description: t('carousel.0.description'),
+      image: require("@assets/images/Imagen1.jpg"),
+      title: t("carousel.0.title"),
+      description: t("carousel.0.description"),
     },
     {
-      image: require('@assets/images/Imagen2.jpg'),
-      title: t('carousel.1.title'),
-      description: t('carousel.1.description'),
+      image: require("@assets/images/Imagen2.jpg"),
+      title: t("carousel.1.title"),
+      description: t("carousel.1.description"),
     },
     {
-      image: require('@assets/images/Imagen3.jpg'),
-      title: t('carousel.2.title'),
-      description: t('carousel.2.description'),
+      image: require("@assets/images/Imagen3.jpg"),
+      title: t("carousel.2.title"),
+      description: t("carousel.2.description"),
     },
   ];
 
@@ -126,7 +131,7 @@ export default function LoginScreen({ goToRegister, onLoginSuccess, goBack }: Pr
   const showFeedback = (
     title: string,
     message: string,
-    type: FeedbackType = 'info'
+    type: FeedbackType = "info",
   ) => {
     setFeedbackTitle(title);
     setFeedbackMessage(message);
@@ -140,11 +145,19 @@ export default function LoginScreen({ goToRegister, onLoginSuccess, goBack }: Pr
 
   const handleLogin = () => {
     if (!identifier.trim()) {
-      return showFeedback(t('feedback.errorTitle'), t('feedback.emptyIdentifier'), 'error');
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.emptyIdentifier"),
+        "error",
+      );
     }
 
     if (!password.trim()) {
-      return showFeedback(t('feedback.errorTitle'), t('feedback.emptyPassword'), 'error');
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.emptyPassword"),
+        "error",
+      );
     }
 
     // Simulación login
@@ -152,9 +165,9 @@ export default function LoginScreen({ goToRegister, onLoginSuccess, goBack }: Pr
   };
 
   return (
-    <View style={[styles.safeArea, isWeb && styles.webSafeArea]}>
+    <SafeAreaView style={[styles.safeArea, isWeb && styles.webSafeArea]}>
       {isWeb && <BackArrowButton onPress={goBack} />}
-     
+
       <View style={[styles.container, isWeb && styles.webContainer]}>
         {/* FORM */}
         <View
@@ -165,46 +178,44 @@ export default function LoginScreen({ goToRegister, onLoginSuccess, goBack }: Pr
           ]}
         >
           <View>
-            <LoginHeader />
+            <View style={styles.logoContainer}>
+              <Logo width={150} height={150} />
+              <Text style={styles.logoTitle}>CuidaTuAgua</Text>
+            </View>
+
             <View style={isMobile && styles.mobileFormFields}>
               <InputField
                 value={identifier}
                 onChangeText={setIdentifier}
-                placeholder={t('form.mail') || ''}
+                placeholder={t("form.mail") || ""}
               />
 
               <InputField
                 value={password}
                 onChangeText={setPassword}
-                placeholder={t('form.password') || ''}
+                placeholder={t("form.password") || ""}
                 secureTextEntry
               />
 
               <View style={[isWeb && styles.webAuthLink]}>
                 <AuthLink
-                  text={t('form.forgot')}
+                  text={t("form.forgot")}
                   onPress={() =>
                     showFeedback(
-                      t('feedback.recoveryTitle'),
-                      t('feedback.recoveryMessage'),
-                      'info'
+                      t("feedback.recoveryTitle"),
+                      t("feedback.recoveryMessage"),
+                      "info",
                     )
                   }
                 />
 
-                <AuthLink
-                  text={t('form.register')}
-                  onPress={goToRegister}
-                />
+                <AuthLink text={t("form.register")} onPress={goToRegister} />
               </View>
             </View>
           </View>
 
-          <View style={[isMobile && styles.mobileButton]}>
-            <PrimaryButton
-              title={t('form.access')}
-              onPress={handleLogin}
-            />
+          <View >
+            <PrimaryButton title={t("form.access")} onPress={handleLogin} />
           </View>
         </View>
         {/* CAROUSEL WEB */}
@@ -266,6 +277,6 @@ export default function LoginScreen({ goToRegister, onLoginSuccess, goBack }: Pr
         type={feedbackType}
         onClose={closeFeedback}
       />
-    </View>
+    </SafeAreaView>
   );
 }

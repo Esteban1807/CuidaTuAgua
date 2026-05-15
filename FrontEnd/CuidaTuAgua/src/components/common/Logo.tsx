@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, StyleSheet, StyleProp, ViewStyle } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
-import { useTheme } from '@theme/ThemeContext';
+import React from "react";
+import { View, StyleSheet, StyleProp, ViewStyle } from "react-native";
+import Svg, { Path } from "react-native-svg";
+import { useTheme } from "@theme/ThemeContext";
 
 interface Props {
   width?: number;
@@ -12,11 +12,11 @@ interface Props {
 export default function Logo({ width = 70, height = 60, style }: Props) {
   const { mode, colors } = useTheme();
   const mainColor = colors.primary;
-  const secondaryColor =colors.textPrimary;
+  const secondaryColor = colors.textPrimary;
 
   return (
     <View style={[styles.container, style]}>
-      <Svg width={width} height={height} viewBox="0 0 500 500">
+      <Svg width={width} height={height} viewBox="100 100 300 300" preserveAspectRatio="xMidYMid meet">
         <Path
           d="M0 0 C0.99 0 1.98 0 3 0 C3.34998047 1.07701172 3.34998047 1.07701172 3.70703125 2.17578125 C6.66902275 10.58030129 10.65340559 17.93805621 15.25317383 25.55004883 C15.72134521 26.32888428 16.1895166 27.10771973 16.671875 27.91015625 C17.0956543 28.60246338 17.51943359 29.29477051 17.95605469 30.00805664 C19.0020683 32.0039465 19.55276602 33.79925155 20 36 C20.66 36 21.32 36 22 36 C37.28474787 63.33310259 37.28474787 63.33310259 33.34375 79.73046875 C29.98083395 89.07995519 24.27156721 96.0949559 15.5390625 100.84375 C6.24920634 105.07420758 -3.26984594 104.56787049 -12.7734375 101.05859375 C-21.69989222 96.81461265 -27.18943228 90.06036337 -30.80859375 80.96875 C-34.84336255 67.38966604 -30.18207903 54.63846165 -23.75 42.6875 C-22.51841015 40.4469622 -21.26590877 38.22148554 -20 36 C-19.34 36 -18.68 36 -18 36 C-17.86464844 35.20722656 -17.86464844 35.20722656 -17.7265625 34.3984375 C-16.74404959 31.15508845 -15.10242489 28.53961265 -13.375 25.625 C-9.24755525 18.56840091 -5.58553623 11.34550395 -2 4 C-1.33507227 2.66579861 -0.66926449 1.33203126 0 0 Z"
           fill={mainColor}
@@ -59,7 +59,7 @@ export default function Logo({ width = 70, height = 60, style }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

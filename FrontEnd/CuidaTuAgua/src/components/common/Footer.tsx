@@ -3,12 +3,14 @@ import { View, StyleSheet, Text, Linking, Alert } from "react-native";
 import { useTheme, spacing, typography } from "@theme/index";
 import { useTranslation } from "react-i18next";
 import { Ionicons } from "@expo/vector-icons";
+import { useResponsive } from "@hooks/useResponsive";
 
 import Logo from "./Logo";
 
 const Footer = () => {
   const { colors } = useTheme();
   const { t } = useTranslation("footer");
+  const { isMobile } = useResponsive();
 
   const openSocialLink = async (url?: string) => {
     if (!url) {
@@ -36,8 +38,8 @@ const Footer = () => {
 
   return (
     <View style={{ backgroundColor: colors.surfaceAlt, paddingVertical: spacing.lg, alignItems: "center" }}>
-      <View style={[styles.safeArea, ]}>
-        <View style={styles.container}>
+      <View style={[styles.safeArea, { flexDirection: isMobile ? "column" : "row" }]}>
+        <View style={[styles.container, isMobile && styles.mobileContainer]}>
           <Logo />
 
           <View style={{ marginVertical: spacing.sm }}>
@@ -75,11 +77,11 @@ const Footer = () => {
           </View>
         </View>
 
-        <View style={styles.container}>
+        <View style={[styles.container, isMobile && styles.mobileContainer]}>
           <Text style={[styles.minTitle, { color: colors.textPrimary }]}>
             {t("section1.title")}
           </Text>
-          <View style={{ marginTop: spacing.xs }}>
+          <View style={[ {marginTop: spacing.xs}, isMobile && { maxWidth:'90%'} ]}>
             {section1Items.map((itemKey) => (
               <View key={itemKey} style={styles.listItem}>
                 <Text style={[styles.bullet, { color: colors.textSecondary }]}>
@@ -95,7 +97,7 @@ const Footer = () => {
           </View>
         </View>
 
-        <View style={styles.container}>
+        <View style={[styles.container, isMobile && styles.mobileContainer]}>
           <Text style={[styles.minTitle, { color: colors.textPrimary }]}>
             {t("section2.title")}
           </Text>
@@ -138,6 +140,7 @@ export default Footer;
 const styles = StyleSheet.create({
   safeArea: {
     paddingBottom: spacing.xs,
+    paddingHorizontal: spacing.md,
     alignContent: "space-between",
     flexDirection: "row",
   },
@@ -148,6 +151,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "flex-start",
     padding: spacing.md,
+    minWidth: 0,
+  },
+  mobileContainer: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    width: "100%",
+    paddingVertical: spacing.md,
+    paddingHorizontal: 0,
   },
   title: {
     ...typography.subtitle,
@@ -159,17 +172,22 @@ const styles = StyleSheet.create({
   contentText: {
     ...typography.body,
     marginHorizontal: spacing.lg,
+    marginVertical: spacing.xs,
+
   },
   minTitle: {
     ...typography.body,
     fontWeight: "700" as const,
     margin: spacing.md,
+    marginHorizontal: 0,
     width: "100%",
+    marginTop: spacing.lg,
   },
   listItem: {
     flexDirection: "row",
     alignItems: "flex-start",
     marginBottom: spacing.xs,
+    width: "100%",
   },
   bullet: {
     fontSize: 18,
@@ -181,6 +199,9 @@ const styles = StyleSheet.create({
   mediaIcons: {
     flexDirection: "row",
     margin: spacing.md,
+    marginHorizontal: 0,
+    width: "100%",
+    justifyContent: "flex-start",
   },
   iconContainer: {
     width: 40,
@@ -194,6 +215,7 @@ const styles = StyleSheet.create({
   copyright: {
     textAlign: 'center',   
     fontSize: 12,
-    paddingVertical: 20,       
+    paddingVertical: 20,
+    width: "100%",
   },
 });

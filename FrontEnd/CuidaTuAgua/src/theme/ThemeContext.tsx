@@ -113,7 +113,7 @@ export const darkColors: ThemeColors = {
 
   // Grises (UI)
   grayLight: '#1E293B',
-  grayMedium: '#334155',
+  grayMedium: '#C2C2C2',
   grayDark: '#64748B',
   border: '#1F2A44',
 
@@ -195,7 +195,7 @@ export const ecoDarkColors: ThemeColors = {
   textOnPrimary: '#071A1A',
 
   grayLight: '#1E293B',
-  grayMedium: '#334155',
+  grayMedium: '#C2C2C2',
   grayDark: '#64748B',
   border: '#1F2A44',
 

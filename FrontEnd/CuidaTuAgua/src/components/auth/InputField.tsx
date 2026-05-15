@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   View,
   TextInput,
@@ -6,22 +6,31 @@ import {
   Text,
   TextInputProps,
   TouchableOpacity,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { useTheme, spacing, typography } from '@theme/index';
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useTheme, spacing, typography } from "@theme/index";
 
 type Props = TextInputProps & {
   label?: string;
 };
 
-export default function InputField({ label, secureTextEntry, style, ...props }: Props) {
+export default function InputField({
+  label,
+  secureTextEntry,
+  style,
+  ...props
+}: Props) {
   const { colors } = useTheme();
   const [showPassword, setShowPassword] = useState(false);
   const isPasswordField = secureTextEntry === true;
 
   return (
     <View style={styles.container}>
-      {label && <Text style={[styles.label, { color: colors.textPrimary }]}>{label}</Text>}
+      {label && (
+        <Text style={[styles.label, { color: colors.textPrimary }]}>
+          {label}
+        </Text>
+      )}
 
       <View style={styles.inputContainer}>
         <TextInput
@@ -29,7 +38,11 @@ export default function InputField({ label, secureTextEntry, style, ...props }: 
           secureTextEntry={isPasswordField && !showPassword}
           style={[
             styles.input,
-            { borderColor: colors.primary, color: colors.textPrimary, backgroundColor: colors.surface },
+            {
+              borderColor: colors.primary,
+              color: colors.textPrimary,
+              backgroundColor: colors.surface,
+            },
             isPasswordField && styles.inputWithToggle,
             style,
           ]}
@@ -43,7 +56,7 @@ export default function InputField({ label, secureTextEntry, style, ...props }: 
             activeOpacity={0.7}
           >
             <Ionicons
-              name={showPassword ? 'eye-off' : 'eye'}
+              name={showPassword ? "eye-off" : "eye"}
               size={22}
               color={colors.primary}
             />
@@ -65,7 +78,7 @@ const styles = StyleSheet.create({
   },
 
   inputContainer: {
-    position: 'relative',
+    position: "relative",
     marginBottom: spacing.md,
   },
 
@@ -82,10 +95,10 @@ const styles = StyleSheet.create({
   },
 
   toggleButton: {
-    position: 'absolute',
+    position: "absolute",
     right: spacing.sm,
     top: 0,
     bottom: 0,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });
