@@ -28,6 +28,8 @@
     "errorMessage": "Credenciais incorretas. Tente novamente.",
     "emptyIdentifier": "Digite seu usuário",
     "emptyPassword": "Digite sua senha",
+    "invalidIdentifier": "Digite um email válido ou documento numérico",
+    "noAccount": "Nenhuma conta registrada encontrada. Por favor registre-se primeiro.",
     "recoveryTitle": "Recuperação",
     "recoveryMessage": "Funcionalidade não implementada"
   }

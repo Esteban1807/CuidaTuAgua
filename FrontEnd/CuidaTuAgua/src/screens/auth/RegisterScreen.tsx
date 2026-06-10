@@ -16,6 +16,7 @@ import { useTheme } from "@theme/index";
 import { createStyles } from "./RegisterScreen.styles";
 import { useTranslation } from "react-i18next";
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import InputField from "@components/auth/InputField";
 import CheckboxField from "@components/auth/CheckboxField";
 import PrimaryButton from "@components/auth/PrimaryButton";
@@ -35,6 +36,7 @@ export default function RegisterScreen({ goToLogin }: Props) {
   const styles = createStyles(colors);
   const insets = useSafeAreaInsets();
   const { t } = useTranslation('register');
+  const STORAGE_KEY_USER = "cuidatuagua-user";
   const [fullName, setFullName] = useState("");
   const [document, setDocument] = useState("");
   const [email, setEmail] = useState("");
@@ -44,6 +46,10 @@ export default function RegisterScreen({ goToLogin }: Props) {
   const [address, setAddress] = useState("");
   const [stratum, setStratum] = useState("");
   const [inhabitants, setInhabitants] = useState("");
+
+  const isValidEmail = (value: string) => /^\S+@\S+\.\S+$/.test(value);
+  const isValidDocument = (value: string) => /^[0-9]+$/.test(value);
+  const isPositiveInteger = (value: string) => /^[1-9][0-9]*$/.test(value);
 
   const [termsVisible, setTermsVisible] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
@@ -72,27 +78,49 @@ export default function RegisterScreen({ goToLogin }: Props) {
     }
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (!fullName.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyFullName"), "error");
-    if (!document.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyDocument"), "error");
-    if (!email.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyEmail"), "error");
+    if (!document.trim() || !isValidDocument(document.trim()))
+      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidDocument"), "error");
+    if (!email.trim() || !isValidEmail(email.trim()))
+      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidEmail"), "error");
     if (!password.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyPassword"), "error");
+    if (password.trim().length < 6)
+      return showFeedback(t("feedback.errorTitle"), t("feedback.passwordTooShort"), "error");
     if (!homeName.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyHomeName"), "error");
     if (!address.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyAddress"), "error");
-    if (!stratum.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyStratum"), "error");
-    if (!inhabitants.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyInhabitants"), "error");
+    if (!stratum.trim() || !isPositiveInteger(stratum.trim()))
+      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidNumber"), "error");
+    if (!inhabitants.trim() || !isPositiveInteger(inhabitants.trim()))
+      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidNumber"), "error");
     if (!acceptedTerms)
       return showFeedback(t("feedback.errorTitle"), t("feedback.termsNotAccepted"), "error");
 
-    // Simulación de registro exitoso
+    const userData = {
+      fullName: fullName.trim(),
+      document: document.trim(),
+      email: email.trim().toLowerCase(),
+      password: password.trim(),
+      homeName: homeName.trim(),
+      address: address.trim(),
+      stratum: stratum.trim(),
+      inhabitants: inhabitants.trim(),
+    };
+
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY_USER, JSON.stringify(userData));
+    } catch (error) {
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.saveError"),
+        "error",
+      );
+    }
+
     showFeedback(t("success.title"), t("success.message"), "success");
   };
 

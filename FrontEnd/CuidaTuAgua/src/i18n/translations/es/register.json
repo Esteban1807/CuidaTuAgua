@@ -34,12 +34,17 @@
     "errorTitle": "Error",
     "emptyFullName": "Ingresa tu nombre completo",
     "emptyDocument": "Ingresa tu documento",
+    "invalidDocument": "Ingresa un documento numérico",
     "emptyEmail": "Ingresa tu correo electrónico",
+    "invalidEmail": "Ingresa un correo válido",
     "emptyPassword": "Ingresa tu contraseña",
+    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
     "emptyHomeName": "Ingresa el nombre del hogar",
     "emptyAddress": "Ingresa la dirección",
     "emptyStratum": "Ingresa el estrato",
+    "invalidNumber": "Ingresa un número válido",
     "emptyInhabitants": "Ingresa habitantes",
-    "termsNotAccepted": "Debes aceptar los términos"
+    "termsNotAccepted": "Debes aceptar los términos",
+    "saveError": "No se pudo guardar tu cuenta. Intenta de nuevo."
   }
 }

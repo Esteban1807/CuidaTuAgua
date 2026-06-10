@@ -32,12 +32,17 @@
     "errorTitle": "Error",
     "emptyFullName": "Enter your full name",
     "emptyDocument": "Enter your ID",
+    "invalidDocument": "Enter a numeric ID",
     "emptyEmail": "Enter your email",
+    "invalidEmail": "Enter a valid email",
     "emptyPassword": "Enter your password",
+    "passwordTooShort": "Password must be at least 6 characters",
     "emptyHomeName": "Enter the home name",
     "emptyAddress": "Enter the address",
     "emptyStratum": "Enter the stratum",
+    "invalidNumber": "Enter a valid number",
     "emptyInhabitants": "Enter number of inhabitants",
-    "termsNotAccepted": "You must accept the terms"
+    "termsNotAccepted": "You must accept the terms",
+    "saveError": "Unable to save your account. Try again."
   }
 }

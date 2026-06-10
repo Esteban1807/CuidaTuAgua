@@ -28,6 +28,8 @@
     "errorMessage": "Credenciales incorrectas. Inténtalo de nuevo.",
     "emptyIdentifier": "Ingresa tu usuario",
     "emptyPassword": "Ingresa tu contraseña",
+    "invalidIdentifier": "Ingresa un correo válido o un documento numérico",
+    "noAccount": "No existe una cuenta registrada. Por favor regístrate primero.",
     "recoveryTitle": "Recuperación",
     "recoveryMessage": "Funcionalidad no implementada"
   }

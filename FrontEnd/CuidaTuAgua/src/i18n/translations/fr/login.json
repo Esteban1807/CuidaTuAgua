@@ -28,6 +28,8 @@
     "errorMessage": "Identifiants incorrects. Réessayez.",
     "emptyIdentifier": "Entrez votre nom d'utilisateur",
     "emptyPassword": "Entrez votre mot de passe",
+    "invalidIdentifier": "Entrez un email valide ou un identifiant numérique",
+    "noAccount": "Aucun compte enregistré trouvé. Veuillez d'abord vous inscrire.",
     "recoveryTitle": "Récupération",
     "recoveryMessage": "Fonctionnalité non implémentée"
   }

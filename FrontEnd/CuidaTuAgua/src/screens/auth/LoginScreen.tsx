@@ -10,6 +10,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { createStyles } from "./LoginScreen.styles";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from "@theme/index";
 import { useTranslation } from "react-i18next";
 
@@ -46,9 +47,11 @@ export default function LoginScreen({
   const styles = createStyles(colors);
 
   const { t } = useTranslation("login");
+  const STORAGE_KEY_USER = "cuidatuagua-user";
 
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [termsVisible, setTermsVisible] = useState(false);
 
@@ -56,6 +59,9 @@ export default function LoginScreen({
   const [feedbackTitle, setFeedbackTitle] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
+
+  const isValidEmail = (value: string) => /^\S+@\S+\.\S+$/.test(value);
+  const isValidDocument = (value: string) => /^[0-9]+$/.test(value);
 
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -143,8 +149,11 @@ export default function LoginScreen({
     setFeedbackVisible(false);
   };
 
-  const handleLogin = () => {
-    if (!identifier.trim()) {
+  const handleLogin = async () => {
+    const trimmedIdentifier = identifier.trim();
+    const trimmedPassword = password.trim();
+
+    if (!trimmedIdentifier) {
       return showFeedback(
         t("feedback.errorTitle"),
         t("feedback.emptyIdentifier"),
@@ -152,7 +161,7 @@ export default function LoginScreen({
       );
     }
 
-    if (!password.trim()) {
+    if (!trimmedPassword) {
       return showFeedback(
         t("feedback.errorTitle"),
         t("feedback.emptyPassword"),
@@ -160,8 +169,67 @@ export default function LoginScreen({
       );
     }
 
-    // Simulación login
-    onLoginSuccess();
+    const identifierIsEmail = trimmedIdentifier.includes("@");
+
+    if (identifierIsEmail) {
+      if (!isValidEmail(trimmedIdentifier)) {
+        return showFeedback(
+          t("feedback.errorTitle"),
+          t("feedback.invalidIdentifier"),
+          "error",
+        );
+      }
+    } else {
+      if (!isValidDocument(trimmedIdentifier)) {
+        return showFeedback(
+          t("feedback.errorTitle"),
+          t("feedback.invalidIdentifier"),
+          "error",
+        );
+      }
+    }
+
+    setLoading(true);
+
+    try {
+      const storedUser = await AsyncStorage.getItem(STORAGE_KEY_USER);
+
+      if (!storedUser) {
+        return showFeedback(
+          t("feedback.errorTitle"),
+          t("feedback.noAccount"),
+          "error",
+        );
+      }
+
+      const user = JSON.parse(storedUser) as {
+        email: string;
+        document: string;
+        password: string;
+      };
+
+      const matchesIdentifier =
+        trimmedIdentifier.toLowerCase() === user.email.toLowerCase() ||
+        trimmedIdentifier === user.document;
+
+      if (!matchesIdentifier || trimmedPassword !== user.password) {
+        return showFeedback(
+          t("feedback.errorTitle"),
+          t("feedback.errorMessage"),
+          "error",
+        );
+      }
+
+      onLoginSuccess();
+    } catch (error) {
+      showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.errorMessage"),
+        "error",
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -215,7 +283,11 @@ export default function LoginScreen({
           </View>
 
           <View >
-            <PrimaryButton title={t("form.access")} onPress={handleLogin} />
+            <PrimaryButton
+            title={t("form.access")}
+            onPress={handleLogin}
+            loading={loading}
+          />
           </View>
         </View>
         {/* CAROUSEL WEB */}

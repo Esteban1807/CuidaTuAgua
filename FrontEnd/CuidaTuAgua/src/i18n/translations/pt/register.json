@@ -32,12 +32,17 @@
     "errorTitle": "Erro",
     "emptyFullName": "Digite seu nome completo",
     "emptyDocument": "Digite seu documento",
+    "invalidDocument": "Digite um documento numérico",
     "emptyEmail": "Digite seu email",
+    "invalidEmail": "Digite um email válido",
     "emptyPassword": "Digite sua senha",
+    "passwordTooShort": "A senha deve ter pelo menos 6 caracteres",
     "emptyHomeName": "Digite o nome da casa",
     "emptyAddress": "Digite o endereço",
     "emptyStratum": "Digite o estrato",
+    "invalidNumber": "Digite um número válido",
     "emptyInhabitants": "Digite o número de habitantes",
-    "termsNotAccepted": "Você deve aceitar os termos"
+    "termsNotAccepted": "Você deve aceitar os termos",
+    "saveError": "Não foi possível salvar sua conta. Tente novamente."
   }
 }

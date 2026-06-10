@@ -28,6 +28,8 @@
     "errorMessage": "Incorrect credentials. Try again.",
     "emptyIdentifier": "Enter your username",
     "emptyPassword": "Enter your password",
+    "invalidIdentifier": "Enter a valid email or numeric ID",
+    "noAccount": "No registered account found. Please register first.",
     "recoveryTitle": "Recovery",
     "recoveryMessage": "Functionality not implemented"
   }
