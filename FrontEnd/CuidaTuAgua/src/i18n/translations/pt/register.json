@@ -11,8 +11,9 @@
         "title": "Informações da Casa",
         "input1": "Nome da Casa",
         "input2": "Endereço",
-        "input3": "Estrato",
-        "input4": "Número de Moradores",
+        "input3": "Telefone",
+        "input4": "Estrato",
+        "input5": "Número de Moradores",
         "checkbox": "Termos e Condições"
     },
 
@@ -32,17 +33,25 @@
     "errorTitle": "Erro",
     "emptyFullName": "Digite seu nome completo",
     "emptyDocument": "Digite seu documento",
-    "invalidDocument": "Digite um documento numérico",
+    "invalidDocument": "Digite um documento numérico com pelo menos 8 dígitos",
     "emptyEmail": "Digite seu email",
     "invalidEmail": "Digite um email válido",
     "emptyPassword": "Digite sua senha",
-    "passwordTooShort": "A senha deve ter pelo menos 6 caracteres",
+    "passwordTooShort": "A senha deve ter pelo menos 8 caracteres",
+    "passwordFormat": "Use pelo menos 8 caracteres, uma maiúscula, uma minúscula e um caractere especial",
     "emptyHomeName": "Digite o nome da casa",
     "emptyAddress": "Digite o endereço",
+    "emptyPhone": "Digite seu número de telefone",
+    "invalidPhone": "Digite um número com entre 10 e 15 dígitos",
     "emptyStratum": "Digite o estrato",
     "invalidNumber": "Digite um número válido",
     "emptyInhabitants": "Digite o número de habitantes",
     "termsNotAccepted": "Você deve aceitar os termos",
     "saveError": "Não foi possível salvar sua conta. Tente novamente."
+    ,
+    "duplicateDocument": "Já existe uma conta com esse número de identificação",
+    "duplicateEmail": "Já existe uma conta com esse e-mail",
+    "duplicateAddress": "Já existe uma conta com esse endereço",
+    "duplicatePhone": "Já existe uma conta com esse número de telefone"
   }
 }

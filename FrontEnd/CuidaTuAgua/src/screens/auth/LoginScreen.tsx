@@ -47,7 +47,7 @@ export default function LoginScreen({
   const styles = createStyles(colors);
 
   const { t } = useTranslation("login");
-  const STORAGE_KEY_USER = "cuidatuagua-user";
+  const STORAGE_KEY_USERS = "cuidatuagua-users";
 
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
@@ -61,7 +61,7 @@ export default function LoginScreen({
   const [feedbackType, setFeedbackType] = useState<FeedbackType>("info");
 
   const isValidEmail = (value: string) => /^\S+@\S+\.\S+$/.test(value);
-  const isValidDocument = (value: string) => /^[0-9]+$/.test(value);
+  const isValidDocument = (value: string) => /^[0-9]{8,}$/.test(value);
 
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -192,9 +192,25 @@ export default function LoginScreen({
     setLoading(true);
 
     try {
-      const storedUser = await AsyncStorage.getItem(STORAGE_KEY_USER);
+      let raw = await AsyncStorage.getItem(STORAGE_KEY_USERS);
+      let users = raw ? (JSON.parse(raw) as any[]) : [];
 
-      if (!storedUser) {
+      // Lightweight migration from old single-user key if present
+      if (!users.length) {
+        const old = await AsyncStorage.getItem("cuidatuagua-user");
+        if (old) {
+          try {
+            const oldUser = JSON.parse(old);
+            users = [oldUser];
+            await AsyncStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
+            await AsyncStorage.removeItem("cuidatuagua-user");
+          } catch (e) {
+            // ignore malformed old data
+          }
+        }
+      }
+
+      if (!users.length) {
         return showFeedback(
           t("feedback.errorTitle"),
           t("feedback.noAccount"),
@@ -202,17 +218,12 @@ export default function LoginScreen({
         );
       }
 
-      const user = JSON.parse(storedUser) as {
-        email: string;
-        document: string;
-        password: string;
-      };
+      const user = users.find(u =>
+        trimmedIdentifier.toLowerCase() === (u.email || "").toLowerCase() ||
+        trimmedIdentifier === u.document
+      );
 
-      const matchesIdentifier =
-        trimmedIdentifier.toLowerCase() === user.email.toLowerCase() ||
-        trimmedIdentifier === user.document;
-
-      if (!matchesIdentifier || trimmedPassword !== user.password) {
+      if (!user || trimmedPassword !== user.password) {
         return showFeedback(
           t("feedback.errorTitle"),
           t("feedback.errorMessage"),
@@ -341,6 +352,8 @@ export default function LoginScreen({
         visible={termsVisible}
         onClose={() => setTermsVisible(false)}
       />
+
+      
 
       <FeedbackModal
         visible={feedbackVisible}

@@ -18,6 +18,7 @@ import { useTranslation } from "react-i18next";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import InputField from "@components/auth/InputField";
+import PhoneInputField from "@components/auth/PhoneInputField";
 import CheckboxField from "@components/auth/CheckboxField";
 import PrimaryButton from "@components/auth/PrimaryButton";
 import TermsModal from "@components/auth/TermsModal";
@@ -36,7 +37,7 @@ export default function RegisterScreen({ goToLogin }: Props) {
   const styles = createStyles(colors);
   const insets = useSafeAreaInsets();
   const { t } = useTranslation('register');
-  const STORAGE_KEY_USER = "cuidatuagua-user";
+  const STORAGE_KEY_USERS = "cuidatuagua-users";
   const [fullName, setFullName] = useState("");
   const [document, setDocument] = useState("");
   const [email, setEmail] = useState("");
@@ -44,11 +45,19 @@ export default function RegisterScreen({ goToLogin }: Props) {
 
   const [homeName, setHomeName] = useState("");
   const [address, setAddress] = useState("");
+  const [countryCode, setCountryCode] = useState("+57");
+  const [phone, setPhone] = useState("");
   const [stratum, setStratum] = useState("");
   const [inhabitants, setInhabitants] = useState("");
 
   const isValidEmail = (value: string) => /^\S+@\S+\.\S+$/.test(value);
-  const isValidDocument = (value: string) => /^[0-9]+$/.test(value);
+  const isValidDocument = (value: string) => /^[0-9]{8,}$/.test(value);
+  const isValidPhone = (value: string) => {
+    const cleaned = value.replace(/[^0-9]/g, "");
+    return cleaned.length >= 10 && cleaned.length <= 15;
+  };
+  const isValidPassword = (value: string) =>
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(value);
   const isPositiveInteger = (value: string) => /^[1-9][0-9]*$/.test(value);
 
   const [termsVisible, setTermsVisible] = useState(false);
@@ -87,12 +96,18 @@ export default function RegisterScreen({ goToLogin }: Props) {
       return showFeedback(t("feedback.errorTitle"), t("feedback.invalidEmail"), "error");
     if (!password.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyPassword"), "error");
-    if (password.trim().length < 6)
-      return showFeedback(t("feedback.errorTitle"), t("feedback.passwordTooShort"), "error");
+    if (!isValidPassword(password.trim()))
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.passwordFormat"),
+        "error",
+      );
     if (!homeName.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyHomeName"), "error");
     if (!address.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyAddress"), "error");
+    if (!phone.trim() || !isValidPhone(phone.trim()))
+      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidPhone"), "error");
     if (!stratum.trim() || !isPositiveInteger(stratum.trim()))
       return showFeedback(t("feedback.errorTitle"), t("feedback.invalidNumber"), "error");
     if (!inhabitants.trim() || !isPositiveInteger(inhabitants.trim()))
@@ -107,12 +122,54 @@ export default function RegisterScreen({ goToLogin }: Props) {
       password: password.trim(),
       homeName: homeName.trim(),
       address: address.trim(),
+      countryCode: countryCode.trim(),
+      phone: phone.trim(),
       stratum: stratum.trim(),
       inhabitants: inhabitants.trim(),
     };
 
     try {
-      await AsyncStorage.setItem(STORAGE_KEY_USER, JSON.stringify(userData));
+      let raw = await AsyncStorage.getItem(STORAGE_KEY_USERS);
+      let users = raw ? (JSON.parse(raw) as any[]) : [];
+
+      // Lightweight migration from single-user key if present
+      if (!users.length) {
+        const old = await AsyncStorage.getItem("cuidatuagua-user");
+        if (old) {
+          try {
+            const oldUser = JSON.parse(old);
+            users = [oldUser];
+            await AsyncStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
+            await AsyncStorage.removeItem("cuidatuagua-user");
+          } catch (e) {
+            // ignore malformed old data
+          }
+        }
+      }
+
+      // Check duplicates
+      const normalizedEmail = userData.email.toLowerCase();
+      const normalizedAddress = userData.address.toLowerCase();
+      const normalizedPhone = (userData.countryCode + userData.phone).replace(/\s+/g, "");
+
+      if (users.some(u => u.document === userData.document)) {
+        return showFeedback(t("feedback.errorTitle"), t("feedback.duplicateDocument"), "error");
+      }
+
+      if (users.some(u => (u.email || "").toLowerCase() === normalizedEmail)) {
+        return showFeedback(t("feedback.errorTitle"), t("feedback.duplicateEmail"), "error");
+      }
+
+      if (users.some(u => (u.address || "").toLowerCase() === normalizedAddress)) {
+        return showFeedback(t("feedback.errorTitle"), t("feedback.duplicateAddress"), "error");
+      }
+
+      if (users.some(u => ((u.countryCode || "") + (u.phone || "")).replace(/\s+/g, "") === normalizedPhone)) {
+        return showFeedback(t("feedback.errorTitle"), t("feedback.duplicatePhone"), "error");
+      }
+
+      users.push(userData);
+      await AsyncStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
     } catch (error) {
       return showFeedback(
         t("feedback.errorTitle"),
@@ -194,15 +251,27 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 onChangeText={setAddress}
                 placeholder={t("section2.input2") ?? ""}
               />
+              <PhoneInputField
+                countryCode={countryCode}
+                onCountryCodeChange={setCountryCode}
+                value={phone}
+                onChangeText={setPhone}
+                placeholder={t("section2.input3") ?? ""}
+                errorMessage={
+                  phone.length > 0 && !isValidPhone(phone)
+                    ? t("feedback.invalidPhone")
+                    : ""
+                }
+              />
               <InputField
                 value={stratum}
                 onChangeText={setStratum}
-                placeholder={t("section2.input3") ?? ""}
+                placeholder={t("section2.input4") ?? ""}
               />
               <InputField
                 value={inhabitants}
                 onChangeText={setInhabitants}
-                placeholder={t("section2.input4") ?? ""}
+                placeholder={t("section2.input5") ?? ""}
               />
 
               <View style={styles.cardBottom}>

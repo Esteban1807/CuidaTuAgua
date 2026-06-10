@@ -11,8 +11,9 @@
         "title": "Home Information",
         "input1": "Home Name",
         "input2": "Address",
-        "input3": "Stratum",
-        "input4": "Number of Residents",
+        "input3": "Phone",
+        "input4": "Stratum",
+        "input5": "Number of Residents",
         "checkbox": "Terms and Conditions"
     },
 
@@ -32,17 +33,25 @@
     "errorTitle": "Error",
     "emptyFullName": "Enter your full name",
     "emptyDocument": "Enter your ID",
-    "invalidDocument": "Enter a numeric ID",
+    "invalidDocument": "Enter a numeric ID with at least 8 digits",
     "emptyEmail": "Enter your email",
     "invalidEmail": "Enter a valid email",
     "emptyPassword": "Enter your password",
-    "passwordTooShort": "Password must be at least 6 characters",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordFormat": "Use at least 8 characters, one uppercase, one lowercase and one special symbol",
     "emptyHomeName": "Enter the home name",
     "emptyAddress": "Enter the address",
+    "emptyPhone": "Enter your phone number",
+    "invalidPhone": "Enter a phone number with 10 to 15 digits",
     "emptyStratum": "Enter the stratum",
     "invalidNumber": "Enter a valid number",
     "emptyInhabitants": "Enter number of inhabitants",
     "termsNotAccepted": "You must accept the terms",
     "saveError": "Unable to save your account. Try again."
+    ,
+    "duplicateDocument": "An account with that identification number already exists",
+    "duplicateEmail": "An account with that email already exists",
+    "duplicateAddress": "An account with that address already exists",
+    "duplicatePhone": "An account with that phone number already exists"
   }
 }

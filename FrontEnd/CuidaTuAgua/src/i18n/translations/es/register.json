@@ -13,8 +13,9 @@
         "title":"Datos del hogar",
         "input1": "Nombre del hogar",
         "input2": "Dirección",
-        "input3": "Estrato",
-        "input4": "Número de habitantes",
+        "input3": "Teléfono",
+        "input4": "Estrato",
+        "input5": "Número de habitantes",
         "checkbox":"Términos y Condiciones"
     },
 
@@ -34,17 +35,25 @@
     "errorTitle": "Error",
     "emptyFullName": "Ingresa tu nombre completo",
     "emptyDocument": "Ingresa tu documento",
-    "invalidDocument": "Ingresa un documento numérico",
+    "invalidDocument": "Ingresa un documento numérico con al menos 8 dígitos",
     "emptyEmail": "Ingresa tu correo electrónico",
     "invalidEmail": "Ingresa un correo válido",
     "emptyPassword": "Ingresa tu contraseña",
-    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres",
+    "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
+    "passwordFormat": "Usa al menos 8 caracteres, una mayúscula, una minúscula y un carácter especial",
     "emptyHomeName": "Ingresa el nombre del hogar",
     "emptyAddress": "Ingresa la dirección",
+    "emptyPhone": "Ingresa tu número de teléfono",
+    "invalidPhone": "Ingresa un número con entre 10 y 15 dígitos",
     "emptyStratum": "Ingresa el estrato",
     "invalidNumber": "Ingresa un número válido",
     "emptyInhabitants": "Ingresa habitantes",
     "termsNotAccepted": "Debes aceptar los términos",
     "saveError": "No se pudo guardar tu cuenta. Intenta de nuevo."
+    ,
+    "duplicateDocument": "Ya existe una cuenta con ese número de identificación",
+    "duplicateEmail": "Ya existe una cuenta con ese correo electrónico",
+    "duplicateAddress": "Ya existe una cuenta registrada con esa dirección",
+    "duplicatePhone": "Ya existe una cuenta con ese número de teléfono"
   }
 }
