@@ -32,5 +32,25 @@
     "noAccount": "Nenhuma conta registrada encontrada. Por favor registre-se primeiro.",
     "recoveryTitle": "Recuperação",
     "recoveryMessage": "Funcionalidade não implementada"
+  },
+  "forgotPassword": {
+    "title": "Recuperar senha",
+    "codeTitle": "Digite o código",
+    "newPasswordTitle": "Nova senha",
+    "step1Title": "Digite seu email ou documento",
+    "step2Title": "Digite o código de 6 dígitos",
+    "step3Title": "Crie sua nova senha",
+    "confirmPassword": "Confirmar senha",
+    "nextButton": "Próximo",
+    "updateButton": "Atualizar senha",
+    "userNotFound": "Usuário não encontrado",
+    "codeSent": "Código enviado",
+    "codeMessage": "Um código foi enviado para seu email. Digite os 6 dígitos.",
+    "invalidCode": "O código deve ter 6 dígitos",
+    "codeValid": "Código válido",
+    "changePassword": "Agora crie sua nova senha",
+    "passwordMismatch": "As senhas não coincidem",
+    "passwordChanged": "Senha atualizada",
+    "passwordSuccess": "Sua senha foi atualizada com sucesso"
   }
 }

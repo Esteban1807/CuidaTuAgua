@@ -25,6 +25,7 @@ import { useResponsive } from "@hooks/useResponsive";
 
 type Props = {
   goToRegister: () => void;
+  goToForgotPassword: () => void;
   onLoginSuccess: () => void;
   goBack: () => void;
 };
@@ -39,6 +40,7 @@ type CarouselItem = {
 
 export default function LoginScreen({
   goToRegister,
+  goToForgotPassword,
   onLoginSuccess,
   goBack,
 }: Props) {
@@ -279,13 +281,7 @@ export default function LoginScreen({
               <View style={[isWeb && styles.webAuthLink]}>
                 <AuthLink
                   text={t("form.forgot")}
-                  onPress={() =>
-                    showFeedback(
-                      t("feedback.recoveryTitle"),
-                      t("feedback.recoveryMessage"),
-                      "info",
-                    )
-                  }
+                  onPress={goToForgotPassword}
                 />
 
                 <AuthLink text={t("form.register")} onPress={goToRegister} />
@@ -352,8 +348,6 @@ export default function LoginScreen({
         visible={termsVisible}
         onClose={() => setTermsVisible(false)}
       />
-
-      
 
       <FeedbackModal
         visible={feedbackVisible}

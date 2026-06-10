@@ -32,5 +32,25 @@
     "noAccount": "No registered account found. Please register first.",
     "recoveryTitle": "Recovery",
     "recoveryMessage": "Functionality not implemented"
+  },
+  "forgotPassword": {
+    "title": "Recover password",
+    "codeTitle": "Enter code",
+    "newPasswordTitle": "New password",
+    "step1Title": "Enter your email or document",
+    "step2Title": "Enter the 6-digit code",
+    "step3Title": "Create your new password",
+    "confirmPassword": "Confirm password",
+    "nextButton": "Next",
+    "updateButton": "Update password",
+    "userNotFound": "User not found",
+    "codeSent": "Code sent",
+    "codeMessage": "A code has been sent to your email. Enter the 6 digits.",
+    "invalidCode": "The code must have 6 digits",
+    "codeValid": "Valid code",
+    "changePassword": "Now create your new password",
+    "passwordMismatch": "Passwords do not match",
+    "passwordChanged": "Password updated",
+    "passwordSuccess": "Your password has been successfully updated"
   }
 }

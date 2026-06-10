@@ -32,5 +32,25 @@
     "noAccount": "Aucun compte enregistré trouvé. Veuillez d'abord vous inscrire.",
     "recoveryTitle": "Récupération",
     "recoveryMessage": "Fonctionnalité non implémentée"
+  },
+  "forgotPassword": {
+    "title": "Récupérer le mot de passe",
+    "codeTitle": "Entrer le code",
+    "newPasswordTitle": "Nouveau mot de passe",
+    "step1Title": "Entrez votre email ou document",
+    "step2Title": "Entrez le code à 6 chiffres",
+    "step3Title": "Créez votre nouveau mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "nextButton": "Suivant",
+    "updateButton": "Mettre à jour le mot de passe",
+    "userNotFound": "Utilisateur non trouvé",
+    "codeSent": "Code envoyé",
+    "codeMessage": "Un code a été envoyé à votre email. Entrez les 6 chiffres.",
+    "invalidCode": "Le code doit avoir 6 chiffres",
+    "codeValid": "Code valide",
+    "changePassword": "Créez maintenant votre nouveau mot de passe",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "passwordChanged": "Mot de passe mis à jour",
+    "passwordSuccess": "Votre mot de passe a été mis à jour avec succès"
   }
 }
