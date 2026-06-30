@@ -13,7 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useResponsive } from "@hooks/useResponsive";
 import { useTheme } from "@theme/index";
-import { createStyles } from "./RegisterScreen.styles";
+import { createStyles } from "../register/RegisterScreen.styles";
 import { useTranslation } from "react-i18next";
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
