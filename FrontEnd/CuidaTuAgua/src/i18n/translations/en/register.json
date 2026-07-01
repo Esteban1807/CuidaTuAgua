@@ -14,15 +14,23 @@
         "input3": "Phone",
         "input4": "Stratum",
         "input5": "Number of Residents",
-        "checkbox": "Terms and Conditions"
+        "checkbox": "Terms and conditions of use"
     },
 
-    "paragraph1": "Welcome to CuidaTuAgua. By registering and using this application, you agree to the appropriate use of the platform and the information provided.",
-    "paragraph2": "The user agrees to provide truthful information during the registration process, including their personal data, email, and information about the associated home.",
-    "paragraph3": "CuidaTuAgua may display information related to tracking, consumption, and the water status of the registered home for consultation, monitoring, and management purposes by the user.",
-    "paragraph4": "The application will protect the user's personal information in accordance with applicable data processing policies. However, the user is responsible for keeping their access credentials.",
-    "paragraph5": "Improper use of the platform, falsity in the registered information, or any attempt to affect the system's operation may result in access restrictions.",
-    "paragraph6": "By accepting these terms and conditions, the user authorizes the processing of their data for the proper functioning of the application and acknowledges having read and understood this information.",
+    "paragraph1": "Welcome to Cuida Tu Agua. By accessing and using this platform, you accept these Terms and Conditions. If you do not agree with any of them, you should refrain from using the platform.",
+    "paragraph2": "Cuida Tu Agua is a digital platform designed to promote responsible water use through consumption monitoring, visualization of statistics, report generation, and recommendations aimed at saving this resource.",
+    "paragraph3": "Access, registration, or use of the platform implies that the user has read, understood, and accepted these Terms and Conditions, as well as the Personal Data Processing Policy.",
+    "paragraph4": "To access certain features, the user must register by providing truthful, complete, and up-to-date information. The user agrees to keep their credentials confidential, not share their account, update their data, and notify any unauthorized use.",
+    "paragraph5": "The user agrees to use the platform responsibly and in accordance with Colombian law. It is prohibited to use it for illegal activities, attempt to access it without authorization, alter its operation, distribute malicious software, impersonate others, or copy content without authorization.",
+    "paragraph6": "All content on Cuida Tu Agua, including software, source code, designs, logos, images, databases, texts, and graphics, is the property of its developers or their respective owners and is protected by Colombian copyright and intellectual property law.",
+    "paragraph7": "Cuida Tu Agua collects and processes personal data only to provide its services and improve the user experience, respecting the principles of legality, purpose, freedom, security, transparency, and confidentiality.",
+    "paragraph8": "Cuida Tu Agua will strive to keep the platform available continuously. However, it does not guarantee permanent availability due to scheduled maintenance, system updates, technical failures, or fortuitous events or force majeure.",
+    "paragraph9": "Cuida Tu Agua provides monitoring and analysis tools for informational purposes. It does not guarantee that the platform is free of errors or that data provided by third parties is completely accurate.",
+    "paragraph10": "Cuida Tu Agua may modify these Terms and Conditions at any time. The changes will be published on the platform and will take effect from their publication.",
+    "paragraph11": "Cuida Tu Agua may suspend or cancel a user's access when they breach these Terms and Conditions, engage in fraudulent activities, affect the security or stability of the platform, or use the platform for illegal purposes.",
+    "paragraph12": "These Terms and Conditions are governed by the laws of the Republic of Colombia, especially the Political Constitution, Law 527 of 1999, Law 23 of 1982, Law 1273 of 2009, Law 1480 of 2011, Law 1581 of 2012, Decree 1377 of 2013, Law 1712 of 2014, and Law 1915 of 2018.",
+    "paragraph13": "For inquiries related to these Terms and Conditions, users may contact the official channels provided by Cuida Tu Agua.",
+    "paragraph14": "These Terms and Conditions enter into force from their publication on the platform and will remain in force until modified or replaced by a new version.",
 
     "close": "Close",
   "success": {
