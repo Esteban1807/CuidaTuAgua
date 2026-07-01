@@ -129,7 +129,10 @@ const styles = StyleSheet.create({
   },
   label: {
     ...typography.body,
-    marginBottom: spacing.lg,
+    marginBottom: spacing.sm,
+    fontWeight: "600", 
+    fontSize: 16,
+
   },
   row: {
     flexDirection: "row",
@@ -160,7 +163,6 @@ const styles = StyleSheet.create({
   },
   errorText: {
     marginTop: spacing.xs,
-    ...typography.caption,
   },
   modalOverlay: {
     flex: 1,

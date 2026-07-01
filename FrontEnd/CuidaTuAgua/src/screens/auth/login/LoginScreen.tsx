@@ -246,8 +246,13 @@ export default function LoginScreen({
   };
 
   return (
-    <SafeAreaView style={[styles.safeArea, isWeb && styles.webSafeArea]}>
-      {isWeb && <BackArrowButton onPress={goBack}/>}
+    <SafeAreaView style={[styles.safeArea, isMobile && styles.safeAreaMobile]} edges={["top", "bottom"]}>
+        {isWeb && (
+          <View style={[styles.header, isWeb && styles.headerWeb]}>
+            <BackArrowButton onPress={goBack} style={styles.backButton} />
+            <Text style={styles.title}>{t("title")}</Text>
+          </View>
+        )}
 
       <View style={[styles.container, isWeb && styles.webContainer]}>
         {/* FORM */}
@@ -269,6 +274,7 @@ export default function LoginScreen({
                 value={identifier}
                 onChangeText={setIdentifier}
                 placeholder={t("form.mail") || ""}
+                label={t("form.mail") || ""}
               />
 
               <InputField
@@ -276,6 +282,7 @@ export default function LoginScreen({
                 onChangeText={setPassword}
                 placeholder={t("form.password") || ""}
                 secureTextEntry
+                label={t("form.password") || ""}
               />
 
               <View style={[isWeb && styles.webAuthLink]}>

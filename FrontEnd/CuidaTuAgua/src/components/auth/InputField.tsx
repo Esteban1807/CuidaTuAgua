@@ -11,7 +11,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useTheme, spacing, typography } from "@theme/index";
 
 type Props = TextInputProps & {
-  label?: string;
+  label: string;
 };
 
 export default function InputField({
@@ -74,12 +74,14 @@ const styles = StyleSheet.create({
 
   label: {
     ...typography.body,
-    marginBottom: spacing.lg,
+    marginBottom: spacing.sm,
+    fontWeight: "600",
+    fontSize: 16,
   },
 
   inputContainer: {
     position: "relative",
-    marginBottom: spacing.md,
+    // marginBottom: spacing.md,
   },
 
   input: {
