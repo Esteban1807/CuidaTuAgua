@@ -18,7 +18,6 @@ import FeedbackModal from "@components/common/FeedbackModal";
 
 type Props = {
   goToLogin: () => void;
-  goBack: () => void;
 };
 
 type FeedbackType = "info" | "error" | "success";
@@ -26,7 +25,7 @@ type Step = "identifier" | "code" | "newPassword";
 
 const STORAGE_KEY_USERS = "cuidatuagua-users";
 
-export default function ForgotPasswordScreen({ goToLogin, goBack }: Props) {
+export default function ForgotPasswordScreen({ goToLogin }: Props) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   const { t } = useTranslation("login");
@@ -223,7 +222,7 @@ export default function ForgotPasswordScreen({ goToLogin, goBack }: Props) {
     <SafeAreaView style={styles.safeArea}>
       {/* HEADER */}
       <View style={[styles.header, isWeb && styles.headerWeb]}>
-        <BackArrowButton onPress={goBack} style={styles.backButton} />
+        <BackArrowButton onPress={goToLogin} style={styles.backButton} />
         <Text style={[styles.title, isMobile && styles.titleMobile]}>
           {step === "identifier"
             ? "forgotPassword.title" in t

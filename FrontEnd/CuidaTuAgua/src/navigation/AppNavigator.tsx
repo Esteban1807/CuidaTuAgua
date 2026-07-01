@@ -3,9 +3,9 @@ import { Platform } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import LandingScreen from "@screens/LandingScreen";
-import LoginScreen from "@screens/auth/LoginScreen";
+import LoginScreen from "@screens/auth/login/LoginScreen";
 import RegisterScreen from "@screens/auth/register/RegisterScreen";
-import ForgotPasswordScreen from "@screens/auth/ForgotPasswordScreen";
+import ForgotPasswordScreen from "@screens/auth/forgotPassword/ForgotPasswordScreen";
 import DashboardScreen from "@screens/dashboard/DashboardScreen";
 import StatsScreen from "@screens/dashboard/StatsScreen";
 
@@ -36,15 +36,21 @@ export default function AppNavigator() {
             goToRegister={() => navigation.navigate("register")}
             goToForgotPassword={() => navigation.navigate("forgotPassword")}
             onLoginSuccess={() => navigation.replace("dashboard")}
-            goBack={() => navigation.goBack("landing")}
+            goBack={() => navigation.navigate("landing")}
           />
         )}
       </Stack.Screen>
-
+      
       {/* REGISTER */}
       <Stack.Screen name="register">
         {({ navigation }) => (
-          <RegisterScreen goToLogin={() => navigation.navigate("login")} />
+          <RegisterScreen
+            goToLogin={() =>
+              navigation.canGoBack()
+                ? navigation.goBack()
+                : navigation.navigate("login")
+            }
+          />
         )}
       </Stack.Screen>
 
@@ -52,8 +58,11 @@ export default function AppNavigator() {
       <Stack.Screen name="forgotPassword">
         {({ navigation }) => (
           <ForgotPasswordScreen
-            goToLogin={() => navigation.navigate("login")}
-            goBack={() => navigation.goBack()}
+            goToLogin={() =>
+              navigation.canGoBack()
+                ? navigation.goBack()
+                : navigation.navigate("login")
+            }
           />
         )}
       </Stack.Screen>

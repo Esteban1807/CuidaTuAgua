@@ -247,7 +247,7 @@ export default function LoginScreen({
 
   return (
     <SafeAreaView style={[styles.safeArea, isWeb && styles.webSafeArea]}>
-      {isWeb && <BackArrowButton onPress={goBack} />}
+      {isWeb && <BackArrowButton onPress={goBack}/>}
 
       <View style={[styles.container, isWeb && styles.webContainer]}>
         {/* FORM */}
