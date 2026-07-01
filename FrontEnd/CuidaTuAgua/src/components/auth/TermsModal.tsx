@@ -21,6 +21,7 @@ export default function TermsModal({ visible, onClose }: Props) {
   const { isWeb } = useResponsive();
   const { colors } = useTheme()
   const t = useTranslation('register').t;
+  const paragraphKeys = Array.from({ length: 14 }, (_, index) => `paragraph${index + 1}`);
 
   return (
     <Modal
@@ -43,17 +44,14 @@ export default function TermsModal({ visible, onClose }: Props) {
             style={styles.content}
             showsVerticalScrollIndicator={false}
           >
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph1')}</Text>
-
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph2')}</Text>
-
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph3')}</Text>
-
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph4')}</Text>
-
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph5')}</Text>
-
-            <Text style={[styles.paragraph, { color: colors.textPrimary }]}>{t('paragraph6')}</Text>
+            {paragraphKeys.map((key) => {
+              const text = t(key);
+              return text ? (
+                <Text key={key} style={[styles.paragraph, { color: colors.textPrimary }]}>
+                  {text}
+                </Text>
+              ) : null;
+            })}
           </ScrollView>
 
           <TouchableOpacity style={[styles.button, { backgroundColor: colors.secondary }]} onPress={onClose}>
