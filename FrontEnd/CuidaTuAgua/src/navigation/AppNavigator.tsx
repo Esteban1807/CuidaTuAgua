@@ -5,7 +5,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LandingScreen from "@screens/LandingScreen";
 import LoginScreen from "@screens/auth/login/LoginScreen";
 import RegisterScreen from "@screens/auth/register/RegisterScreen";
-import ForgotPasswordScreen from "@screens/auth/forgotPassword/ForgotPasswordScreen";
 import DashboardScreen from "@screens/dashboard/DashboardScreen";
 import StatsScreen from "@screens/dashboard/StatsScreen";
 
@@ -34,7 +33,6 @@ export default function AppNavigator() {
         {({ navigation }) => (
           <LoginScreen
             goToRegister={() => navigation.navigate("register")}
-            goToForgotPassword={() => navigation.navigate("forgotPassword")}
             onLoginSuccess={() => navigation.replace("dashboard")}
             goBack={() => navigation.navigate("landing")}
           />
@@ -45,19 +43,6 @@ export default function AppNavigator() {
       <Stack.Screen name="register">
         {({ navigation }) => (
           <RegisterScreen
-            goToLogin={() =>
-              navigation.canGoBack()
-                ? navigation.goBack()
-                : navigation.navigate("login")
-            }
-          />
-        )}
-      </Stack.Screen>
-
-      {/* FORGOT PASSWORD */}
-      <Stack.Screen name="forgotPassword">
-        {({ navigation }) => (
-          <ForgotPasswordScreen
             goToLogin={() =>
               navigation.canGoBack()
                 ? navigation.goBack()

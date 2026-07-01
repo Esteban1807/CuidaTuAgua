@@ -1,4 +1,5 @@
 {
+    "title": "Iniciar sesión",
     "form":{
         "mail": "Correo / Documento",
         "password": "Contraseña",
@@ -51,6 +52,18 @@
     "changePassword": "Ahora crea tu nueva contraseña",
     "passwordMismatch": "Las contraseñas no coinciden",
     "passwordChanged": "Contraseña actualizada",
-    "passwordSuccess": "Tu contraseña ha sido actualizada correctamente"
+    "passwordSuccess": "Tu contraseña ha sido actualizada correctamente",
+    "codeLabel": "Código de verificación",
+    "stepIndicator": {
+      "identity": "Identidad",
+      "code": "Código",
+      "password": "Contraseña"
+    },
+    "step2Subtitle": "Hemos enviado un código de 6 dígitos a tu correo",
+    "step2Info": "Revisa tu bandeja de entrada o carpeta de spam",
+    "step3Description": "Asegúrate de usar mayúsculas, minúsculas y caracteres especiales",
+    "closeButton": "Cerrar",
+    "backButton": "Atrás",
+    "codePlaceholder": "000000"
   }
 }

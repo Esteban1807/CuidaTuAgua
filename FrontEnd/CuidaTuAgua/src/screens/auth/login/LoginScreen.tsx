@@ -18,6 +18,7 @@ import InputField from "@components/auth/InputField";
 import AuthLink from "@components/auth/AuthLink";
 import PrimaryButton from "@components/auth/PrimaryButton";
 import TermsModal from "@components/auth/TermsModal";
+import ForgotPasswordModal from "@components/auth/ForgotPasswordModal";
 import FeedbackModal from "@components/common/FeedbackModal";
 import BackArrowButton from "@components/common/BackArrowButton";
 import Logo from "@components/common/Logo";
@@ -25,7 +26,6 @@ import { useResponsive } from "@hooks/useResponsive";
 
 type Props = {
   goToRegister: () => void;
-  goToForgotPassword: () => void;
   onLoginSuccess: () => void;
   goBack: () => void;
 };
@@ -40,7 +40,6 @@ type CarouselItem = {
 
 export default function LoginScreen({
   goToRegister,
-  goToForgotPassword,
   onLoginSuccess,
   goBack,
 }: Props) {
@@ -56,6 +55,7 @@ export default function LoginScreen({
   const [loading, setLoading] = useState(false);
 
   const [termsVisible, setTermsVisible] = useState(false);
+  const [forgotPasswordVisible, setForgotPasswordVisible] = useState(false);
 
   const [feedbackVisible, setFeedbackVisible] = useState(false);
   const [feedbackTitle, setFeedbackTitle] = useState("");
@@ -288,7 +288,7 @@ export default function LoginScreen({
               <View style={[isWeb && styles.webAuthLink]}>
                 <AuthLink
                   text={t("form.forgot")}
-                  onPress={goToForgotPassword}
+                  onPress={() => setForgotPasswordVisible(true)}
                 />
 
                 <AuthLink text={t("form.register")} onPress={goToRegister} />
@@ -354,6 +354,11 @@ export default function LoginScreen({
       <TermsModal
         visible={termsVisible}
         onClose={() => setTermsVisible(false)}
+      />
+
+      <ForgotPasswordModal
+        visible={forgotPasswordVisible}
+        onClose={() => setForgotPasswordVisible(false)}
       />
 
       <FeedbackModal

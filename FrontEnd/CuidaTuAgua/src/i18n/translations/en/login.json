@@ -1,4 +1,5 @@
 {
+  "title": "Sign in",
   "form":{
     "mail": "Email / Document",
     "password": "Password",
@@ -51,6 +52,18 @@
     "changePassword": "Now create your new password",
     "passwordMismatch": "Passwords do not match",
     "passwordChanged": "Password updated",
-    "passwordSuccess": "Your password has been successfully updated"
+    "passwordSuccess": "Your password has been successfully updated",
+    "codeLabel": "Verification code",
+    "stepIndicator": {
+      "identity": "Identity",
+      "code": "Code",
+      "password": "Password"
+    },
+    "step2Subtitle": "We sent a 6-digit code to your email",
+    "step2Info": "Check your inbox or spam folder",
+    "step3Description": "Make sure you use uppercase, lowercase and special characters",
+    "closeButton": "Close",
+    "backButton": "Back",
+    "codePlaceholder": "000000"
   }
 }

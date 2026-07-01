@@ -17,6 +17,10 @@
         "checkbox": "Terms and conditions of use"
     },
 
+    "action": {
+        "register": "Register"
+    },
+
     "paragraph1": "Welcome to Cuida Tu Agua. By accessing and using this platform, you accept these Terms and Conditions. If you do not agree with any of them, you should refrain from using the platform.",
     "paragraph2": "Cuida Tu Agua is a digital platform designed to promote responsible water use through consumption monitoring, visualization of statistics, report generation, and recommendations aimed at saving this resource.",
     "paragraph3": "Access, registration, or use of the platform implies that the user has read, understood, and accepted these Terms and Conditions, as well as the Personal Data Processing Policy.",

@@ -4,7 +4,7 @@
     "section1": {
         "title":"Datos del usuario",
         "input1": "Nombre completo",
-        "input2": "Dcumento de identidad",
+        "input2": "Documento de identidad",
         "input3": "Correo electrónico",
         "input4": "Contraseña"
     },
@@ -17,6 +17,10 @@
         "input4": "Estrato",
         "input5": "Número de habitantes",
         "checkbox":"Términos y condiciones de uso"
+    },
+
+    "action": {
+        "register": "Registrarse"
     },
 
     "paragraph1": "Bienvenido a Cuida Tu Agua. Al acceder y utilizar esta plataforma, aceptas los presentes Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, deberás abstenerte de usar la plataforma.",
