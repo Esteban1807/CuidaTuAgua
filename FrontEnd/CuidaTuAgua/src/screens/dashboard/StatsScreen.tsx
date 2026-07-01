@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity, Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
@@ -7,7 +7,11 @@ import { useTheme } from "@theme/index";
 import { useTranslation } from "react-i18next";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function StatsScreen() {
+type Props = {
+  onClose?: () => void;
+};
+
+export default function StatsScreen({ onClose }: Props) {
   const navigation = useNavigation<any>();
   const { colors } = useTheme();
   const { t } = useTranslation("dashboard");
@@ -45,28 +49,40 @@ export default function StatsScreen() {
     { month: t("stats.march"), value: "12.450 L" },
     { month: t("stats.april"), value: "11.980 L" },
   ];
+  const webHeight =
+    Platform.OS === "web" && typeof window !== "undefined"
+      ? Math.max(0, window.innerHeight - 120)
+      : undefined;
 
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: colors.background }}
       edges={["top"]}
     >
-      <ScrollView
-        style={{
-          flex: 1,
-          backgroundColor: colors.background,
-        }}
-        contentContainerStyle={{
-          padding: 20,
-          paddingBottom: 40,
-          flexGrow: 1,
-        }}
-        showsVerticalScrollIndicator={false}
-      >
+      <View style={{ flex: 1, minHeight: 0, ...(webHeight ? { height: webHeight } : {}) }}>
+        <ScrollView
+          style={{
+            flex: 1,
+            backgroundColor: colors.background,
+            ...(Platform.OS === "web" && webHeight ? { height: webHeight, overflow: "auto" as any } : {}),
+          }}
+          contentContainerStyle={{
+            padding: 20,
+            paddingBottom: 40,
+            ...(Platform.OS === "web" ? { flexGrow: 0 } : { flexGrow: 1 }),
+          }}
+          keyboardShouldPersistTaps="handled"
+          showsVerticalScrollIndicator={false}
+          scrollEnabled={true}
+          nestedScrollEnabled={true}
+        >
         {/* BACK BUTTON */}
         <TouchableOpacity
           activeOpacity={0.8}
-          onPress={() => navigation.goBack()}
+          onPress={() => {
+            if (onClose) return onClose();
+            return navigation.goBack();
+          }}
           style={{
             width: 48,
             height: 48,
@@ -360,7 +376,8 @@ export default function StatsScreen() {
             </View>
           ))}
         </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
