@@ -373,6 +373,19 @@ export default function RegisterScreen({ goToLogin }: Props) {
                       isValidEmail,
                     )}
                   />
+                  <PhoneInputField
+                    label={t("section2.input3") ?? ""}
+                    countryCode={countryCode}
+                    onCountryCodeChange={setCountryCode}
+                    value={phone}
+                    onChangeText={setPhone}
+                    placeholder={t("section2.input3") ?? ""}
+                    errorMessage={
+                      phone.length > 0 && !isValidPhone(phone)
+                        ? t("feedback.invalidPhone")
+                        : ""
+                    }
+                  />
                   <InputField
                     value={password}
                     onChangeText={setPassword}
@@ -439,6 +452,20 @@ export default function RegisterScreen({ goToLogin }: Props) {
                       t("feedback.invalidEmail"),
                       isValidEmail,
                     )}
+                  />
+
+                  <PhoneInputField
+                    label={t("section2.input3") ?? ""}
+                    countryCode={countryCode}
+                    onCountryCodeChange={setCountryCode}
+                    value={phone}
+                    onChangeText={setPhone}
+                    placeholder={t("section2.input3") ?? ""}
+                    errorMessage={
+                      phone.length > 0 && !isValidPhone(phone)
+                        ? t("feedback.invalidPhone")
+                        : ""
+                    }
                   />
                   <InputField
                     value={password}
