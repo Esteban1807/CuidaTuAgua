@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, Text} from "react-native";
+import { View, TouchableOpacity, Text, Platform } from "react-native";
 import Sidebar from "./Sidebar";
 import HomeScreen from "@screens/dashboard/layouts/HomeScreen";
 import ProfileScreen from "@screens/dashboard/layouts/ProfileScreen";
@@ -35,7 +35,7 @@ export default function SidebarLayout({ onSignOut, userName = "User" }: SidebarL
         />
       )}
 
-      <View style={{ flex: 1, flexDirection: "column", minHeight: 0 }}>
+      <View style={{ flex: 1, flexDirection: "column", minHeight: 0, ...(Platform.OS === "web" ? { height: "100vh" } : {}) }}>
         <View
           style={{
             height: 60,

@@ -2,10 +2,12 @@ import React from "react";
 import { View, Text, ScrollView, TouchableOpacity, Platform } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import TabButton from "@components/navigation/TabButton";
 
 import { useTheme } from "@theme/index";
 import { useTranslation } from "react-i18next";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useResponsive } from "@hooks/useResponsive";
 
 type Props = {
   onClose?: () => void;
@@ -15,6 +17,7 @@ export default function StatsScreen({ onClose }: Props) {
   const navigation = useNavigation<any>();
   const { colors } = useTheme();
   const { t } = useTranslation("dashboard");
+  const { isMobile } = useResponsive();
 
   const stats = [
     {
@@ -49,27 +52,27 @@ export default function StatsScreen({ onClose }: Props) {
     { month: t("stats.march"), value: "12.450 L" },
     { month: t("stats.april"), value: "11.980 L" },
   ];
-  const webHeight =
-    Platform.OS === "web" && typeof window !== "undefined"
-      ? Math.max(0, window.innerHeight - 120)
-      : undefined;
+  // On web, allow the ScrollView to manage overflow and grow to available space
+  const webOverflowStyle = Platform.OS === "web" ? { overflow: "auto" as any } : {};
 
   return (
     <SafeAreaView
       style={{ flex: 1, backgroundColor: colors.background }}
       edges={["top"]}
     >
-      <View style={{ flex: 1, minHeight: 0, ...(webHeight ? { height: webHeight } : {}) }}>
+      <View style={{ flex: 1, minHeight: 0, position: "relative" as any }}>
         <ScrollView
           style={{
             flex: 1,
             backgroundColor: colors.background,
-            ...(Platform.OS === "web" && webHeight ? { height: webHeight, overflow: "auto" as any } : {}),
+            ...webOverflowStyle,
+            maxHeight: "100%",
           }}
           contentContainerStyle={{
             padding: 20,
-            paddingBottom: 40,
-            ...(Platform.OS === "web" ? { flexGrow: 0 } : { flexGrow: 1 }),
+            paddingBottom: isMobile ? 100 : 40,
+            // Let content determine height so ScrollView can overflow
+            flexGrow: 0,
           }}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}
@@ -377,6 +380,27 @@ export default function StatsScreen({ onClose }: Props) {
           ))}
         </View>
         </ScrollView>
+          {/* MOBILE TABBAR - fixed at bottom */}
+          {isMobile && (
+            <View
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: 60,
+                flexDirection: "row",
+                backgroundColor: colors.surfaceAlt,
+                borderTopLeftRadius: 12,
+                borderTopRightRadius: 12,
+                overflow: "hidden",
+              }}
+            >
+              <TabButton label={t("drawer.home")} active={false} onPress={() => navigation.navigate("dashboard")} />
+              <TabButton label={t("drawer.profile")} active={false} onPress={() => navigation.navigate("dashboard")} />
+              <TabButton label={t("drawer.settings")} active={false} onPress={() => navigation.navigate("dashboard")} />
+            </View>
+          )}
       </View>
     </SafeAreaView>
   );

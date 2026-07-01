@@ -88,7 +88,7 @@ export default function LoginScreen({
     },
   ];
 
-  const carouselWidth = Math.min(500, width * 0.3);
+  const carouselWidth = Math.min(420, width * 0.25);
 
   const animateSlide = (newIndex: number) => {
     Animated.parallel([

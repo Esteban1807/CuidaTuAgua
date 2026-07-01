@@ -26,58 +26,71 @@ export const createStyles = (colors: ThemeColors) =>
 
     pageWeb: {
       flexDirection: "row",
+      flexWrap: "wrap",
       justifyContent: "center",
       alignItems: "flex-start",
       gap: spacing.xl,
       paddingHorizontal: spacing.xxl,
-      paddingTop: spacing.lg,
+      paddingTop: spacing.xl,
       backgroundColor: colors.background,
-      
     },
 
     container: {
-      maxWidth: 400,
+      width: "100%",
+      maxWidth: 520,
+      minWidth: 340,
+      flexShrink: 1,
       paddingHorizontal: spacing.lg,
-      
+    },
+
+    containerWeb: {
+      marginTop: -spacing.xl,
+      maxHeight: 500,
+    },
+
+    containerMobile: {
+      minWidth: 0,
+      maxWidth: "100%",
+      paddingHorizontal: spacing.md,
+      marginTop: 0,
     },
 
     card: {
-      flex: 1,
-      maxWidth: 650,
-      minHeight: 610,
-
+      width: "100%",
       backgroundColor: colors.surface,
-      borderRadius: 24,
-
-      padding: spacing.xl,
-
+      borderRadius: 30,
+      padding: spacing.lg,
       borderWidth: 1,
-      borderColor: "rgba(255,255,255,0.05)",
-
+      borderColor: "rgba(0,0,0,0.06)",
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
-        height: 10,
+        height: 12,
       },
-      shadowOpacity: 0.25,
-      shadowRadius: 20,
-
+      shadowOpacity: 0.08,
+      shadowRadius: 28,
       elevation: 8,
-
-      justifyContent: "space-between",
+      justifyContent: "flex-start",
+      alignSelf: "flex-start",
     },
 
     cardMobile: {
       padding: spacing.lg,
-      marginHorizontal: spacing.md,
+      marginBottom: spacing.lg,
+    },
+
+    cardScrollWrapper: {
+      flex: 1,
+      maxHeight: "100%",
+    },
+
+    cardScrollContent: {
+      flexGrow: 1,
+      paddingBottom: spacing.lg,
     },
 
     cardBottom: {
       marginTop: spacing.lg,
-    },
-
-    cardBottomSpacing: {
-      height: 60,
     },
 
     header: {
@@ -88,7 +101,6 @@ export const createStyles = (colors: ThemeColors) =>
       paddingHorizontal: spacing.lg,
       paddingTop: spacing.sm,
       paddingBottom: spacing.md,
-
       borderBottomWidth: 1,
       borderBottomColor: "rgba(255,255,255,0.05)",
     },
