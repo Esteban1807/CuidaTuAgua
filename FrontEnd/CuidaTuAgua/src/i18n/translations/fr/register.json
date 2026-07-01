@@ -17,6 +17,10 @@
         "checkbox": "Conditions générales d'utilisation"
     },
 
+    "action": {
+        "register": "S'inscrire"
+    },
+
     "paragraph1": "Bienvenue sur Cuida Tu Agua. En accédant à cette plateforme et en l'utilisant, vous acceptez les présentes Conditions générales. Si vous n'êtes pas d'accord avec l'une d'entre elles, vous devez vous abstenir d'utiliser la plateforme.",
     "paragraph2": "Cuida Tu Agua est une plateforme numérique conçue pour promouvoir une utilisation responsable de l'eau grâce au suivi de la consommation, à la visualisation de statistiques, à la génération de rapports et à la fourniture de recommandations visant à économiser cette ressource.",
     "paragraph3": "L'accès, l'inscription ou l'utilisation de la plateforme implique que l'utilisateur a lu, compris et accepté ces Conditions générales ainsi que la Politique de traitement des données personnelles.",

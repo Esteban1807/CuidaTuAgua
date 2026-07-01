@@ -1,4 +1,5 @@
 {
+  "title": "Se connecter",
   "form":{
     "mail": "Email / document",
     "password": "Mot de passe",
@@ -51,6 +52,18 @@
     "changePassword": "Créez maintenant votre nouveau mot de passe",
     "passwordMismatch": "Les mots de passe ne correspondent pas",
     "passwordChanged": "Mot de passe mis à jour",
-    "passwordSuccess": "Votre mot de passe a été mis à jour avec succès"
+    "passwordSuccess": "Votre mot de passe a été mis à jour avec succès",
+    "codeLabel": "Code de vérification",
+    "stepIndicator": {
+      "identity": "Identité",
+      "code": "Code",
+      "password": "Mot de passe"
+    },
+    "step2Subtitle": "Nous avons envoyé un code à 6 chiffres à votre email",
+    "step2Info": "Vérifiez votre boîte de réception ou votre dossier spam",
+    "step3Description": "Assurez-vous d'utiliser des majuscules, des minuscules et des caractères spéciaux",
+    "closeButton": "Fermer",
+    "backButton": "Retour",
+    "codePlaceholder": "000000"
   }
 }

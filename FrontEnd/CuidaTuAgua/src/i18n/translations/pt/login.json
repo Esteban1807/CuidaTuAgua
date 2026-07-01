@@ -1,4 +1,5 @@
 {
+  "title": "Entrar",
   "form":{
     "mail": "Email / Documento",
     "password": "Senha",
@@ -51,6 +52,18 @@
     "changePassword": "Agora crie sua nova senha",
     "passwordMismatch": "As senhas não coincidem",
     "passwordChanged": "Senha atualizada",
-    "passwordSuccess": "Sua senha foi atualizada com sucesso"
+    "passwordSuccess": "Sua senha foi atualizada com sucesso",
+    "codeLabel": "Código de verificação",
+    "stepIndicator": {
+      "identity": "Identidade",
+      "code": "Código",
+      "password": "Senha"
+    },
+    "step2Subtitle": "Enviamos um código de 6 dígitos para o seu e-mail",
+    "step2Info": "Confira sua caixa de entrada ou pasta de spam",
+    "step3Description": "Certifique-se de usar letras maiúsculas, minúsculas e caracteres especiais",
+    "closeButton": "Fechar",
+    "backButton": "Voltar",
+    "codePlaceholder": "000000"
   }
 }

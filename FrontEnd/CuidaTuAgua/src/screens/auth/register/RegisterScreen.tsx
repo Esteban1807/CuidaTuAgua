@@ -310,7 +310,7 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 isWeb && styles.footerWeb,
               ]}
             >
-              <PrimaryButton title="Registrarse" onPress={handleRegister} />
+              <PrimaryButton title={t("action.register") ?? "Register"} onPress={handleRegister} />
             </View>
           </View>
         </View>
