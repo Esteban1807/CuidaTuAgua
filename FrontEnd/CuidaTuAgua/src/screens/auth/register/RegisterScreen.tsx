@@ -19,6 +19,8 @@ import { useTranslation } from "react-i18next";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import InputField from "@components/auth/InputField";
 import PhoneInputField from "@components/auth/PhoneInputField";
+import CountrySelectField from "@components/auth/CountrySelectField";
+import StratumSelectField from "@components/auth/StratumSelectField";
 import CheckboxField from "@components/auth/CheckboxField";
 import PrimaryButton from "@components/auth/PrimaryButton";
 import TermsModal from "@components/auth/TermsModal";
@@ -39,15 +41,25 @@ export default function RegisterScreen({ goToLogin }: Props) {
   const { t } = useTranslation('register');
   const STORAGE_KEY_USERS = "cuidatuagua-users";
   const [fullName, setFullName] = useState("");
-  const [document, setDocument] = useState("");
+  const [document, setDocument] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [homeName, setHomeName] = useState("");
   const [address, setAddress] = useState("");
+  const [country, setCountry] = useState("Colombia");
   const [countryCode, setCountryCode] = useState("+57");
   const [phone, setPhone] = useState("");
   const [stratum, setStratum] = useState("");
+
+  const getStratumOptions = (selectedCountry: string) => {
+    if (selectedCountry === "Ecuador") {
+      return ["A", "B", "C+", "C-", "D"];
+    }
+
+    return ["1", "2", "3", "4", "5", "6"];
+  };
   const [inhabitants, setInhabitants] = useState("");
 
   const isValidEmail = (value: string) => /^\S+@\S+\.\S+$/.test(value);
@@ -62,6 +74,7 @@ export default function RegisterScreen({ goToLogin }: Props) {
 
   const [termsVisible, setTermsVisible] = useState(false);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [submitAttempted, setSubmitAttempted] = useState(false);
 
   const [feedbackVisible, setFeedbackVisible] = useState(false);
   const [feedbackTitle, setFeedbackTitle] = useState("");
@@ -87,7 +100,31 @@ export default function RegisterScreen({ goToLogin }: Props) {
     }
   };
 
+  const getInlineError = (
+    value: string,
+    emptyMessage: string,
+    invalidMessage: string,
+    validator?: (val: string) => boolean,
+  ) => {
+    const trimmedValue = value.trim();
+
+    if (!submitAttempted && !trimmedValue) {
+      return "";
+    }
+
+    if (!trimmedValue) {
+      return emptyMessage;
+    }
+
+    if (validator && !validator(trimmedValue)) {
+      return invalidMessage;
+    }
+
+    return "";
+  };
+
   const handleRegister = async () => {
+    setSubmitAttempted(true);
     if (!fullName.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyFullName"), "error");
     if (!document.trim() || !isValidDocument(document.trim()))
@@ -102,6 +139,10 @@ export default function RegisterScreen({ goToLogin }: Props) {
         t("feedback.passwordFormat"),
         "error",
       );
+    if (!confirmPassword.trim())
+      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyConfirmPassword"), "error");
+    if (password.trim() !== confirmPassword.trim())
+      return showFeedback(t("feedback.errorTitle"), t("feedback.passwordMismatch"), "error");
     if (!homeName.trim())
       return showFeedback(t("feedback.errorTitle"), t("feedback.emptyHomeName"), "error");
     if (!address.trim())
@@ -122,6 +163,7 @@ export default function RegisterScreen({ goToLogin }: Props) {
       password: password.trim(),
       homeName: homeName.trim(),
       address: address.trim(),
+      country: country.trim(),
       countryCode: countryCode.trim(),
       phone: phone.trim(),
       stratum: stratum.trim(),
@@ -212,18 +254,21 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 onChangeText={setFullName}
                 placeholder={t("section1.input1") ?? ""}
                 label={t("section1.input1") ?? ""}
+                errorMessage={getInlineError(fullName, t("feedback.emptyFullName"), t("feedback.emptyFullName"))}
               />
               <InputField
                 value={document}
                 onChangeText={setDocument}
                 placeholder={t("section1.input2") ?? ""}
                 label={t("section1.input2") ?? ""}
+                errorMessage={getInlineError(document, t("feedback.invalidDocument"), t("feedback.invalidDocument"), isValidDocument)}
               />
               <InputField
                 value={email}
                 onChangeText={setEmail}
                 placeholder={t("section1.input3") ?? ""}
                 label={t("section1.input3") ?? ""}
+                errorMessage={getInlineError(email, t("feedback.invalidEmail"), t("feedback.invalidEmail"), isValidEmail)}
               />
               <InputField
                 value={password}
@@ -231,6 +276,15 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 placeholder={t("section1.input4") ?? ""}
                 label={t("section1.input4") ?? ""}
                 secureTextEntry
+                errorMessage={getInlineError(password, t("feedback.emptyPassword"), t("feedback.passwordFormat"), isValidPassword)}
+              />
+              <InputField
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                placeholder={t("section1.input5") ?? ""}
+                label={t("section1.input5") ?? ""}
+                secureTextEntry
+                errorMessage={getInlineError(confirmPassword, t("feedback.emptyConfirmPassword"), t("feedback.passwordMismatch"), (value) => value === password)}
               />
 
               <View style={styles.cardBottomSpacing} />
@@ -250,12 +304,22 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 onChangeText={setHomeName}
                 placeholder={t("section2.input1") ?? ""}
                 label={t("section2.input1") ?? ""}
+                errorMessage={getInlineError(homeName, t("feedback.emptyHomeName"), t("feedback.emptyHomeName"))}
               />
               <InputField
                 value={address}
                 onChangeText={setAddress}
                 placeholder={t("section2.input2") ?? ""}
                 label={t("section2.input2") ?? ""}
+                errorMessage={getInlineError(address, t("feedback.emptyAddress"), t("feedback.emptyAddress"))}
+              />
+              <CountrySelectField
+                label={t("section2.input6") ?? ""}
+                value={country}
+                onCountryChange={(selectedCountry, selectedCode) => {
+                  setCountry(selectedCountry);
+                  setCountryCode(selectedCode);
+                }}
               />
               <PhoneInputField
               label={t("section2.input3") ?? ""}
@@ -270,17 +334,25 @@ export default function RegisterScreen({ goToLogin }: Props) {
                     : ""
                 }
               />
-              <InputField
-                value={stratum}
-                onChangeText={setStratum}
-                placeholder={t("section2.input4") ?? ""}
+              <StratumSelectField
                 label={t("section2.input4") ?? ""}
+                value={stratum}
+                onChange={setStratum}
+                options={getStratumOptions(country)}
+                errorMessage={getInlineError(stratum, t("feedback.invalidNumber"), t("feedback.invalidNumber"), (value) => {
+                  if (country === "Ecuador") {
+                    return ["A", "B", "C+", "C-", "D"].includes(value);
+                  }
+
+                  return isPositiveInteger(value) && Number(value) >= 1 && Number(value) <= 6;
+                })}
               />
               <InputField
                 value={inhabitants}
                 onChangeText={setInhabitants}
                 placeholder={t("section2.input5") ?? ""}
                 label={t("section2.input5") ?? ""}
+                errorMessage={getInlineError(inhabitants, t("feedback.invalidNumber"), t("feedback.invalidNumber"), isPositiveInteger)}
               />
 
               <View style={styles.cardBottom}>

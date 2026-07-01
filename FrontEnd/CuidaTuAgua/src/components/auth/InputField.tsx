@@ -12,17 +12,20 @@ import { useTheme, spacing, typography } from "@theme/index";
 
 type Props = TextInputProps & {
   label: string;
+  errorMessage?: string;
 };
 
 export default function InputField({
   label,
   secureTextEntry,
   style,
+  errorMessage,
   ...props
 }: Props) {
   const { colors } = useTheme();
   const [showPassword, setShowPassword] = useState(false);
   const isPasswordField = secureTextEntry === true;
+  const hasError = Boolean(errorMessage);
 
   return (
     <View style={styles.container}>
@@ -39,7 +42,7 @@ export default function InputField({
           style={[
             styles.input,
             {
-              borderColor: colors.primary,
+              borderColor: hasError ? colors.error : colors.primary,
               color: colors.textPrimary,
               backgroundColor: colors.surface,
             },
@@ -63,6 +66,12 @@ export default function InputField({
           </TouchableOpacity>
         )}
       </View>
+
+      {errorMessage ? (
+        <Text style={[styles.errorText, { color: colors.error }]}>
+          {errorMessage}
+        </Text>
+      ) : null}
     </View>
   );
 }
@@ -94,6 +103,11 @@ const styles = StyleSheet.create({
 
   inputWithToggle: {
     paddingRight: 110,
+  },
+
+  errorText: {
+    marginTop: spacing.xs,
+    fontSize: 12,
   },
 
   toggleButton: {

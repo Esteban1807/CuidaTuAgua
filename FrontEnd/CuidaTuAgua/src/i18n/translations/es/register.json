@@ -6,7 +6,8 @@
         "input1": "Nombre completo",
         "input2": "Documento de identidad",
         "input3": "Correo electrónico",
-        "input4": "Contraseña"
+        "input4": "Contraseña",
+        "input5": "Confirmar contraseña"
     },
 
     "section2": {
@@ -16,6 +17,7 @@
         "input3": "Teléfono",
         "input4": "Estrato",
         "input5": "Número de habitantes",
+        "input6": "País",
         "checkbox":"Términos y condiciones de uso"
     },
 
@@ -51,8 +53,10 @@
     "emptyEmail": "Ingresa tu correo electrónico",
     "invalidEmail": "Ingresa un correo válido",
     "emptyPassword": "Ingresa tu contraseña",
+    "emptyConfirmPassword": "Confirma tu contraseña",
     "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
     "passwordFormat": "Usa al menos 8 caracteres, una mayúscula, una minúscula y un carácter especial",
+    "passwordMismatch": "Las contraseñas no coinciden",
     "emptyHomeName": "Ingresa el nombre del hogar",
     "emptyAddress": "Ingresa la dirección",
     "emptyPhone": "Ingresa tu número de teléfono",
