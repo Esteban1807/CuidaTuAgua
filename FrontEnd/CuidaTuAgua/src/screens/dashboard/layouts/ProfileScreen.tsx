@@ -109,21 +109,7 @@ export default function ProfileScreen() {
         )}
       </View>
 
-      {/* Botón */}
-      <View style={styles.buttonContainer}>
-        {!isEditing ? (
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => setIsEditing(true)}
-          >
-            <Text style={styles.buttonText}>{t("editProfile")}</Text>
-          </TouchableOpacity>
-        ) : (
-          <TouchableOpacity style={styles.button} onPress={handleSave}>
-            <Text style={styles.buttonText}>{t("saveChanges")}</Text>
-          </TouchableOpacity>
-        )}
-      </View>
+      {/* Botón inline removido; se usa botón fijo */}
 
       <FeedbackModal
         visible={modalVisible}
@@ -132,6 +118,19 @@ export default function ProfileScreen() {
         type="success"
         onClose={() => setModalVisible(false)}
       />
+
+      {/* Fixed bottom button */}
+      <View style={styles.fixedButton} pointerEvents="box-none">
+        <TouchableOpacity
+          style={styles.fixedButtonInner}
+          onPress={() => {
+            if (!isEditing) setIsEditing(true);
+            else handleSave();
+          }}
+        >
+          <Text style={styles.fixedButtonText}>{isEditing ? t("saveChanges") : t("editProfile")}</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }

@@ -52,18 +52,17 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     webContainer: {
-      margin: spacing.xxl,
+      marginBottom: spacing.xl,
       alignItems: "center",
       justifyContent: "center",
-      padding: spacing.xxl,
       flexDirection: "row",
-      maxWidth: 1500,
+      flexWrap: "wrap",
+      maxWidth: 1200,
       alignSelf: "center",
       width: "100%",
       backgroundColor: colors.surface,
-      borderRadius: 50,
-      minHeight: 520,
-      maxHeight: "90%",
+      borderRadius: 40,
+      minHeight: 420,
     },
 
     formSection: {
@@ -74,12 +73,15 @@ export const createStyles = (colors: ThemeColors) =>
 
     webForm: {
       flex: 1,
-      maxWidth: 600,
-      marginRight: spacing.xxl,
+      maxWidth: 540,
+      minWidth: 320,
+      marginRight: spacing.lg,
+      flexShrink: 1,
     },
 
     mobileForm: {
-      paddingTop: spacing.xxl,
+      paddingTop: spacing.lg,
+      paddingBottom: spacing.lg,
     },
 
     logoContainer: {
@@ -112,8 +114,9 @@ export const createStyles = (colors: ThemeColors) =>
       alignItems: "center",
       overflow: "hidden",
       height: "100%",
-      maxWidth: 600,
-      marginLeft: spacing.xxl,
+      maxWidth: 520,
+      minWidth: 300,
+      marginLeft: spacing.xl,
     },
 
     carouselRow: {
@@ -140,6 +143,7 @@ export const createStyles = (colors: ThemeColors) =>
       justifyContent: "center",
       backgroundColor: colors.grayLight,
       borderRadius: 20,
+      marginRight: spacing.xs,
     },
 
     rightArrow: {
@@ -149,17 +153,20 @@ export const createStyles = (colors: ThemeColors) =>
       justifyContent: "center",
       backgroundColor: colors.grayLight,
       borderRadius: 20,
+      marginLeft: spacing.xs,
     },
 
     arrowText: {
+      marginBottom: spacing.xs,
       fontSize: 24,
       fontWeight: "bold",
       color: colors.primary,
     },
 
     carouselImage: {
-      width: "70%",
-      height: 290,
+      width: "100%",
+      maxWidth: 420,
+      height: 280,
       borderRadius: 20,
     },
 

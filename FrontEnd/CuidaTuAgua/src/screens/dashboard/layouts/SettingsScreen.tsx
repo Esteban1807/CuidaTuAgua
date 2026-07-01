@@ -182,16 +182,9 @@ export default function SettingsScreen() {
         </View>
       </View>
 
-      {/* LOGOUT */}
+      {/* LOGOUT (fixed on mobile) */}
       {isMobile && (
-        <TouchableOpacity
-          onPress={handleLogout}
-          style={styles.logoutButton}
-        >
-          <Text style={styles.logoutButtonText}>
-            {t("logout.title")}
-          </Text>
-        </TouchableOpacity>
+        <></>
       )}
 
       <FeedbackModal
@@ -203,6 +196,14 @@ export default function SettingsScreen() {
         onClose={handleCancelLogout}
         onSecondaryPress={handleConfirmLogout}
       />
+
+      {isMobile && (
+        <View style={styles.fixedLogout} pointerEvents="box-none">
+          <TouchableOpacity style={styles.fixedLogoutInner} onPress={handleLogout}>
+            <Text style={styles.fixedLogoutText}>{t("logout.title")}</Text>
+          </TouchableOpacity>
+        </View>
+      )}
 
     </View>
   );

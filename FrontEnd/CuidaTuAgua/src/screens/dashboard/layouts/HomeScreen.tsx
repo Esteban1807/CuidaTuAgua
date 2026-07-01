@@ -10,7 +10,11 @@ import { useResponsive } from "@hooks/useResponsive";
 
 import FeedbackModal from "@components/common/FeedbackModal";
 
-export default function HomeScreen() {
+type Props = {
+  onOpenStats?: (homeId?: string) => void;
+};
+
+export default function HomeScreen({ onOpenStats }: Props) {
   const navigation = useNavigation<any>();
   const { colors } = useTheme();
   const { t } = useTranslation("dashboard");
@@ -60,10 +64,17 @@ export default function HomeScreen() {
     }
 
     return (
-      <TouchableOpacity style={styles.card}
-      activeOpacity={0.8}
-      onPress={() => navigation.navigate("stats")}
-      >  
+      <TouchableOpacity
+        style={styles.card}
+        activeOpacity={0.8}
+        onPress={() => {
+          if (onOpenStats) {
+            onOpenStats(item.id);
+          } else {
+            navigation.navigate("stats");
+          }
+        }}
+      >
         <Text style={styles.cardTitle}>{item.nameHome}</Text>
         <Text style={styles.cardValue}>{item.descriptionHome}</Text>
       </TouchableOpacity>

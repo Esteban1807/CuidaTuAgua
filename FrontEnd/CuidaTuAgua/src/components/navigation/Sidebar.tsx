@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Platform } from "react-native";
 import { useTheme } from "@theme/index";
 import { useTranslation } from "react-i18next";
 import Logo from "../common/Logo";
@@ -25,7 +25,7 @@ export default function Sidebar({ tab, onTabChange, onSignOut }: SidebarProps) {
         width: 280,
         backgroundColor: colors.surfaceAlt,
         padding: 16,
-        height: "100%",
+        height: Platform.OS === "web" ? "100vh" : "100%",
         justifyContent: "space-between",
       }}
     >

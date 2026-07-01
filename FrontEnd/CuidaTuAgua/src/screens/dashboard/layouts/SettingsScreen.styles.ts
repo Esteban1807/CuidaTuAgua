@@ -7,6 +7,8 @@ export const createStyles = (colors: ThemeColors) =>
       paddingTop: 20,
       backgroundColor: colors.background,
       flex: 1,
+      paddingHorizontal: 30,
+      paddingBottom: 120,
     },
 
     title: {
@@ -25,7 +27,6 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     card: {
-      marginHorizontal: 30,
       backgroundColor: colors.surface,
       borderRadius: 14,
       padding: 16,
@@ -57,7 +58,7 @@ export const createStyles = (colors: ThemeColors) =>
       backgroundColor: colors.surface,
       paddingLeft: 16,
       paddingBottom: 10,
-      marginHorizontal: 30,
+      
       borderEndEndRadius: 14, 
       borderEndStartRadius: 14, 
     },
@@ -101,12 +102,33 @@ export const createStyles = (colors: ThemeColors) =>
       borderRadius: 8,
       backgroundColor: colors.error,
       alignItems: "center",
-      marginHorizontal: 30,
       marginTop: 16,
       marginBottom: 20,
     },
 
     logoutButtonText: {
+      color: colors.textOnPrimary,
+      fontSize: 16,
+      fontWeight: "600",
+    },
+    fixedLogout: {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 20,
+      alignItems: "center",
+    },
+
+    fixedLogoutInner: {
+      backgroundColor: colors.error,
+      paddingVertical: 12,
+      paddingHorizontal: 16,
+      borderRadius: 8,
+      minWidth: 200,
+      alignItems: "center",
+    },
+
+    fixedLogoutText: {
       color: colors.textOnPrimary,
       fontSize: 16,
       fontWeight: "600",

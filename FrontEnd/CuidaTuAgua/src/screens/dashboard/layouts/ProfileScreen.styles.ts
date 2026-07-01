@@ -7,7 +7,9 @@ export const createStyles = (colors: ThemeColors) =>
       flex: 1,
       backgroundColor: colors.surface,
       paddingTop: 20,
-      marginHorizontal: 30,
+      paddingHorizontal: 30,
+      paddingBottom: 120,
+      width: "100%",
     },
 
     /* HEADER */
@@ -60,6 +62,7 @@ export const createStyles = (colors: ThemeColors) =>
       shadowOpacity: 0.08,
       shadowRadius: 6,
       elevation: 3,
+    
     },
 
     sectionTitle: {
@@ -94,6 +97,7 @@ export const createStyles = (colors: ThemeColors) =>
     buttonContainer: {
       marginTop: 16,
       alignItems: "center",
+      
     },
 
     button: {
@@ -106,6 +110,27 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     buttonText: {
+      color: "#fff",
+      fontWeight: "600",
+    },
+    fixedButton: {
+      position: "absolute",
+      left: 0,
+      right: 0,
+      bottom: 20,
+      alignItems: "center",
+    },
+
+    fixedButtonInner: {
+      backgroundColor: colors.primary,
+      paddingVertical: 12,
+      paddingHorizontal: 24,
+      borderRadius: 10,
+      minWidth: 200,
+      alignItems: "center",
+    },
+
+    fixedButtonText: {
       color: "#fff",
       fontWeight: "600",
     },

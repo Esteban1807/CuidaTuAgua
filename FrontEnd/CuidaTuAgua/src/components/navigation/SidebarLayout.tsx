@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, Text} from "react-native";
+import { View, TouchableOpacity, Text, Platform } from "react-native";
 import Sidebar from "./Sidebar";
 import HomeScreen from "@screens/dashboard/layouts/HomeScreen";
 import ProfileScreen from "@screens/dashboard/layouts/ProfileScreen";
 import SettingsScreen from "@screens/dashboard/layouts/SettingsScreen";
+import StatsScreen from "@screens/dashboard/StatsScreen";
 import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "@theme/index";
 
@@ -17,6 +18,7 @@ export default function SidebarLayout({ onSignOut, userName = "User" }: SidebarL
   const navigation = useNavigation<any>();
   const [tab, setTab] = useState("home");
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [selectedHome, setSelectedHome] = useState<string | undefined>(undefined);
   const { colors } = useTheme();
 
   const toggleSidebar = () => {
@@ -33,7 +35,7 @@ export default function SidebarLayout({ onSignOut, userName = "User" }: SidebarL
         />
       )}
 
-      <View style={{ flex: 1, flexDirection: "column" }}>
+      <View style={{ flex: 1, flexDirection: "column", minHeight: 0, ...(Platform.OS === "web" ? { height: "100vh" } : {}) }}>
         <View
           style={{
             height: 60,
@@ -107,10 +109,18 @@ export default function SidebarLayout({ onSignOut, userName = "User" }: SidebarL
           </View>
         </View>
 
-        <View style={{ flex: 1 }}>
-          {tab === "home" && <HomeScreen />}
+        <View style={{ flex: 1, minHeight: 0 }}>
+          {tab === "home" && (
+            <HomeScreen
+              onOpenStats={(homeId?: string) => {
+                setSelectedHome(homeId);
+                setTab("stats");
+              }}
+            />
+          )}
           {tab === "profile" && <ProfileScreen />}
           {tab === "settings" && <SettingsScreen />}
+          {tab === "stats" && <StatsScreen onClose={() => setTab("home")} />}
         </View>
       </View>
       

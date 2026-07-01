@@ -16,7 +16,7 @@ import { useTheme } from "@theme/index";
 import { createStyles } from "../register/RegisterScreen.styles";
 import { useTranslation } from "react-i18next";
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import InputField from "@components/auth/InputField";
 import PhoneInputField from "@components/auth/PhoneInputField";
 import CountrySelectField from "@components/auth/CountrySelectField";
@@ -38,10 +38,10 @@ export default function RegisterScreen({ goToLogin }: Props) {
   const { colors } = useTheme();
   const styles = createStyles(colors);
   const insets = useSafeAreaInsets();
-  const { t } = useTranslation('register');
+  const { t } = useTranslation("register");
   const STORAGE_KEY_USERS = "cuidatuagua-users";
   const [fullName, setFullName] = useState("");
-  const [document, setDocument] = useState(""); 
+  const [document, setDocument] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -126,13 +126,29 @@ export default function RegisterScreen({ goToLogin }: Props) {
   const handleRegister = async () => {
     setSubmitAttempted(true);
     if (!fullName.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyFullName"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.emptyFullName"),
+        "error",
+      );
     if (!document.trim() || !isValidDocument(document.trim()))
-      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidDocument"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.invalidDocument"),
+        "error",
+      );
     if (!email.trim() || !isValidEmail(email.trim()))
-      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidEmail"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.invalidEmail"),
+        "error",
+      );
     if (!password.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyPassword"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.emptyPassword"),
+        "error",
+      );
     if (!isValidPassword(password.trim()))
       return showFeedback(
         t("feedback.errorTitle"),
@@ -140,21 +156,53 @@ export default function RegisterScreen({ goToLogin }: Props) {
         "error",
       );
     if (!confirmPassword.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyConfirmPassword"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.emptyConfirmPassword"),
+        "error",
+      );
     if (password.trim() !== confirmPassword.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.passwordMismatch"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.passwordMismatch"),
+        "error",
+      );
     if (!homeName.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyHomeName"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.emptyHomeName"),
+        "error",
+      );
     if (!address.trim())
-      return showFeedback(t("feedback.errorTitle"), t("feedback.emptyAddress"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.emptyAddress"),
+        "error",
+      );
     if (!phone.trim() || !isValidPhone(phone.trim()))
-      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidPhone"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.invalidPhone"),
+        "error",
+      );
     if (!stratum.trim() || !isPositiveInteger(stratum.trim()))
-      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidNumber"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.invalidNumber"),
+        "error",
+      );
     if (!inhabitants.trim() || !isPositiveInteger(inhabitants.trim()))
-      return showFeedback(t("feedback.errorTitle"), t("feedback.invalidNumber"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.invalidNumber"),
+        "error",
+      );
     if (!acceptedTerms)
-      return showFeedback(t("feedback.errorTitle"), t("feedback.termsNotAccepted"), "error");
+      return showFeedback(
+        t("feedback.errorTitle"),
+        t("feedback.termsNotAccepted"),
+        "error",
+      );
 
     const userData = {
       fullName: fullName.trim(),
@@ -181,7 +229,10 @@ export default function RegisterScreen({ goToLogin }: Props) {
           try {
             const oldUser = JSON.parse(old);
             users = [oldUser];
-            await AsyncStorage.setItem(STORAGE_KEY_USERS, JSON.stringify(users));
+            await AsyncStorage.setItem(
+              STORAGE_KEY_USERS,
+              JSON.stringify(users),
+            );
             await AsyncStorage.removeItem("cuidatuagua-user");
           } catch (e) {
             // ignore malformed old data
@@ -192,22 +243,51 @@ export default function RegisterScreen({ goToLogin }: Props) {
       // Check duplicates
       const normalizedEmail = userData.email.toLowerCase();
       const normalizedAddress = userData.address.toLowerCase();
-      const normalizedPhone = (userData.countryCode + userData.phone).replace(/\s+/g, "");
+      const normalizedPhone = (userData.countryCode + userData.phone).replace(
+        /\s+/g,
+        "",
+      );
 
-      if (users.some(u => u.document === userData.document)) {
-        return showFeedback(t("feedback.errorTitle"), t("feedback.duplicateDocument"), "error");
+      if (users.some((u) => u.document === userData.document)) {
+        return showFeedback(
+          t("feedback.errorTitle"),
+          t("feedback.duplicateDocument"),
+          "error",
+        );
       }
 
-      if (users.some(u => (u.email || "").toLowerCase() === normalizedEmail)) {
-        return showFeedback(t("feedback.errorTitle"), t("feedback.duplicateEmail"), "error");
+      if (
+        users.some((u) => (u.email || "").toLowerCase() === normalizedEmail)
+      ) {
+        return showFeedback(
+          t("feedback.errorTitle"),
+          t("feedback.duplicateEmail"),
+          "error",
+        );
       }
 
-      if (users.some(u => (u.address || "").toLowerCase() === normalizedAddress)) {
-        return showFeedback(t("feedback.errorTitle"), t("feedback.duplicateAddress"), "error");
+      if (
+        users.some((u) => (u.address || "").toLowerCase() === normalizedAddress)
+      ) {
+        return showFeedback(
+          t("feedback.errorTitle"),
+          t("feedback.duplicateAddress"),
+          "error",
+        );
       }
 
-      if (users.some(u => ((u.countryCode || "") + (u.phone || "")).replace(/\s+/g, "") === normalizedPhone)) {
-        return showFeedback(t("feedback.errorTitle"), t("feedback.duplicatePhone"), "error");
+      if (
+        users.some(
+          (u) =>
+            ((u.countryCode || "") + (u.phone || "")).replace(/\s+/g, "") ===
+            normalizedPhone,
+        )
+      ) {
+        return showFeedback(
+          t("feedback.errorTitle"),
+          t("feedback.duplicatePhone"),
+          "error",
+        );
       }
 
       users.push(userData);
@@ -242,131 +322,334 @@ export default function RegisterScreen({ goToLogin }: Props) {
             <View
               style={[
                 styles.container,
+                isWeb && styles.containerWeb,
+                isMobile && styles.containerMobile,
                 isWeb && styles.card,
                 isMobile && styles.cardMobile,
               ]}
             >
-              <Text style={[styles.section, isWeb && styles.sectionWeb]}>
-                {t("section1.title")}
-              </Text>
-              <InputField
-                value={fullName}
-                onChangeText={setFullName}
-                placeholder={t("section1.input1") ?? ""}
-                label={t("section1.input1") ?? ""}
-                errorMessage={getInlineError(fullName, t("feedback.emptyFullName"), t("feedback.emptyFullName"))}
-              />
-              <InputField
-                value={document}
-                onChangeText={setDocument}
-                placeholder={t("section1.input2") ?? ""}
-                label={t("section1.input2") ?? ""}
-                errorMessage={getInlineError(document, t("feedback.invalidDocument"), t("feedback.invalidDocument"), isValidDocument)}
-              />
-              <InputField
-                value={email}
-                onChangeText={setEmail}
-                placeholder={t("section1.input3") ?? ""}
-                label={t("section1.input3") ?? ""}
-                errorMessage={getInlineError(email, t("feedback.invalidEmail"), t("feedback.invalidEmail"), isValidEmail)}
-              />
-              <InputField
-                value={password}
-                onChangeText={setPassword}
-                placeholder={t("section1.input4") ?? ""}
-                label={t("section1.input4") ?? ""}
-                secureTextEntry
-                errorMessage={getInlineError(password, t("feedback.emptyPassword"), t("feedback.passwordFormat"), isValidPassword)}
-              />
-              <InputField
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-                placeholder={t("section1.input5") ?? ""}
-                label={t("section1.input5") ?? ""}
-                secureTextEntry
-                errorMessage={getInlineError(confirmPassword, t("feedback.emptyConfirmPassword"), t("feedback.passwordMismatch"), (value) => value === password)}
-              />
-
-              <View style={styles.cardBottomSpacing} />
+              {isWeb ? (
+                <ScrollView
+                  style={styles.cardScrollWrapper}
+                  contentContainerStyle={styles.cardScrollContent}
+                  showsVerticalScrollIndicator={false}
+                  nestedScrollEnabled
+                >
+                  <Text style={[styles.section, isWeb && styles.sectionWeb]}>
+                    {t("section1.title")}
+                  </Text>
+                  <InputField
+                    value={fullName}
+                    onChangeText={setFullName}
+                    placeholder={t("section1.input1") ?? ""}
+                    label={t("section1.input1") ?? ""}
+                    errorMessage={getInlineError(
+                      fullName,
+                      t("feedback.emptyFullName"),
+                      t("feedback.emptyFullName"),
+                    )}
+                  />
+                  <InputField
+                    value={document}
+                    onChangeText={setDocument}
+                    placeholder={t("section1.input2") ?? ""}
+                    label={t("section1.input2") ?? ""}
+                    errorMessage={getInlineError(
+                      document,
+                      t("feedback.invalidDocument"),
+                      t("feedback.invalidDocument"),
+                      isValidDocument,
+                    )}
+                  />
+                  <InputField
+                    value={email}
+                    onChangeText={setEmail}
+                    placeholder={t("section1.input3") ?? ""}
+                    label={t("section1.input3") ?? ""}
+                    errorMessage={getInlineError(
+                      email,
+                      t("feedback.invalidEmail"),
+                      t("feedback.invalidEmail"),
+                      isValidEmail,
+                    )}
+                  />
+                  <InputField
+                    value={password}
+                    onChangeText={setPassword}
+                    placeholder={t("section1.input4") ?? ""}
+                    label={t("section1.input4") ?? ""}
+                    secureTextEntry
+                    errorMessage={getInlineError(
+                      password,
+                      t("feedback.emptyPassword"),
+                      t("feedback.passwordFormat"),
+                      isValidPassword,
+                    )}
+                  />
+                  <InputField
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                    placeholder={t("section1.input5") ?? ""}
+                    label={t("section1.input5") ?? ""}
+                    secureTextEntry
+                    errorMessage={getInlineError(
+                      confirmPassword,
+                      t("feedback.emptyConfirmPassword"),
+                      t("feedback.passwordMismatch"),
+                      (value) => value === password,
+                    )}
+                  />
+                </ScrollView>
+              ) : (
+                <>
+                  <Text style={[styles.section, isWeb && styles.sectionWeb]}>
+                    {t("section1.title")}
+                  </Text>
+                  <InputField
+                    value={fullName}
+                    onChangeText={setFullName}
+                    placeholder={t("section1.input1") ?? ""}
+                    label={t("section1.input1") ?? ""}
+                    errorMessage={getInlineError(
+                      fullName,
+                      t("feedback.emptyFullName"),
+                      t("feedback.emptyFullName"),
+                    )}
+                  />
+                  <InputField
+                    value={document}
+                    onChangeText={setDocument}
+                    placeholder={t("section1.input2") ?? ""}
+                    label={t("section1.input2") ?? ""}
+                    errorMessage={getInlineError(
+                      document,
+                      t("feedback.invalidDocument"),
+                      t("feedback.invalidDocument"),
+                      isValidDocument,
+                    )}
+                  />
+                  <InputField
+                    value={email}
+                    onChangeText={setEmail}
+                    placeholder={t("section1.input3") ?? ""}
+                    label={t("section1.input3") ?? ""}
+                    errorMessage={getInlineError(
+                      email,
+                      t("feedback.invalidEmail"),
+                      t("feedback.invalidEmail"),
+                      isValidEmail,
+                    )}
+                  />
+                  <InputField
+                    value={password}
+                    onChangeText={setPassword}
+                    placeholder={t("section1.input4") ?? ""}
+                    label={t("section1.input4") ?? ""}
+                    secureTextEntry
+                    errorMessage={getInlineError(
+                      password,
+                      t("feedback.emptyPassword"),
+                      t("feedback.passwordFormat"),
+                      isValidPassword,
+                    )}
+                  />
+                  <InputField
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                    placeholder={t("section1.input5") ?? ""}
+                    label={t("section1.input5") ?? ""}
+                    secureTextEntry
+                    errorMessage={getInlineError(
+                      confirmPassword,
+                      t("feedback.emptyConfirmPassword"),
+                      t("feedback.passwordMismatch"),
+                      (value) => value === password,
+                    )}
+                  />
+                </>
+              )}
             </View>
             <View
               style={[
                 styles.container,
+                isWeb && styles.containerWeb,
+                isMobile && styles.containerMobile,
                 isWeb && styles.card,
                 isMobile && styles.cardMobile,
               ]}
             >
-              <Text style={[styles.section, isWeb && styles.sectionWeb]}>
-                {t("section2.title")}
-              </Text>
-              <InputField
-                value={homeName}
-                onChangeText={setHomeName}
-                placeholder={t("section2.input1") ?? ""}
-                label={t("section2.input1") ?? ""}
-                errorMessage={getInlineError(homeName, t("feedback.emptyHomeName"), t("feedback.emptyHomeName"))}
-              />
-              <InputField
-                value={address}
-                onChangeText={setAddress}
-                placeholder={t("section2.input2") ?? ""}
-                label={t("section2.input2") ?? ""}
-                errorMessage={getInlineError(address, t("feedback.emptyAddress"), t("feedback.emptyAddress"))}
-              />
-              <CountrySelectField
-                label={t("section2.input6") ?? ""}
-                value={country}
-                onCountryChange={(selectedCountry, selectedCode) => {
-                  setCountry(selectedCountry);
-                  setCountryCode(selectedCode);
-                }}
-              />
-              <PhoneInputField
-              label={t("section2.input3") ?? ""}
-                countryCode={countryCode}
-                onCountryCodeChange={setCountryCode}
-                value={phone}
-                onChangeText={setPhone}
-                placeholder={t("section2.input3") ?? ""}
-                errorMessage={
-                  phone.length > 0 && !isValidPhone(phone)
-                    ? t("feedback.invalidPhone")
-                    : ""
-                }
-              />
-              <StratumSelectField
-                label={t("section2.input4") ?? ""}
-                value={stratum}
-                onChange={setStratum}
-                options={getStratumOptions(country)}
-                errorMessage={getInlineError(stratum, t("feedback.invalidNumber"), t("feedback.invalidNumber"), (value) => {
-                  if (country === "Ecuador") {
-                    return ["A", "B", "C+", "C-", "D"].includes(value);
-                  }
+              {isWeb ? (
+                <ScrollView
+                  style={styles.cardScrollWrapper}
+                  contentContainerStyle={styles.cardScrollContent}
+                  showsVerticalScrollIndicator={false}
+                  nestedScrollEnabled
+                >
+                  <Text style={[styles.section, isWeb && styles.sectionWeb]}>
+                    {t("section2.title")}
+                  </Text>
+                  <InputField
+                    value={homeName}
+                    onChangeText={setHomeName}
+                    placeholder={t("section2.input1") ?? ""}
+                    label={t("section2.input1") ?? ""}
+                    errorMessage={getInlineError(
+                      homeName,
+                      t("feedback.emptyHomeName"),
+                      t("feedback.emptyHomeName"),
+                    )}
+                  />
+                  <InputField
+                    value={address}
+                    onChangeText={setAddress}
+                    placeholder={t("section2.input2") ?? ""}
+                    label={t("section2.input2") ?? ""}
+                    errorMessage={getInlineError(
+                      address,
+                      t("feedback.emptyAddress"),
+                      t("feedback.emptyAddress"),
+                    )}
+                  />
+                  <CountrySelectField
+                    label={t("section2.input6") ?? ""}
+                    value={country}
+                    onCountryChange={(selectedCountry, selectedCode) => {
+                      setCountry(selectedCountry);
+                      setCountryCode(selectedCode);
+                    }}
+                  />
+                  <StratumSelectField
+                    label={t("section2.input4") ?? ""}
+                    value={stratum}
+                    onChange={setStratum}
+                    options={getStratumOptions(country)}
+                    errorMessage={getInlineError(
+                      stratum,
+                      t("feedback.invalidNumber"),
+                      t("feedback.invalidNumber"),
+                      (value) => {
+                        if (country === "Ecuador") {
+                          return ["A", "B", "C+", "C-", "D"].includes(value);
+                        }
 
-                  return isPositiveInteger(value) && Number(value) >= 1 && Number(value) <= 6;
-                })}
-              />
-              <InputField
-                value={inhabitants}
-                onChangeText={setInhabitants}
-                placeholder={t("section2.input5") ?? ""}
-                label={t("section2.input5") ?? ""}
-                errorMessage={getInlineError(inhabitants, t("feedback.invalidNumber"), t("feedback.invalidNumber"), isPositiveInteger)}
-              />
+                        return (
+                          isPositiveInteger(value) &&
+                          Number(value) >= 1 &&
+                          Number(value) <= 6
+                        );
+                      },
+                    )}
+                  />
+                  <InputField
+                    value={inhabitants}
+                    onChangeText={setInhabitants}
+                    placeholder={t("section2.input5") ?? ""}
+                    label={t("section2.input5") ?? ""}
+                    errorMessage={getInlineError(
+                      inhabitants,
+                      t("feedback.invalidNumber"),
+                      t("feedback.invalidNumber"),
+                      isPositiveInteger,
+                    )}
+                  />
 
-              <View style={styles.cardBottom}>
-                <CheckboxField
-                  checked={acceptedTerms}
-                  onPress={() => setAcceptedTerms(!acceptedTerms)}
-                  label={t("section2.checkbox")}
-                  onLabelPress={() => setTermsVisible(true)}
-                />
-              </View>
-              <TermsModal
-                visible={termsVisible}
-                onClose={() => setTermsVisible(false)}
-              />
+                  <View style={styles.cardBottom}>
+                    <CheckboxField
+                      checked={acceptedTerms}
+                      onPress={() => setAcceptedTerms(!acceptedTerms)}
+                      label={t("section2.checkbox")}
+                      onLabelPress={() => setTermsVisible(true)}
+                    />
+                  </View>
+                  <TermsModal
+                    visible={termsVisible}
+                    onClose={() => setTermsVisible(false)}
+                  />
+                </ScrollView>
+              ) : (
+                <>
+                  <Text style={[styles.section, isWeb && styles.sectionWeb]}>
+                    {t("section2.title")}
+                  </Text>
+                  <InputField
+                    value={homeName}
+                    onChangeText={setHomeName}
+                    placeholder={t("section2.input1") ?? ""}
+                    label={t("section2.input1") ?? ""}
+                    errorMessage={getInlineError(
+                      homeName,
+                      t("feedback.emptyHomeName"),
+                      t("feedback.emptyHomeName"),
+                    )}
+                  />
+                  <InputField
+                    value={address}
+                    onChangeText={setAddress}
+                    placeholder={t("section2.input2") ?? ""}
+                    label={t("section2.input2") ?? ""}
+                    errorMessage={getInlineError(
+                      address,
+                      t("feedback.emptyAddress"),
+                      t("feedback.emptyAddress"),
+                    )}
+                  />
+                  <CountrySelectField
+                    label={t("section2.input6") ?? ""}
+                    value={country}
+                    onCountryChange={(selectedCountry, selectedCode) => {
+                      setCountry(selectedCountry);
+                      setCountryCode(selectedCode);
+                    }}
+                  />
+                  <StratumSelectField
+                    label={t("section2.input4") ?? ""}
+                    value={stratum}
+                    onChange={setStratum}
+                    options={getStratumOptions(country)}
+                    errorMessage={getInlineError(
+                      stratum,
+                      t("feedback.invalidNumber"),
+                      t("feedback.invalidNumber"),
+                      (value) => {
+                        if (country === "Ecuador") {
+                          return ["A", "B", "C+", "C-", "D"].includes(value);
+                        }
+
+                        return (
+                          isPositiveInteger(value) &&
+                          Number(value) >= 1 &&
+                          Number(value) <= 6
+                        );
+                      },
+                    )}
+                  />
+                  <InputField
+                    value={inhabitants}
+                    onChangeText={setInhabitants}
+                    placeholder={t("section2.input5") ?? ""}
+                    label={t("section2.input5") ?? ""}
+                    errorMessage={getInlineError(
+                      inhabitants,
+                      t("feedback.invalidNumber"),
+                      t("feedback.invalidNumber"),
+                      isPositiveInteger,
+                    )}
+                  />
+
+                  <View style={styles.cardBottom}>
+                    <CheckboxField
+                      checked={acceptedTerms}
+                      onPress={() => setAcceptedTerms(!acceptedTerms)}
+                      label={t("section2.checkbox")}
+                      onLabelPress={() => setTermsVisible(true)}
+                    />
+                  </View>
+                  <TermsModal
+                    visible={termsVisible}
+                    onClose={() => setTermsVisible(false)}
+                  />
+                </>
+              )}
             </View>
             <FeedbackModal
               visible={feedbackVisible}
@@ -382,7 +665,10 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 isWeb && styles.footerWeb,
               ]}
             >
-              <PrimaryButton title={t("action.register") ?? "Register"} onPress={handleRegister} />
+              <PrimaryButton
+                title={t("action.register") ?? "Register"}
+                onPress={handleRegister}
+              />
             </View>
           </View>
         </View>
