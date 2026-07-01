@@ -211,21 +211,25 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 value={fullName}
                 onChangeText={setFullName}
                 placeholder={t("section1.input1") ?? ""}
+                label={t("section1.input1") ?? ""}
               />
               <InputField
                 value={document}
                 onChangeText={setDocument}
                 placeholder={t("section1.input2") ?? ""}
+                label={t("section1.input2") ?? ""}
               />
               <InputField
                 value={email}
                 onChangeText={setEmail}
                 placeholder={t("section1.input3") ?? ""}
+                label={t("section1.input3") ?? ""}
               />
               <InputField
                 value={password}
                 onChangeText={setPassword}
                 placeholder={t("section1.input4") ?? ""}
+                label={t("section1.input4") ?? ""}
                 secureTextEntry
               />
 
@@ -245,13 +249,16 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 value={homeName}
                 onChangeText={setHomeName}
                 placeholder={t("section2.input1") ?? ""}
+                label={t("section2.input1") ?? ""}
               />
               <InputField
                 value={address}
                 onChangeText={setAddress}
                 placeholder={t("section2.input2") ?? ""}
+                label={t("section2.input2") ?? ""}
               />
               <PhoneInputField
+              label={t("section2.input3") ?? ""}
                 countryCode={countryCode}
                 onCountryCodeChange={setCountryCode}
                 value={phone}
@@ -267,11 +274,13 @@ export default function RegisterScreen({ goToLogin }: Props) {
                 value={stratum}
                 onChangeText={setStratum}
                 placeholder={t("section2.input4") ?? ""}
+                label={t("section2.input4") ?? ""}
               />
               <InputField
                 value={inhabitants}
                 onChangeText={setInhabitants}
                 placeholder={t("section2.input5") ?? ""}
+                label={t("section2.input5") ?? ""}
               />
 
               <View style={styles.cardBottom}>

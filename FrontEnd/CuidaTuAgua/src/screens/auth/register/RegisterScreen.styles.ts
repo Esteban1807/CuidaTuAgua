@@ -44,6 +44,7 @@ export const createStyles = (colors: ThemeColors) =>
     card: {
       flex: 1,
       maxWidth: 650,
+      minHeight: 610,
 
       backgroundColor: colors.surface,
       borderRadius: 24,
@@ -67,15 +68,8 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     cardMobile: {
-      backgroundColor: colors.surface,
-      borderRadius: 20,
-
       padding: spacing.lg,
       marginHorizontal: spacing.md,
-      marginBottom: spacing.lg,
-
-      borderWidth: 1,
-      borderColor: "rgba(255,255,255,0.04)",
     },
 
     cardBottom: {
@@ -105,11 +99,6 @@ export const createStyles = (colors: ThemeColors) =>
     backButton: {
       padding: spacing.sm,
       marginRight: spacing.md,
-    },
-
-    backIcon: {
-      width: 24,
-      height: 24,
     },
 
     title: {

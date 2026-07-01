@@ -8,9 +8,43 @@ export const createStyles = (colors: ThemeColors) =>
       backgroundColor: colors.background,
     },
 
-    webSafeArea: {
-      padding: spacing.xxl,
+    safeAreaMobile: {
+      backgroundColor: colors.background,
+      flex: 1,
     },
+
+
+    header: {
+      backgroundColor: colors.background,
+      flexDirection: "row",
+      alignItems: "center",
+
+      paddingHorizontal: spacing.lg,
+      paddingTop: spacing.sm,
+      paddingBottom: spacing.md,
+
+      borderBottomWidth: 1,
+      borderBottomColor: "rgba(255,255,255,0.05)",
+    },
+    
+    headerWeb: {
+      padding: spacing.md,
+    },
+
+    backButton: {
+      padding: spacing.sm,
+      marginRight: spacing.md,
+    },
+
+    title: {
+      ...typography.title,
+      color: colors.textSecondary,
+
+      fontSize: 32,
+      fontWeight: "700",
+      letterSpacing: 0.5,
+    },
+
 
     container: {
       flex: 1,
@@ -18,6 +52,7 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     webContainer: {
+      margin: spacing.xxl,
       alignItems: "center",
       justifyContent: "center",
       padding: spacing.xxl,

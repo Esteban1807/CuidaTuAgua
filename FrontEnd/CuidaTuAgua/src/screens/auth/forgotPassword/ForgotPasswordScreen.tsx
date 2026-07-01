@@ -317,6 +317,7 @@ export default function ForgotPasswordScreen({ goToLogin }: Props) {
                         placeholder={
                           t("form.mail") || "correo@ejemplo.com o 12345678"
                         }
+                        label={t("form.mail") || ""}
                       />
                     </View>
                   </>
@@ -347,6 +348,10 @@ export default function ForgotPasswordScreen({ goToLogin }: Props) {
                         placeholder="000000"
                         keyboardType="numeric"
                         maxLength={6}
+                        label={"forgotPassword.codeLabel" in t
+                          ? t("forgotPassword.codeLabel")
+                          : "Código de verificación"
+                        }
                       />
                     </View>
                   </>
@@ -371,6 +376,7 @@ export default function ForgotPasswordScreen({ goToLogin }: Props) {
                         onChangeText={setNewPassword}
                         placeholder={t("form.password") || "Nueva contraseña"}
                         secureTextEntry
+                        label={t("form.password") || "Nueva contraseña"}
                       />
                     </View>
                     <View style={styles.inputContainer}>
@@ -383,6 +389,7 @@ export default function ForgotPasswordScreen({ goToLogin }: Props) {
                             : "Confirmar contraseña"
                         }
                         secureTextEntry
+                        label={t("forgotPassword.confirmPassword") || "Confirmar contraseña"}
                       />
                     </View>
                   </>
