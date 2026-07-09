@@ -44,7 +44,7 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     containerWeb: {
-      marginTop: -spacing.xl,
+      marginTop: spacing.xs,
       maxHeight: 500,
     },
 

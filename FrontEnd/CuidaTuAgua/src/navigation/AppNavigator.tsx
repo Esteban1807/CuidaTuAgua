@@ -6,7 +6,7 @@ import LandingScreen from "@screens/LandingScreen";
 import LoginScreen from "@screens/auth/login/LoginScreen";
 import RegisterScreen from "@screens/auth/register/RegisterScreen";
 import DashboardScreen from "@screens/dashboard/DashboardScreen";
-import StatsScreen from "@screens/dashboard/StatsScreen";
+import StatsScreen from "@screens/dashboard/layouts/statsScreen/StatsScreen";
 
 const Stack = createStackNavigator();
 

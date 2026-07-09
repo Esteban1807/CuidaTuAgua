@@ -4,9 +4,9 @@ import { useTheme } from "@theme/index";
 import { useTranslation } from "react-i18next";
 
 
-import HomeScreen from "@screens/dashboard/layouts/HomeScreen";
-import ProfileScreen from "@screens/dashboard/layouts/ProfileScreen";
-import SettingsScreen from "@screens/dashboard/layouts/SettingsScreen";
+import HomeScreen from "@screens/dashboard/layouts/homeScreen/HomeScreen";
+import ProfileScreen from "@screens/dashboard/layouts/profileScreen/ProfileScreen";
+import SettingsScreen from "@screens/dashboard/layouts/settingScreen/SettingsScreen";
 import TabButton from "./TabButton";
 
 export default function BottomTabsLayout() {

@@ -13,6 +13,7 @@ import { createStyles } from "./LoginScreen.styles";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from "@theme/index";
 import { useTranslation } from "react-i18next";
+import { useWindowDimensions } from "react-native";
 
 import InputField from "@components/auth/InputField";
 import AuthLink from "@components/auth/AuthLink";
@@ -245,16 +246,17 @@ export default function LoginScreen({
     }
   };
 
+  
   return (
     <SafeAreaView style={[styles.safeArea, isMobile && styles.safeAreaMobile]} edges={["top", "bottom"]}>
-        {isWeb && (
-          <View style={[styles.header, isWeb && styles.headerWeb]}>
-            <BackArrowButton onPress={goBack} style={styles.backButton} />
-            <Text style={styles.title}>{t("title")}</Text>
-          </View>
-        )}
+      {isWeb && (
+        <View style={[styles.header, isWeb && styles.headerWeb]}>
+          <BackArrowButton onPress={goBack} style={styles.backButton} />
+          <Text style={styles.title}>{t("title")}</Text>
+        </View>
+      )}
 
-      <View style={[styles.container, isWeb && styles.webContainer]}>
+      <View style={[styles.container, isWeb && styles.webContainer ]}>
         {/* FORM */}
         <View
           style={[
@@ -298,10 +300,10 @@ export default function LoginScreen({
 
           <View >
             <PrimaryButton
-            title={t("form.access")}
-            onPress={handleLogin}
-            loading={loading}
-          />
+              title={t("form.access")}
+              onPress={handleLogin}
+              loading={loading}
+            />
           </View>
         </View>
         {/* CAROUSEL WEB */}

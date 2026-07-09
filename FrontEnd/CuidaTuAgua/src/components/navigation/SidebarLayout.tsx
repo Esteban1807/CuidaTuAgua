@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { View, TouchableOpacity, Text, Platform } from "react-native";
 import Sidebar from "./Sidebar";
-import HomeScreen from "@screens/dashboard/layouts/HomeScreen";
-import ProfileScreen from "@screens/dashboard/layouts/ProfileScreen";
-import SettingsScreen from "@screens/dashboard/layouts/SettingsScreen";
-import StatsScreen from "@screens/dashboard/StatsScreen";
+import HomeScreen from "@screens/dashboard/layouts/homeScreen/HomeScreen";
+import ProfileScreen from "@screens/dashboard/layouts/profileScreen/ProfileScreen";
+import SettingsScreen from "@screens/dashboard/layouts/settingScreen/SettingsScreen";
+import StatsScreen from "@screens/dashboard/layouts/statsScreen/StatsScreen";
 import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "@theme/index";
 
@@ -35,7 +35,7 @@ export default function SidebarLayout({ onSignOut, userName = "User" }: SidebarL
         />
       )}
 
-      <View style={{ flex: 1, flexDirection: "column", minHeight: 0, ...(Platform.OS === "web" ? { height: "100vh" } : {}) }}>
+      <View style={[{ flex: 1, flexDirection: "column", minHeight: 0 }, Platform.OS === "web" && { height: "100vh" as any }]}>
         <View
           style={{
             height: 60,
