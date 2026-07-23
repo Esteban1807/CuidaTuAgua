@@ -29,10 +29,8 @@ type Props = {
 
 const countryCodes: CountryCodeItem[] = [
   { label: "Colombia", code: "+57" },
+  { label: "Ecuador", code: "+593" },
   { label: "Estados Unidos", code: "+1" },
-  { label: "México", code: "+52" },
-  { label: "España", code: "+34" },
-  { label: "Reino Unido", code: "+44" },
 ];
 
 export default function PhoneInputField({

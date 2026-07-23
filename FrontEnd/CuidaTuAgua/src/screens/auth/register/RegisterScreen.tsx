@@ -312,11 +312,7 @@ export default function RegisterScreen({ goToLogin }: Props) {
         <BackArrowButton onPress={goToLogin} style={styles.backButton} />
         <Text style={styles.title}>{t("title")}</Text>
       </View>
-      <ScrollView
-        contentContainerStyle={{ flexGrow: 1 }}
-        keyboardShouldPersistTaps="handled"
-        showsVerticalScrollIndicator={false}
-      >
+      
         <View style={styles.wrapper}>
           <View style={[styles.page, isWeb && styles.pageWeb]}>
             <View
@@ -373,19 +369,16 @@ export default function RegisterScreen({ goToLogin }: Props) {
                       isValidEmail,
                     )}
                   />
-                  <PhoneInputField
-                    label={t("section2.input3") ?? ""}
-                    countryCode={countryCode}
-                    onCountryCodeChange={setCountryCode}
-                    value={phone}
-                    onChangeText={setPhone}
-                    placeholder={t("section2.input3") ?? ""}
-                    errorMessage={
-                      phone.length > 0 && !isValidPhone(phone)
-                        ? t("feedback.invalidPhone")
-                        : ""
-                    }
-                  />
+
+                  <CountrySelectField
+                    label={t("section2.input6") ?? ""}
+                    value={country}
+                    onCountryChange={(selectedCountry, selectedCode) => {
+                      setCountry(selectedCountry);
+                      setCountryCode(selectedCode);
+                    }}
+                  /> 
+
                   <InputField
                     value={password}
                     onChangeText={setPassword}
@@ -454,19 +447,15 @@ export default function RegisterScreen({ goToLogin }: Props) {
                     )}
                   />
 
-                  <PhoneInputField
-                    label={t("section2.input3") ?? ""}
-                    countryCode={countryCode}
-                    onCountryCodeChange={setCountryCode}
-                    value={phone}
-                    onChangeText={setPhone}
-                    placeholder={t("section2.input3") ?? ""}
-                    errorMessage={
-                      phone.length > 0 && !isValidPhone(phone)
-                        ? t("feedback.invalidPhone")
-                        : ""
-                    }
+                  <CountrySelectField
+                    label={t("section2.input6") ?? ""}
+                    value={country}
+                    onCountryChange={(selectedCountry, selectedCode) => {
+                      setCountry(selectedCountry);
+                      setCountryCode(selectedCode);
+                    }}
                   />
+
                   <InputField
                     value={password}
                     onChangeText={setPassword}
@@ -537,13 +526,18 @@ export default function RegisterScreen({ goToLogin }: Props) {
                       t("feedback.emptyAddress"),
                     )}
                   />
-                  <CountrySelectField
-                    label={t("section2.input6") ?? ""}
-                    value={country}
-                    onCountryChange={(selectedCountry, selectedCode) => {
-                      setCountry(selectedCountry);
-                      setCountryCode(selectedCode);
-                    }}
+                  <PhoneInputField
+                    label={t("section2.input3") ?? ""}
+                    countryCode={countryCode}
+                    onCountryCodeChange={setCountryCode}
+                    value={phone}
+                    onChangeText={setPhone}
+                    placeholder={t("section2.input3") ?? ""}
+                    errorMessage={
+                      phone.length > 0 && !isValidPhone(phone)
+                        ? t("feedback.invalidPhone")
+                        : ""
+                    }
                   />
                   <StratumSelectField
                     label={t("section2.input4") ?? ""}
@@ -620,13 +614,18 @@ export default function RegisterScreen({ goToLogin }: Props) {
                       t("feedback.emptyAddress"),
                     )}
                   />
-                  <CountrySelectField
-                    label={t("section2.input6") ?? ""}
-                    value={country}
-                    onCountryChange={(selectedCountry, selectedCode) => {
-                      setCountry(selectedCountry);
-                      setCountryCode(selectedCode);
-                    }}
+                  <PhoneInputField
+                    label={t("section2.input3") ?? ""}
+                    countryCode={countryCode}
+                    onCountryCodeChange={setCountryCode}
+                    value={phone}
+                    onChangeText={setPhone}
+                    placeholder={t("section2.input3") ?? ""}
+                    errorMessage={
+                      phone.length > 0 && !isValidPhone(phone)
+                        ? t("feedback.invalidPhone")
+                        : ""
+                    }
                   />
                   <StratumSelectField
                     label={t("section2.input4") ?? ""}
@@ -699,7 +698,6 @@ export default function RegisterScreen({ goToLogin }: Props) {
             </View>
           </View>
         </View>
-      </ScrollView>
     </SafeAreaView>
   );
 }

@@ -52,7 +52,7 @@ export const createStyles = (colors: ThemeColors) =>
     },
 
     webContainer: {
-      marginBottom: spacing.xl,
+      marginTop: spacing.md,
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "row",
@@ -63,6 +63,7 @@ export const createStyles = (colors: ThemeColors) =>
       backgroundColor: colors.surface,
       borderRadius: 40,
       minHeight: 420,
+      maxHeight: 625,
     },
 
     formSection: {

@@ -67,6 +67,7 @@ export const createStyles = (colors: ThemeColors) =>
         width: 0,
         height: 12,
       },
+      marginTop: spacing.xs,
       shadowOpacity: 0.08,
       shadowRadius: 28,
       elevation: 8,
